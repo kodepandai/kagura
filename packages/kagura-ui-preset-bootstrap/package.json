@@ -1,15 +1,12 @@
 {
-  "name": "kagura-ui",
+  "name": "@kagura-ui/preset-bootstrap",
   "version": "0.0.1",
   "description": "",
-  "main": "index.cjs",
+  "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "keywords": [],
   "author": "",
-  "license": "MIT",
-  "devDependencies": {
-    "tailwindcss": "^3.2.2"
-  }
+  "license": "MIT"
 }
