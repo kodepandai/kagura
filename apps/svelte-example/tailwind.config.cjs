@@ -1,11 +1,25 @@
 const kagura = require("kagura-ui");
 /** @type {import('tailwindcss').Config} */
 module.exports = {
-  content: [
-    "./src/**/*.svelte"
-  ],
+  content: ["./src/**/*.svelte", "./node_modules/kagura-ui-svelte/**/*.svelte"],
   theme: {
-    extend: {},
+    extend: {
+      kagura: ({ theme }) => ({
+        color: {
+          primary: "#aaddcc",
+        },
+        component: {
+          button: {
+            root: {
+              borderRadius: 0,
+            },
+            primary: {
+              backgroundColor: theme("colors.gray.500"),
+            },
+          },
+        },
+      }),
+    },
   },
-  plugins: [kagura],
+  plugins: [kagura({ preset: "bootstrap" })],
 };

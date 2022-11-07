@@ -1,1 +1,5 @@
-<button  class="btn btn-primary">Button</button>
+<script lang="ts">
+  import { Button } from "kagura-ui-svelte";
+</script>
+
+<Button/>
