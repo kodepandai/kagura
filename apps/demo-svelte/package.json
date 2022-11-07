@@ -1,5 +1,5 @@
 {
-  "name": "svelte-example",
+  "name": "demo-svelte",
   "private": true,
   "version": "0.0.0",
   "type": "module",
@@ -10,11 +10,11 @@
     "check": "svelte-check --tsconfig ./tsconfig.json"
   },
   "devDependencies": {
+    "@kagura-ui/svelte": "workspace:^0.0.1",
     "@sveltejs/vite-plugin-svelte": "^1.1.0",
     "@tsconfig/svelte": "^3.0.0",
     "autoprefixer": "^10.4.13",
     "kagura-ui": "workspace:^1.0.0",
-    "kagura-ui-svelte": "workspace:^1.0.0",
     "postcss": "^8.4.18",
     "svelte": "^3.52.0",
     "svelte-check": "^2.9.2",
