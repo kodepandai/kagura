@@ -1,8 +1,8 @@
 const plugin = require("tailwindcss/plugin");
 const kagura = plugin.withOptions(
-  ({ preset = {} } = {}) =>
+  ({ preset = ({ theme }) => ({}) } = {}) =>
     ({ addComponents, theme }) => {
-      const optComponent = theme("kagura.component");
+      const presetObject = preset({ theme });
       const optColor = theme("kagura.color") || {};
       addComponents([
         {
@@ -16,16 +16,7 @@ const kagura = plugin.withOptions(
             [`--tw-kagura-color-${key}`]: value,
           },
         })),
-        {
-          ".btn": {
-            "@apply rounded px-2 py-1": {},
-            "&-primary": {
-              backgroundColor: "var(--tw-kagura-color-primary)",
-              ...optComponent["button"]["primary"],
-            },
-            ...optComponent["button"]["root"],
-          },
-        },
+        presetObject.component
       ]);
     },
   () => {
