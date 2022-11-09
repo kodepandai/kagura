@@ -7,11 +7,12 @@ importers:
 
   apps/demo-svelte:
     specifiers:
+      '@kagura-ui/preset-bootstrap': workspace:^0.0.1
       '@kagura-ui/svelte': workspace:^0.0.1
       '@sveltejs/vite-plugin-svelte': ^1.1.0
       '@tsconfig/svelte': ^3.0.0
       autoprefixer: ^10.4.13
-      kagura-ui: workspace:^1.0.0
+      kagura-ui: workspace:^0.0.1
       postcss: ^8.4.18
       svelte: ^3.52.0
       svelte-check: ^2.9.2
@@ -21,6 +22,7 @@ importers:
       typescript: ^4.6.4
       vite: ^3.2.0
     devDependencies:
+      '@kagura-ui/preset-bootstrap': link:../../packages/kagura-ui-preset-bootstrap
       '@kagura-ui/svelte': link:../../packages/kagura-ui-svelte
       '@sveltejs/vite-plugin-svelte': 1.1.0_svelte@3.52.0+vite@3.2.2
       '@tsconfig/svelte': 3.0.0

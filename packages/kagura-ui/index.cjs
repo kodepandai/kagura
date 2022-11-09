@@ -1,30 +1,38 @@
 const plugin = require("tailwindcss/plugin");
+const root = require("./components/root.cjs");
+const { createColors } = require("./utils.cjs");
 const kagura = plugin.withOptions(
-  ({ preset = ({ theme }) => ({}) } = {}) =>
+  () =>
     ({ addComponents, theme }) => {
-      const presetObject = preset({ theme });
-      const optColor = theme("kagura.color") || {};
+
+      const preset = theme("kagura")
       addComponents([
         {
-          ":root": {
-            "--tw-kagura-color-primary": "green",
-            "--tw-kagura-color-secondary": "blue",
-          },
+          ":root": root(theme),
         },
-        ...Object.entries(optColor).map(([key, value]) => ({
-          ":root": {
-            [`--tw-kagura-color-${key}`]: value,
+        {
+          ".button": {
+            ...preset.components.button.root,
+            "&-primary": preset.components.button.primary,
+            "&-secondary": preset.components.button.secondary,
+            "&-hover": preset.components.button.hover
           },
-        })),
-        presetObject.component
+        }
       ]);
     },
-  () => {
+  ({ preset }) => {
+    const presetInstance = preset()
     return {
       theme: {
         kagura: {
-          colors: {},
+          colors: presetInstance.colors,
+          components: presetInstance.components
         },
+        extend: {
+          colors: createColors(presetInstance.colors.text, "text"),
+          backgroundColor: createColors(presetInstance.colors.background, "bg"),
+          borderColor: createColors(presetInstance.colors.border, "border")
+        }
       },
     };
   }

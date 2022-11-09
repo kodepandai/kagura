@@ -2,4 +2,7 @@
   import { Button } from "@kagura-ui/svelte";
 </script>
 
-<Button />
+<div class="container p-4">
+  <Button variant="primary" />
+  <Button variant="secondary" />
+</div>
