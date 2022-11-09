@@ -1,7 +1,7 @@
 import { CSSRuleObject } from "tailwindcss/types/config"
 
 type HexColor = `#${string}`
-interface Colors {
+export interface Colors {
   primary: HexColor
   secondary: HexColor
 }
