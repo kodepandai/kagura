@@ -1,7 +1,7 @@
 {
-  "name": "kagura",
-  "version": "0.0.1",
-  "description": "Kagura UI",
+  "name": "kagura-ui-monorepo",
+  "private": true,
+  "description": "Kagura UI Mono Repo",
   "main": "index.js",
   "scripts": {},
   "keywords": [],
