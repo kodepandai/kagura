@@ -25,10 +25,7 @@ const kagura = plugin.withOptions(
     const presetInstance = preset()
     return {
       theme: {
-        kagura: {
-          colors: presetInstance.colors,
-          components: presetInstance.components
-        },
+        kagura: presetInstance,
         extend: {
           colors: createColors(presetInstance.colors.text, "text"),
           backgroundColor: createColors(presetInstance.colors.background, "bg"),

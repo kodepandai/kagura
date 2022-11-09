@@ -1,4 +1,5 @@
-module.exports = () => {
+
+export default () => {
   const baseColors = {
     primary: "#007bff",
     secondary: "#6c757d"
