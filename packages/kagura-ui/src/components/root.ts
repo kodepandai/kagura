@@ -1,5 +1,7 @@
-export default (theme) => {
-  const colors = theme("kagura.colors")
+import { Theme, Preset } from "../../contracts/tailwind"
+
+export default (theme: Theme) => {
+  const colors = theme<Preset["colors"]>("kagura.colors")
   const textColors = Object.entries(colors.text).map(([key, val]) => ([
     `--tw-kagura-text-${key}`, val
   ]))
@@ -11,8 +13,10 @@ export default (theme) => {
     `--tw-kagura-border-${key}`, val
   ]))
   return {
-    ...Object.fromEntries(textColors),
-    ...Object.fromEntries(bgColors),
-    ...Object.fromEntries(borderColors)
+    ":root": {
+      ...Object.fromEntries(textColors),
+      ...Object.fromEntries(bgColors),
+      ...Object.fromEntries(borderColors)
+    }
   }
 } 

@@ -1,24 +1,15 @@
 import plugin from "tailwindcss/plugin";
 import root from "./components/root.js"
-import { Config } from "./contracts/tailwind.js";
+import { Config } from "../contracts/tailwind.js";
 import { createColors } from "./utils.js"
+import button from "./components/button.js";
 const kagura = plugin.withOptions(
   () =>
     ({ addComponents, theme }) => {
 
-      const preset = theme("kagura") || {}
       addComponents([
-        {
-          ":root": root(theme),
-        },
-        {
-          ".button": {
-            ...preset.components.button.root,
-            "&-primary": preset.components.button.primary,
-            "&-secondary": preset.components.button.secondary,
-            "&-hover": preset.components.button.hover
-          },
-        }
+        root(theme),
+        button(theme)
       ]);
     },
   ({ preset }: Config) => {
@@ -35,4 +26,5 @@ const kagura = plugin.withOptions(
     };
   }
 );
+
 export default kagura

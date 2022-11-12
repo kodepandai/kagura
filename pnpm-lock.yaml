@@ -17,10 +17,14 @@ importers:
       svelte: ^3.52.0
       svelte-check: ^2.9.2
       svelte-preprocess: ^4.10.7
+      svelte-router-spa: ^6.0.3
       tailwindcss: ^3.2.2
       tslib: ^2.4.0
       typescript: ^4.6.4
       vite: ^3.2.0
+      vite-plugin-pages-svelte: ^0.0.2
+    dependencies:
+      svelte-router-spa: 6.0.3_svelte@3.52.0
     devDependencies:
       '@kagura-ui/preset-bootstrap': link:../../packages/kagura-ui-preset-bootstrap
       '@kagura-ui/svelte': link:../../packages/kagura-ui-svelte
@@ -36,6 +40,7 @@ importers:
       tslib: 2.4.1
       typescript: 4.8.4
       vite: 3.2.2
+      vite-plugin-pages-svelte: 0.0.2_y5txat7ypv2ssfg4oxrorj4tte
 
   apps/svelte-example:
     specifiers:
@@ -86,10 +91,13 @@ importers:
   packages/kagura-ui-preset-bootstrap:
     specifiers:
       esbuild: ^0.15.13
+      kagura-ui: workspace:^0.0.1
       rollup: ^3.2.5
       rollup-plugin-dts: ^5.0.0
       rollup-plugin-esbuild: ^5.0.0
       typescript: ^4.8.4
+    dependencies:
+      kagura-ui: link:../kagura-ui
     devDependencies:
       esbuild: 0.15.13
       rollup: 3.2.5
@@ -868,6 +876,18 @@ packages:
     resolution: {integrity: sha512-/Tb/JcjK111nNScGob5MNtsntNM1aCNUDipB/TkwZFhyDrrE47SOx/18wF2bbjgc3ZzCSKW1T5nt5EbFoAz/Vg==}
     engines: {node: '>=4'}
     hasBin: true
+    dev: true
+
+  /debug/4.3.2:
+    resolution: {integrity: sha512-mOp8wKcvj7XxC78zLgw/ZA+6TSgkoE2C/ienthhRD298T7UNwAg9diBpLRxC0mOezLl4B0xV7M0cCO6P/O0Xhw==}
+    engines: {node: '>=6.0'}
+    peerDependencies:
+      supports-color: '*'
+    peerDependenciesMeta:
+      supports-color:
+        optional: true
+    dependencies:
+      ms: 2.1.2
     dev: true
 
   /debug/4.3.4:
@@ -2500,10 +2520,17 @@ packages:
       typescript: 4.8.4
     dev: true
 
+  /svelte-router-spa/6.0.3_svelte@3.52.0:
+    resolution: {integrity: sha512-aHgyUVVI/WjipQNmKcXpX0hFZtkW5Y6hwH5aXLr2P/aRQ/qlX8ZbKQJUwKjOD59p7tt/c+wqokiIt68N7aNuKQ==}
+    peerDependencies:
+      svelte: ^3.36.0
+    dependencies:
+      svelte: 3.52.0
+      url-params-parser: 1.0.4
+
   /svelte/3.52.0:
     resolution: {integrity: sha512-FxcnEUOAVfr10vDU5dVgJN19IvqeHQCS1zfe8vayTfis9A2t5Fhx+JDe5uv/C3j//bB1umpLJ6quhgs9xyUbCQ==}
     engines: {node: '>= 8'}
-    dev: true
 
   /svelte2tsx/0.5.20_besnmoibwkhwtentvwuriss7pa:
     resolution: {integrity: sha512-yNHmN/uoAnJ7d1XqVohiNA6TMFOxibHyEddUAHVt1PiLXtbwAJF3WaGYlg8QbOdoXzOVsVNCAlqRUIdULUm+OA==}
@@ -2682,8 +2709,24 @@ packages:
       punycode: 2.1.1
     dev: true
 
+  /url-params-parser/1.0.4:
+    resolution: {integrity: sha512-0m6BqGpY2OetTZ3UPTLKkbTfUHigsX2YhrzORT9iYiyUJ/SP2WJ3cggg2YWtvMs36GPwK9Q44ffddyarniu2Tg==}
+
   /util-deprecate/1.0.2:
     resolution: {integrity: sha512-EPD5q1uXyFxJpCrLnCc1nHnq3gOa6DZBocAIiI2TaSCA7VCJ1UJDMagCzIkXNsUYfD1daK//LTEQ8xiIbrHtcw==}
+    dev: true
+
+  /vite-plugin-pages-svelte/0.0.2_y5txat7ypv2ssfg4oxrorj4tte:
+    resolution: {integrity: sha512-GZCoycTICOqVT3p7Ywkt4kGd2WfU0AjdcWCLRT/wmaJMPSD4TTgXJJGWA+mcVsaQfnvKBUiele1Gbk03HVXDQA==}
+    peerDependencies:
+      svelte-router-spa: '>=6'
+      vite: '>=2'
+    dependencies:
+      debug: 4.3.2
+      svelte-router-spa: 6.0.3_svelte@3.52.0
+      vite: 3.2.2
+    transitivePeerDependencies:
+      - supports-color
     dev: true
 
   /vite/3.2.2:

@@ -1,8 +1,6 @@
 <script lang="ts">
-  import { Button } from "@kagura-ui/svelte";
+  import { Router } from "svelte-router-spa";
+  import routes from "virtual:generated-pages-svelte";
 </script>
 
-<div class="container p-4">
-  <Button variant="primary" />
-  <Button variant="secondary" />
-</div>
+<Router {routes} />

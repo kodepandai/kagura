@@ -4,7 +4,7 @@
   "description": "Universal tailwindcss component",
   "main": "dist/index.cjs",
   "module": "dist/index.mjs",
-  "typings": "dist/index.d.ts",
+  "types": "dist/index.d.ts",
   "scripts": {
     "build": "rm -rf dist && rollup -c"
   },
@@ -12,8 +12,18 @@
     "tailwindcss",
     "ui"
   ],
+  "exports": {
+    ".": {
+      "import": "./dist/index.mjs",
+      "require": "./dist/index.cjs"
+    },
+    "./utils": {
+      "require": "./dist/utils.cjs"
+    }
+  },
   "files": [
-    "./dist/*"
+    "./dist/*",
+    "./contracts/*"
   ],
   "author": {
     "name": "Akhmad Salafudin",
