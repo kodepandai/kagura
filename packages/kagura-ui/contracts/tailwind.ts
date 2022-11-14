@@ -4,6 +4,12 @@ export type HexColor = `#${string}`
 export interface RequiredColors {
   primary: HexColor
   secondary: HexColor
+  success: HexColor
+  danger: HexColor
+  warning: HexColor
+  info: HexColor
+  light: HexColor
+  dark: HexColor
 }
 export interface Colors extends RequiredColors {
   [key: string]: HexColor

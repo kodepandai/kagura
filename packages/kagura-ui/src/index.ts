@@ -1,14 +1,15 @@
 import plugin from "tailwindcss/plugin";
-import root from "./components/root.js"
+import root from "./base/root.js"
 import { Config } from "../contracts/tailwind.js";
 import { createColors } from "./utils.js"
 import button from "./components/button.js";
 const kagura = plugin.withOptions(
   () =>
-    ({ addComponents, theme }) => {
+    ({ addComponents, theme, addBase }) => {
+
+      addBase(root(theme))
 
       addComponents([
-        root(theme),
         button(theme)
       ]);
     },

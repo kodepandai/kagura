@@ -21,3 +21,17 @@ export const hexToRgb = (hex: HexColor) => {
 export const rgbToHex = (r: number, g: number, b: number): HexColor => {
   return "#" + (1 << 24 | r << 16 | g << 8 | b).toString(16).slice(1) as HexColor
 }
+
+/*
+ * Mix two color like sass mix
+ */
+export const mixColor = (color_1: HexColor, color_2: HexColor, weight: number = 50) => {
+  const color1Rgb = hexToRgb(color_1);
+  const rgbMixed = hexToRgb(color_2).map((v2, i) => {
+    let v = v2 + (color1Rgb[i] - v2) * (weight / 100.0);
+    if (v < 0) return 0;
+    if (v > 255) return 255;
+    return v;
+  })
+  return rgbToHex(rgbMixed[0], rgbMixed[1], rgbMixed[2])
+};

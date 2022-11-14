@@ -6,10 +6,10 @@ export default (theme: Theme) => {
     `--tw-kagura-text-${key}`, val
   ]))
 
-  const bgColors = Object.entries(colors.text).map(([key, val]) => ([
+  const bgColors = Object.entries(colors.background).map(([key, val]) => ([
     `--tw-kagura-bg-${key}`, val
   ]))
-  const borderColors = Object.entries(colors.text).map(([key, val]) => ([
+  const borderColors = Object.entries(colors.border).map(([key, val]) => ([
     `--tw-kagura-border-${key}`, val
   ]))
   return {
