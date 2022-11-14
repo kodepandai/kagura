@@ -13,11 +13,14 @@ const kagura = plugin.withOptions(
         button(theme)
       ]);
     },
-  ({ preset }: Config) => {
+  ({ preset, scope }: Config) => {
     const presetInstance = preset()
     return {
       theme: {
-        kagura: presetInstance,
+        kagura: {
+          ...presetInstance,
+          scope
+        },
         extend: {
           colors: createColors(presetInstance.colors.text, "text"),
           backgroundColor: createColors(presetInstance.colors.background, "bg"),

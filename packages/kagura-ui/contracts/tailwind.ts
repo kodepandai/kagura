@@ -31,6 +31,7 @@ export interface Preset {
 
 export interface Config {
   preset: () => Preset
+  scope?: string
 }
 
 export type Theme = PluginAPI["theme"]

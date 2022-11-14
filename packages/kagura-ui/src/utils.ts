@@ -1,4 +1,16 @@
-import { Colors, HexColor } from "../contracts/tailwind"
+import { Colors, HexColor, Theme } from "../contracts/tailwind"
+
+/*
+ * wrap styles to scoped style if available
+ */
+export const createScope = (style: any, theme: Theme) => {
+  if (theme("kagura.scope")) {
+    style = {
+      [theme<string>("kagura.scope")]: style
+    }
+  }
+  return style
+}
 
 export const createColors = (colors: Colors, prefix: "bg" | "text" | "border") => {
   const entries = Object.keys(colors).map(key => ([key, `var(--tw-kagura-${prefix}-${key})`]))

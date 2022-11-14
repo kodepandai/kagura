@@ -11,5 +11,5 @@ module.exports = {
       }),
     },
   },
-  plugins: [kagura({ preset: bootstrap })],
+  plugins: [kagura({ preset: bootstrap, scope: ".bootstrap" })],
 };
