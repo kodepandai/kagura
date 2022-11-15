@@ -12,7 +12,7 @@ export const createScope = (style: any, theme: Theme) => {
   return style
 }
 
-export const createColors = (colors: Colors, prefix: "bg" | "text" | "border") => {
+export const createColors = (colors: Colors, prefix: string) => {
   const entries = Object.keys(colors).map(key => ([key, `var(--tw-kagura-${prefix}-${key})`]))
   return Object.fromEntries(entries)
 }

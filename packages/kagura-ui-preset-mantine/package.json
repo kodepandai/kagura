@@ -1,0 +1,27 @@
+{
+  "name": "@kagura-ui/preset-mantine",
+  "version": "0.0.1",
+  "description": "Kagura UI preset mantine",
+  "main": "dist/index.cjs",
+  "module": "dist/index.mjs",
+  "types": "dist/index.d.ts",
+  "scripts": {
+    "build": "rm -rf dist && rollup -c"
+  },
+  "files": [
+    "./dist/*"
+  ],
+  "keywords": [],
+  "author": "",
+  "license": "MIT",
+  "devDependencies": {
+    "esbuild": "^0.15.13",
+    "rollup": "^3.2.5",
+    "rollup-plugin-dts": "^5.0.0",
+    "rollup-plugin-esbuild": "^5.0.0",
+    "typescript": "^4.8.4"
+  },
+  "dependencies": {
+    "kagura-ui": "workspace:^0.0.1"
+  }
+}

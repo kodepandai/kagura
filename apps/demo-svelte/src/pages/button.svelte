@@ -9,6 +9,7 @@
 
     <select bind:value={preset}>
       <option value="bootstrap">Bootstrap</option>
+      <option value="mantine">Mantine</option>
       <option value="none">None</option>
     </select>
   </div>
