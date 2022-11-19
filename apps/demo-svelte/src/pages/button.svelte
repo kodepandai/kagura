@@ -20,7 +20,6 @@
     <Button color="danger">Danger</Button>
     <Button color="warning">Warning</Button>
     <Button color="info">Info</Button>
-    <Button color="light">Light</Button>
     <Button color="dark">Dark</Button>
     <Button color="custom">Custom</Button>
   </div>

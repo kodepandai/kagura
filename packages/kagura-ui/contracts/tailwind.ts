@@ -8,7 +8,6 @@ export interface RequiredColors {
   danger: HexColor
   warning: HexColor
   info: HexColor
-  light: HexColor
   dark: HexColor
 }
 export interface Colors extends Partial<RequiredColors> {

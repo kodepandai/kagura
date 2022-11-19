@@ -25,7 +25,6 @@ export const button = {
     ...createButton("danger", "text-white"),
     ...createButton("warning", "text-black"),
     ...createButton("info", "text-black"),
-    ...createButton("light", "text-black"),
     ...createButton("dark", "text-white")
   },
   inner: {},
