@@ -8,19 +8,8 @@
   "scripts": {
     "build": "rm -rf dist && rollup -c"
   },
-  "exports": {
-    ".": {
-      "import": "./dist/index.mjs",
-      "require": "./dist/index.cjs"
-    },
-    "./components": {
-      "import": "./dist/components/index.mjs",
-      "require": "./dist/components/index.cjs"
-    }
-  },
   "files": [
-    "./dist/*",
-    "./components.d.ts"
+    "./dist/*"
   ],
   "keywords": [],
   "author": "",
