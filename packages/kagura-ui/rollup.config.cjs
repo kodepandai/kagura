@@ -28,5 +28,5 @@ const bundle = (name) => ([
 
 module.exports = [
   ...bundle("index"),
-  ...bundle("utils")
+  ...bundle("utils"),
 ]

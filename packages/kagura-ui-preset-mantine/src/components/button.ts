@@ -1,19 +1,20 @@
-import { RequiredColors } from "kagura-ui/contracts/tailwind";
+import { HexColor, RequiredColors } from "kagura-ui/contracts/tailwind";
 import { colors, shadeColor, tintColor } from "./color.js"
 const TINTABLE = ["warning", "info", "dark"]
-const createButton = (color: keyof RequiredColors, className = "") => ({
-  [`&-${color}`]: {
-    [`@apply bg-${color} border-${color} ${className}`]: {},
-    "&:hover": {
-      [`--tw-kagura-bg-${color}`]: TINTABLE.includes(color) ? tintColor(colors.background[color], 15) : shadeColor(colors.background[color], 15),
-      [`--tw-kagura-border-${color}`]: TINTABLE.includes(color) ? tintColor(colors.background[color], 10) : shadeColor(colors.background[color], 20),
-    },
-    "&:active": {
-      [`--tw-kagura-bg-${color}`]: TINTABLE.includes(color) ? tintColor(colors.background[color], 20) : shadeColor(colors.background[color], 20),
-      [`--tw-kagura-border-${color}`]: TINTABLE.includes(color) ? tintColor(colors.background[color], 10) : shadeColor(colors.background[color], 25),
+export const createButton = (color: keyof RequiredColors, className = "") => (
+  {
+    [`&-${color}`]: {
+      [`@apply bg-${color} border-${color} ${className}`]: {},
+      "&:hover": {
+        [`--tw-kagura-bg-${color}`]: TINTABLE.includes(color) ? tintColor(colors.background[color] as HexColor, 15) : shadeColor(colors.background[color] as HexColor, 15),
+        [`--tw-kagura-border-${color}`]: TINTABLE.includes(color) ? tintColor(colors.background[color] as HexColor, 10) : shadeColor(colors.background[color] as HexColor, 20),
+      },
+      "&:active": {
+        [`--tw-kagura-bg-${color}`]: TINTABLE.includes(color) ? tintColor(colors.background[color] as HexColor, 20) : shadeColor(colors.background[color] as HexColor, 20),
+        [`--tw-kagura-border-${color}`]: TINTABLE.includes(color) ? tintColor(colors.background[color] as HexColor, 10) : shadeColor(colors.background[color] as HexColor, 25),
+      }
     }
-  }
-})
+  })
 
 export const button = {
   root: {
@@ -24,8 +25,8 @@ export const button = {
     ...createButton("secondary", "text-white"),
     ...createButton("success", "text-white"),
     ...createButton("danger", "text-white"),
-    ...createButton("warning", "text-black"),
-    ...createButton("info", "text-black"),
+    ...createButton("warning", "text-white"),
+    ...createButton("info", "text-white"),
     ...createButton("light", "text-black"),
     ...createButton("dark", "text-white")
   },

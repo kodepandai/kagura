@@ -1,4 +1,4 @@
-import { Theme, Preset } from "../../contracts/tailwind"
+import { Theme, Preset } from "../contracts/tailwind"
 
 export default (theme: Theme) => {
 

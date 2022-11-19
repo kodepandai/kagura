@@ -1,34 +1,32 @@
 const dts = require("rollup-plugin-dts")
 const esbuild = require("rollup-plugin-esbuild")
 
-const name = require('./package.json').main.replace(/\.cjs$/, '')
-
-const bundle = config => ({
-  ...config,
-  input: 'src/index.ts',
-})
-
-module.exports = [
-  bundle({
+const bundle = (name) => ([
+  {
+    input: `src/${name}.ts`,
     plugins: [esbuild.default()],
     output: [
       {
-        file: `${name}.cjs`,
+        file: `dist/${name}.cjs`,
         format: 'cjs',
-        sourcemap: true,
       },
       {
-        file: `${name}.mjs`,
+        file: `dist/${name}.mjs`,
         format: 'es',
-        sourcemap: true,
       },
     ],
-  }),
-  bundle({
+  },
+  {
+    input: `src/${name}.ts`,
     plugins: [dts.default()],
     output: {
-      file: `${name}.d.ts`,
+      file: `dist/${name}.d.ts`,
       format: 'es',
     },
-  }),
+  },
+])
+
+module.exports = [
+  ...bundle("index"),
+  ...bundle("components/index")
 ]

@@ -46,13 +46,22 @@ importers:
 
   packages/kagura-ui:
     specifiers:
+      '@types/lodash.merge': ^4.6.7
+      '@types/underscore': ^1.11.4
       esbuild: ^0.15.13
+      lodash.merge: ^4.6.2
       rollup: ^3.2.5
       rollup-plugin-dts: ^5.0.0
       rollup-plugin-esbuild: ^5.0.0
       tailwindcss: ^3.2.2
       typescript: ^4.8.4
+      underscore: ^1.13.6
+    dependencies:
+      lodash.merge: 4.6.2
+      underscore: 1.13.6
     devDependencies:
+      '@types/lodash.merge': 4.6.7
+      '@types/underscore': 1.11.4
       esbuild: 0.15.13
       rollup: 3.2.5
       rollup-plugin-dts: 5.0.0_oa2candk7eitu7usnsurwiyuuu
@@ -61,6 +70,23 @@ importers:
       typescript: 4.8.4
 
   packages/kagura-ui-preset-bootstrap:
+    specifiers:
+      esbuild: ^0.15.13
+      kagura-ui: workspace:^0.0.1
+      rollup: ^3.2.5
+      rollup-plugin-dts: ^5.0.0
+      rollup-plugin-esbuild: ^5.0.0
+      typescript: ^4.8.4
+    dependencies:
+      kagura-ui: link:../kagura-ui
+    devDependencies:
+      esbuild: 0.15.13
+      rollup: 3.2.5
+      rollup-plugin-dts: 5.0.0_oa2candk7eitu7usnsurwiyuuu
+      rollup-plugin-esbuild: 5.0.0_b76bwh2xfplsy4n4t42ms6ttgm
+      typescript: 4.8.4
+
+  packages/kagura-ui-preset-mantine:
     specifiers:
       esbuild: ^0.15.13
       kagura-ui: workspace:^0.0.1
@@ -399,6 +425,16 @@ packages:
     resolution: {integrity: sha512-wOuvG1SN4Us4rez+tylwwwCV1psiNVOkJeM3AUWUNWg/jDQY2+HE/444y5gc+jBmRqASOm2Oeh5c1axHobwRKQ==}
     dev: true
 
+  /@types/lodash.merge/4.6.7:
+    resolution: {integrity: sha512-OwxUJ9E50gw3LnAefSHJPHaBLGEKmQBQ7CZe/xflHkyy/wH2zVyEIAKReHvVrrn7zKdF58p16We9kMfh7v0RRQ==}
+    dependencies:
+      '@types/lodash': 4.14.189
+    dev: true
+
+  /@types/lodash/4.14.189:
+    resolution: {integrity: sha512-kb9/98N6X8gyME9Cf7YaqIMvYGnBSWqEci6tiettE6iJWH1XdJz/PO8LB0GtLCG7x8dU3KWhZT+lA1a35127tA==}
+    dev: true
+
   /@types/node/18.11.9:
     resolution: {integrity: sha512-CRpX21/kGdzjOpFsZSkcrXMGIBWMGNIHXXBVFSH+ggkftxg+XYP20TESbh+zFvFj3EQOl5byk0HTRn1IL6hbqg==}
     dev: true
@@ -415,6 +451,10 @@ packages:
 
   /@types/semver/7.3.13:
     resolution: {integrity: sha512-21cFJr9z3g5dW8B0CVI9g2O9beqaThGQ6ZFBqHfwhzLDKUxaqTIy3vnfah/UPkfOiF2pLq+tGz+W8RyCskuslw==}
+    dev: true
+
+  /@types/underscore/1.11.4:
+    resolution: {integrity: sha512-uO4CD2ELOjw8tasUrAhvnn2W4A0ZECOvMjCivJr4gA9pGgjv+qxKWY9GLTMVEK8ej85BxQOocUyE7hImmSQYcg==}
     dev: true
 
   /@typescript-eslint/eslint-plugin/5.42.0_ofgjrzjuekeo7s3hdyz2yuzw34:
@@ -1669,7 +1709,6 @@ packages:
 
   /lodash.merge/4.6.2:
     resolution: {integrity: sha512-0KpjqXRVvrYyCsX1swR/XTK0va6VQkQM6MNo7PqW77ByjAhoARA8EfrP1N4+KlKj8YS0ZUCtRT/YUuhyYDujIQ==}
-    dev: true
 
   /lower-case/2.0.2:
     resolution: {integrity: sha512-7fm3l3NAF9WfN6W3JOmf5drwpVqX78JtoGJ3A6W0a6ZnldM41w2fV5D490psKFTpMds8TJse/eHLFFsNHHjHgg==}
@@ -2659,6 +2698,10 @@ packages:
     engines: {node: '>=4.2.0'}
     hasBin: true
     dev: true
+
+  /underscore/1.13.6:
+    resolution: {integrity: sha512-+A5Sja4HP1M08MaXya7p5LvjuM7K6q/2EaC0+iovj/wOcMsTzMvDFbasi/oSapiwOlt252IqsKqPjCl7huKS0A==}
+    dev: false
 
   /undici/5.12.0:
     resolution: {integrity: sha512-zMLamCG62PGjd9HHMpo05bSLvvwWOZgGeiWlN/vlqu3+lRo3elxktVGEyLMX+IO7c2eflLjcW74AlkhEZm15mg==}

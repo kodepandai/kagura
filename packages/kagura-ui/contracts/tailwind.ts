@@ -11,8 +11,8 @@ export interface RequiredColors {
   light: HexColor
   dark: HexColor
 }
-export interface Colors extends RequiredColors {
-  [key: string]: HexColor
+export interface Colors extends Partial<RequiredColors> {
+  [key: string]: HexColor | undefined
 }
 export interface Preset {
   colors: {
@@ -29,9 +29,11 @@ export interface Preset {
   }
 }
 
+export type PresetCreator = (customPreset: Partial<Preset>) => Preset
+
 export interface Config {
-  preset: () => Preset
-  scope?: string
+  preset: Preset
+  scope?: string,
 }
 
 export type Theme = PluginAPI["theme"]

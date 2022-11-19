@@ -1,15 +1,39 @@
-import { Colors, HexColor, Theme } from "../contracts/tailwind"
+import { Colors, HexColor, Preset, PresetCreator } from "../contracts/tailwind"
+import _, { extend } from "underscore"
 
-/*
- * wrap styles to scoped style if available
- */
-export const createScope = (style: any, theme: Theme) => {
-  if (theme("kagura.scope")) {
-    style = {
-      [theme<string>("kagura.scope")]: style
+export const createPreset = (defaultPreset: Preset): PresetCreator => (customPreset = {}) => {
+  return {
+    colors: {
+      text: {
+        ...defaultPreset.colors.text,
+        ...customPreset.colors?.text
+      },
+      background: {
+        ...defaultPreset.colors.background,
+        ...customPreset.colors?.background
+      },
+      border: {
+        ...defaultPreset.colors.border,
+        ...customPreset.colors?.border
+      }
+    },
+    components: {
+      button: {
+        root: {
+          ...defaultPreset.components.button.root,
+          ...customPreset.components?.button.root
+        },
+        inner: {
+          ...defaultPreset.components.button.inner,
+          ...customPreset.components?.button.inner
+        },
+        label: {
+          ...defaultPreset.components.button.label,
+          ...customPreset.components?.button.label
+        }
+      }
     }
   }
-  return style
 }
 
 export const createColors = (colors: Colors, prefix: string) => {

@@ -1,16 +1,16 @@
-import { RequiredColors } from "kagura-ui/contracts/tailwind";
+import { HexColor, RequiredColors } from "kagura-ui/contracts/tailwind";
 import { colors, shadeColor, tintColor } from "./color.js"
 const TINTABLE = ["warning", "info", "dark"]
 const createButton = (color: keyof RequiredColors, className = "") => ({
   [`&-${color}`]: {
     [`@apply bg-${color} border-${color} ${className}`]: {},
     "&:hover": {
-      [`--tw-kagura-bg-${color}`]: TINTABLE.includes(color) ? tintColor(colors.background[color], 15) : shadeColor(colors.background[color], 15),
-      [`--tw-kagura-border-${color}`]: TINTABLE.includes(color) ? tintColor(colors.background[color], 10) : shadeColor(colors.background[color], 20),
+      [`--tw-kagura-bg-${color}`]: TINTABLE.includes(color) ? tintColor(colors.background[color] as HexColor, 15) : shadeColor(colors.background[color] as HexColor, 15),
+      [`--tw-kagura-border-${color}`]: TINTABLE.includes(color) ? tintColor(colors.background[color] as HexColor, 10) : shadeColor(colors.background[color] as HexColor, 20),
     },
     "&:active": {
-      [`--tw-kagura-bg-${color}`]: TINTABLE.includes(color) ? tintColor(colors.background[color], 20) : shadeColor(colors.background[color], 20),
-      [`--tw-kagura-border-${color}`]: TINTABLE.includes(color) ? tintColor(colors.background[color], 10) : shadeColor(colors.background[color], 25),
+      [`--tw-kagura-bg-${color}`]: TINTABLE.includes(color) ? tintColor(colors.background[color] as HexColor, 20) : shadeColor(colors.background[color] as HexColor, 20),
+      [`--tw-kagura-border-${color}`]: TINTABLE.includes(color) ? tintColor(colors.background[color] as HexColor, 10) : shadeColor(colors.background[color] as HexColor, 25),
     }
   }
 })
