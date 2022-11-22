@@ -13,23 +13,30 @@ export interface RequiredColors {
 export interface Colors extends Partial<RequiredColors> {
   [key: string]: HexColor | undefined
 }
-export interface Preset {
-  colors: {
+
+export interface PresetContext {
+  theme: Theme,
+  scope: string
+}
+type Callable<T> = T | ((context: PresetContext) => T)
+interface PresetButton {
+  root: CSSRuleObject
+  inner: CSSRuleObject
+  label: CSSRuleObject
+}
+export type Preset = Partial<{
+  colors: Partial<{
     base: Colors
     text: Colors
     background: Colors
     border: Colors
-  },
-  components: {
-    button: {
-      root: CSSRuleObject
-      inner: CSSRuleObject
-      label: CSSRuleObject
-    }
-  }
-}
+  }>,
+  components: Partial<{
+    button: Callable<Partial<PresetButton>>
+  }>
+}>
 
-export type PresetCreator = (customPreset: Partial<Preset>) => Preset
+export type PresetCreator = (defaultPreset: Preset) => (customPreset: Preset) => Preset
 
 export interface Config {
   preset: Preset

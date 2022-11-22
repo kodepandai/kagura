@@ -1,45 +1,56 @@
-import { Colors, HexColor, Preset, PresetCreator } from "../contracts/tailwind"
+import { Colors, HexColor, PresetCreator, Theme } from "../contracts/tailwind"
 
-export const createPreset = (defaultPreset: Preset): PresetCreator => (customPreset = {}) => {
+export const createPreset: PresetCreator = (defaultPreset) => (customPreset) => {
   return {
     colors: {
       base: {
-        ...defaultPreset.colors.base,
+        ...defaultPreset.colors?.base,
         ...customPreset.colors?.base
       },
       text: {
-        ...defaultPreset.colors.text,
+        ...defaultPreset.colors?.text,
         ...customPreset.colors?.text
       },
       background: {
-        ...defaultPreset.colors.background,
+        ...defaultPreset.colors?.background,
         ...customPreset.colors?.background
       },
       border: {
-        ...defaultPreset.colors.border,
+        ...defaultPreset.colors?.border,
         ...customPreset.colors?.border
       }
     },
     components: {
-      button: {
-        root: {
-          ...defaultPreset.components.button.root,
-          ...customPreset.components?.button.root
-        },
-        inner: {
-          ...defaultPreset.components.button.inner,
-          ...customPreset.components?.button.inner
-        },
-        label: {
-          ...defaultPreset.components.button.label,
-          ...customPreset.components?.button.label
+      button: ({ theme, scope }) => {
+        let defaultPresetButton = defaultPreset.components?.button
+        if (typeof defaultPresetButton == "function") {
+          defaultPresetButton = defaultPresetButton({ theme, scope })
+        }
+        let customPresetButton = customPreset.components?.button
+        if (typeof customPresetButton == "function") {
+          customPresetButton = customPresetButton({ theme, scope })
+        }
+
+        return {
+          root: {
+            ...defaultPresetButton?.root,
+            ...customPresetButton?.root
+          },
+          inner: {
+            ...defaultPresetButton?.inner,
+            ...customPresetButton?.inner
+          },
+          label: {
+            ...defaultPresetButton?.label,
+            ...customPresetButton?.label
+          }
         }
       }
     }
   }
 }
 
-export const createColors = (colors: Colors, prefix: string) => {
+export const createColors = (colors: Partial<Colors>, prefix: string) => {
   const entries = Object.keys(colors).map(key => ([key, `var(--tw-kagura${prefix ? "-" + prefix : ""}-${key})`]))
   return Object.fromEntries(entries)
 }

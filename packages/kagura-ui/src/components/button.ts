@@ -3,13 +3,16 @@ import { Preset, Theme } from "../../contracts/tailwind";
 export default (theme: Theme) => {
   let buttonStyle: any[] = []
   Object.keys(theme("kagura")).map(scope => {
-    const button = theme<Preset["components"]["button"]>(`kagura.${scope}.components.button`)
+    let button = theme<Preset["components"]>(`kagura.${scope}.components`)?.button
+    if (typeof button == "function") {
+      button = button({ theme, scope })
+    }
     if (scope == "DEFAULT") {
       buttonStyle.push({
         ".button": {
-          ...button.root,
-          "&-inner": button.inner,
-          "&-label": button.label
+          ...button?.root,
+          "&-inner": button?.inner,
+          "&-label": button?.label
         }
       })
     } else {
@@ -17,9 +20,9 @@ export default (theme: Theme) => {
 
         ["." + scope]: {
           ".button": {
-            ...button.root,
-            "&-inner": button.inner,
-            "&-label": button.label
+            ...button?.root,
+            "&-inner": button?.inner,
+            "&-label": button?.label
           }
         }
       })
