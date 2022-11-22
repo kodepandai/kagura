@@ -14,17 +14,12 @@ export default {
     kagura([
       {
         preset: mantine({
-          colors: {
-            background: {
-              custom: "#ff0000"
-            }
-          },
           components: {
             button: {
               root: {
                 "&-custom": {
-                  "@apply bg-custom text-white": {}
-                }
+                  "@apply rounded-lg": {}
+                },
               }
             }
           }
@@ -41,7 +36,7 @@ export default {
             button: {
               root: {
                 "&-custom": {
-                  "@apply bg-custom text-white": {}
+                  "@apply bg-custom text-white border-black rounded-none": {}
                 }
               }
             }

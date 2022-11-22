@@ -15,6 +15,7 @@ export interface Colors extends Partial<RequiredColors> {
 }
 export interface Preset {
   colors: {
+    base: Colors
     text: Colors
     background: Colors
     border: Colors

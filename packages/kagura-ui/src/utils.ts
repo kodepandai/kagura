@@ -1,9 +1,12 @@
 import { Colors, HexColor, Preset, PresetCreator } from "../contracts/tailwind"
-import _, { extend } from "underscore"
 
 export const createPreset = (defaultPreset: Preset): PresetCreator => (customPreset = {}) => {
   return {
     colors: {
+      base: {
+        ...defaultPreset.colors.base,
+        ...customPreset.colors?.base
+      },
       text: {
         ...defaultPreset.colors.text,
         ...customPreset.colors?.text
@@ -37,7 +40,7 @@ export const createPreset = (defaultPreset: Preset): PresetCreator => (customPre
 }
 
 export const createColors = (colors: Colors, prefix: string) => {
-  const entries = Object.keys(colors).map(key => ([key, `var(--tw-kagura-${prefix}-${key})`]))
+  const entries = Object.keys(colors).map(key => ([key, `var(--tw-kagura${prefix ? "-" + prefix : ""}-${key})`]))
   return Object.fromEntries(entries)
 }
 

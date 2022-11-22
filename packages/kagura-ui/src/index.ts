@@ -14,6 +14,7 @@ const kagura = plugin.withOptions(
   (config: Config | Config[]) => {
     let kaguraTheme: Record<string, Preset> = {}
     let colors = {
+      base: {},
       text: {},
       background: {},
       border: {}
@@ -28,16 +29,24 @@ const kagura = plugin.withOptions(
       } else {
         kaguraTheme["DEFAULT"] = preset
       }
+      const baseColors = {
+        ...colors.base,
+        ...preset.colors.base
+      }
       colors = {
+        base: baseColors,
         text: {
+          ...baseColors,
           ...colors.text,
           ...preset.colors.text
         },
         background: {
+          ...baseColors,
           ...colors.background,
           ...preset.colors.background
         },
         border: {
+          ...baseColors,
           ...colors.border,
           ...preset.colors.border
         }
@@ -47,7 +56,8 @@ const kagura = plugin.withOptions(
       theme: {
         kagura: kaguraTheme,
         extend: {
-          color: createColors(colors.text as Preset["colors"]["text"], "text"),
+          colors: createColors(colors.base as Preset["colors"]["base"], ""),
+          textColor: createColors(colors.text as Preset["colors"]["text"], "text"),
           backgroundColor: createColors(colors.background as Preset["colors"]["background"], "bg"),
           borderColor: createColors(colors.border as Preset["colors"]["border"], "border"),
         }

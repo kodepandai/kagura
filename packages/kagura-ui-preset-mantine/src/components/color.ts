@@ -10,10 +10,12 @@ let baseColors: Colors = {
   danger: rgbToHex(250, 82, 82),
   warning: rgbToHex(250, 176, 5),
   info: rgbToHex(21, 170, 191),
-  dark: rgbToHex(37, 38, 43)
+  dark: rgbToHex(37, 38, 43),
+  default: "#000000"
 }
 
 export const colors: Preset["colors"] = {
+  base: baseColors,
   text: baseColors,
   background: baseColors,
   border: baseColors

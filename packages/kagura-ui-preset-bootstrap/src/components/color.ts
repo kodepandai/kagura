@@ -14,6 +14,7 @@ let baseColors: Colors = {
 }
 
 export const colors: Preset["colors"] = {
+  base: baseColors,
   text: baseColors,
   background: baseColors,
   border: baseColors
