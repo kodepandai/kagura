@@ -14,6 +14,11 @@ export default {
     kagura([
       {
         preset: mantine({
+          colors: {
+            base: {
+              custom: "#ff0000"
+            }
+          },
           components: {
             button: {
               root: {

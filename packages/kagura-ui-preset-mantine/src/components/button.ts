@@ -1,7 +1,7 @@
-import { HexColor, PresetContext, Theme } from "kagura-ui/contracts/tailwind";
+import { Colors, HexColor, Preset, PresetContext, Theme } from "kagura-ui/contracts/tailwind";
 import { ButtonColor } from "kagura-ui/contracts/button";
-import { colors, shadeColor } from "./color.js"
-const createColor = (theme: Theme, color: ButtonColor) => {
+import { shadeColor } from "./color.js"
+const createColor = (colors: Preset["colors"], color: ButtonColor) => {
   return {
     [`&-${color}`]: {
       "--tw-kagura-button-base-color": `var(--tw-kagura-${color})`,
@@ -16,7 +16,10 @@ const createColor = (theme: Theme, color: ButtonColor) => {
   }
 }
 
-export const button = ({ theme, scope }: PresetContext) => {
+export const button = ({ preset }: PresetContext) => {
+  const colors = preset.colors
+  const buttonColors = Object.keys(colors?.base || {})
+    .reduce((collect, key) => ({ ...collect, ...createColor(colors, key) }), {})
   return {
     root: {
       "@apply px-[18px] text-left h-9 rounded font-semibold w-auto relative text-sm border inline-block": {},
@@ -28,13 +31,7 @@ export const button = ({ theme, scope }: PresetContext) => {
       "&:active": {
         transform: "translateY(1px)"
       },
-      ...createColor(theme, "primary"),
-      ...createColor(theme, "secondary"),
-      ...createColor(theme, "success"),
-      ...createColor(theme, "danger"),
-      ...createColor(theme, "warning"),
-      ...createColor(theme, "info"),
-      ...createColor(theme, "dark"),
+      ...buttonColors,
       "&-outline": {
         "--tw-kagura-button-text-color": "var(--tw-kagura-button-base-color)",
         "--tw-kagura-button-border-color": "var(--tw-kagura-button-base-color)",

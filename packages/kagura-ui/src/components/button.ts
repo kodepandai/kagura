@@ -5,7 +5,7 @@ export default (theme: Theme) => {
   Object.keys(theme("kagura")).map(scope => {
     let button = theme<Preset["components"]>(`kagura.${scope}.components`)?.button
     if (typeof button == "function") {
-      button = button({ theme, scope })
+      button = button({ theme, preset: theme(`kagura.${scope}`) })
     }
     if (scope == "DEFAULT") {
       buttonStyle.push({

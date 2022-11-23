@@ -23,7 +23,21 @@ const kagura = plugin.withOptions(
       config = [config]
     }
     config.forEach(({ preset, scope }) => {
-
+      preset.colors = {
+        ...preset.colors,
+        text: {
+          ...preset.colors?.base,
+          ...preset.colors?.text,
+        },
+        background: {
+          ...preset.colors?.base,
+          ...preset.colors?.background,
+        },
+        border: {
+          ...preset.colors?.base,
+          ...preset.colors?.border
+        }
+      }
       if (scope) {
         kaguraTheme[scope] = preset
       } else {

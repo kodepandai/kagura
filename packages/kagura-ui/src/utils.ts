@@ -1,4 +1,5 @@
-import { Colors, HexColor, PresetCreator, Theme } from "../contracts/tailwind"
+import { Colors, HexColor, PresetCreator } from "../contracts/tailwind"
+import merge from "lodash.merge"
 
 export const createPreset: PresetCreator = (defaultPreset) => (customPreset) => {
   return {
@@ -21,30 +22,31 @@ export const createPreset: PresetCreator = (defaultPreset) => (customPreset) => 
       }
     },
     components: {
-      button: ({ theme, scope }) => {
+      button: ({ theme, preset }) => {
         let defaultPresetButton = defaultPreset.components?.button
         if (typeof defaultPresetButton == "function") {
-          defaultPresetButton = defaultPresetButton({ theme, scope })
+          defaultPresetButton = defaultPresetButton({ theme, preset })
         }
         let customPresetButton = customPreset.components?.button
         if (typeof customPresetButton == "function") {
-          customPresetButton = customPresetButton({ theme, scope })
+          customPresetButton = customPresetButton({ theme, preset })
         }
 
-        return {
-          root: {
-            ...defaultPresetButton?.root,
-            ...customPresetButton?.root
-          },
-          inner: {
-            ...defaultPresetButton?.inner,
-            ...customPresetButton?.inner
-          },
-          label: {
-            ...defaultPresetButton?.label,
-            ...customPresetButton?.label
-          }
-        }
+        return merge(defaultPresetButton, customPresetButton)
+        // return {
+        //   root: {
+        //     ...defaultPresetButton?.root,
+        //     ...customPresetButton?.root
+        //   },
+        //   inner: {
+        //     ...defaultPresetButton?.inner,
+        //     ...customPresetButton?.inner
+        //   },
+        //   label: {
+        //     ...defaultPresetButton?.label,
+        //     ...customPresetButton?.label
+        //   }
+        // }
       }
     }
   }

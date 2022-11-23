@@ -16,7 +16,7 @@ export interface Colors extends Partial<RequiredColors> {
 
 export interface PresetContext {
   theme: Theme,
-  scope: string
+  preset: Preset
 }
 type Callable<T> = T | ((context: PresetContext) => T)
 interface PresetButton {

@@ -30,7 +30,7 @@
     <Button {variant} color="warning">Warning</Button>
     <Button {variant} color="info">Info</Button>
     <Button {variant} color="dark">Dark</Button>
-    <Button {variant} class="button-custom">Custom</Button>
+    <Button {variant} color="custom">Custom</Button>
   </div>
 </div>
 
