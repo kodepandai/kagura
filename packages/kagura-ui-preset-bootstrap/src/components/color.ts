@@ -1,8 +1,5 @@
-import { Colors, HexColor, Preset } from "kagura-ui/contracts/tailwind";
-import { mixColor } from "kagura-ui/utils"
+import { Colors, Preset } from "kagura-ui/contracts/tailwind";
 
-export const tintColor = (color: HexColor, weight: number) => mixColor("#ffffff", color, weight)
-export const shadeColor = (color: HexColor, weight: number) => mixColor("#000000", color, weight)
 let baseColors: Colors = {
   primary: "#0d6efd",
   secondary: "#6c757d",

@@ -1,6 +1,6 @@
 import { HexColor, Preset, PresetContext } from "kagura-ui/contracts/tailwind";
 import { ButtonColor } from "kagura-ui/contracts/button";
-import { shadeColor, tintColor } from "./color.js"
+import { shadeColor, tintColor } from "kagura-ui/utils";
 const createColor = (colors: Preset["colors"], color: ButtonColor) => {
   return {
     [`&-${color}`]: {

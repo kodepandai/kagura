@@ -1,5 +1,5 @@
 import { HexColor, Preset, PresetContext, RequiredColors } from "kagura-ui/contracts/tailwind";
-import { shadeColor, tintColor } from "./color.js"
+import { shadeColor, tintColor } from "kagura-ui/utils"
 const TINTABLE = ["warning", "info", "dark"]
 const createButton = (colors: Preset["colors"], color: keyof RequiredColors, className = "") => ({
   [`&-${color}`]: {
