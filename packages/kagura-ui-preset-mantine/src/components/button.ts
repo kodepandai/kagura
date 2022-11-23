@@ -1,6 +1,6 @@
-import { Colors, HexColor, Preset, PresetContext, Theme } from "kagura-ui/contracts/tailwind";
+import { HexColor, Preset, PresetContext } from "kagura-ui/contracts/tailwind";
 import { ButtonColor } from "kagura-ui/contracts/button";
-import { shadeColor } from "./color.js"
+import { shadeColor, tintColor } from "./color.js"
 const createColor = (colors: Preset["colors"], color: ButtonColor) => {
   return {
     [`&-${color}`]: {
@@ -11,6 +11,7 @@ const createColor = (colors: Preset["colors"], color: ButtonColor) => {
       "&:hover": {
         [`--tw-kagura-bg-${color}`]: shadeColor(colors?.background?.[color] as HexColor, 15),
         [`--tw-kagura-border-${color}`]: shadeColor(colors?.border?.[color] as HexColor, 20),
+        [`--tw-kagura-button-bg-outline-color`]: tintColor(colors?.background?.[color] as HexColor, 90)
       },
     }
   }
@@ -36,6 +37,9 @@ export const button = ({ preset }: PresetContext) => {
         "--tw-kagura-button-text-color": "var(--tw-kagura-button-base-color)",
         "--tw-kagura-button-border-color": "var(--tw-kagura-button-base-color)",
         "--tw-kagura-button-bg-color": "transparent",
+        "&:hover": {
+          "--tw-kagura-button-bg-color": "var(--tw-kagura-button-bg-outline-color)"
+        }
       }
     },
     inner: {
