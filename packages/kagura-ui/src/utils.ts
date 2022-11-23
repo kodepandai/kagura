@@ -33,20 +33,6 @@ export const createPreset: PresetCreator = (defaultPreset) => (customPreset) => 
         }
 
         return merge(defaultPresetButton, customPresetButton)
-        // return {
-        //   root: {
-        //     ...defaultPresetButton?.root,
-        //     ...customPresetButton?.root
-        //   },
-        //   inner: {
-        //     ...defaultPresetButton?.inner,
-        //     ...customPresetButton?.inner
-        //   },
-        //   label: {
-        //     ...defaultPresetButton?.label,
-        //     ...customPresetButton?.label
-        //   }
-        // }
       }
     }
   }
@@ -87,3 +73,6 @@ export const mixColor = (color_1: HexColor, color_2: HexColor, weight: number = 
   })
   return rgbToHex(rgbMixed[0], rgbMixed[1], rgbMixed[2])
 };
+
+export const tintColor = (color: HexColor, weight: number) => mixColor("#ffffff", color, weight)
+export const shadeColor = (color: HexColor, weight: number) => mixColor("#000000", color, weight)
