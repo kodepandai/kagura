@@ -9,8 +9,8 @@ const createColor = (colors: Preset["colors"], color: ButtonColor) => {
       "--tw-kagura-button-bg-color": `var(--tw-kagura-bg-${color})`,
       "--tw-kagura-button-border-color": "transparent",
       "&:hover": {
-        [`--tw-kagura-bg-${color}`]: shadeColor(colors?.background?.[color] as HexColor, 15),
-        [`--tw-kagura-border-${color}`]: shadeColor(colors?.border?.[color] as HexColor, 20),
+        [`--tw-kagura-button-bg-color`]: shadeColor(colors?.background?.[color] as HexColor, 15),
+        [`--tw-kagura-button-border-color`]: shadeColor(colors?.border?.[color] as HexColor, 20),
         [`--tw-kagura-button-bg-outline-color`]: tintColor(colors?.background?.[color] as HexColor, 90)
       },
     }
