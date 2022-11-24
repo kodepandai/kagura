@@ -33,7 +33,7 @@ export default {
       {
         preset: bootstrap({
           colors: {
-            background: {
+            base: {
               custom: "#004400"
             },
           },
@@ -41,7 +41,7 @@ export default {
             button: {
               root: {
                 "&-custom": {
-                  "@apply bg-custom text-white border-black rounded-none": {}
+                  "@apply border-black rounded-none": {}
                 }
               }
             }

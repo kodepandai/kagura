@@ -1,7 +1,8 @@
-import { HexColor, Preset, PresetContext, RequiredColors } from "kagura-ui/contracts/tailwind";
+import { HexColor, Preset, PresetContext } from "kagura-ui/contracts/tailwind";
+import { ButtonColor } from "kagura-ui/contracts/button";
 import { shadeColor, tintColor } from "kagura-ui/utils"
-const TINTABLE = ["warning", "info", "dark"]
-const createButton = (colors: Preset["colors"], color: keyof RequiredColors, className = "") => ({
+const TINTABLE = ["warning", "info", "dark"] as ButtonColor[]
+const createColor = (colors: Preset["colors"], color: ButtonColor, className = "") => ({
   [`&-${color}`]: {
     [`@apply bg-${color} border-${color} ${className}`]: {},
     "&:hover": {
@@ -17,17 +18,16 @@ const createButton = (colors: Preset["colors"], color: keyof RequiredColors, cla
 
 export const button = ({ preset }: PresetContext) => {
   const colors = preset.colors
+  const buttonColors = Object.keys(colors?.base || {})
+    .reduce((collect, key) => {
+      const className = TINTABLE.includes(key) && key != "dark" ? "text-black" : "text-white"
+      return { ...collect, ...createColor(colors, key, className) }
+    }, {})
   return {
     root: {
       "@apply inline-block font-normal text-center whitespace-nowrap align-middle select-none border border-transparent py-1.5 px-3 rounded text-base": {},
       transition: "color .15s ease-in-out,background-color .15s ease-in-out,border-color .15s ease-in-out,box-shadow .15s ease-in-out",
-      ...createButton(colors, "primary", "text-white"),
-      ...createButton(colors, "secondary", "text-white"),
-      ...createButton(colors, "success", "text-white"),
-      ...createButton(colors, "danger", "text-white"),
-      ...createButton(colors, "warning", "text-black"),
-      ...createButton(colors, "info", "text-black"),
-      ...createButton(colors, "dark", "text-white")
+      ...buttonColors
     },
     inner: {},
     label: {}
