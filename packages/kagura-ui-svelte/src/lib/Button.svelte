@@ -4,7 +4,10 @@
 	export let variant: ButtonVariant = 'filled';
 </script>
 
-<button class="button button-{color} button-{variant} {$$props.class}">
+<button
+	class="button button-{color} button-{variant}{$$props.class ? '' + $$props.class : ''}"
+	{...$$restProps}
+>
 	<div class="button-inner">
 		<span class="button-label"><slot /></span>
 	</div>
