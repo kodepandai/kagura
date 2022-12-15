@@ -3,6 +3,7 @@ import {
   HexColor,
   PresetButton,
   PresetCreator,
+  Size,
 } from "../contracts/tailwind";
 import merge from "lodash.merge";
 
@@ -95,3 +96,4 @@ export const tintColor = (color: HexColor, weight: number) =>
   mixColor("#ffffff", color, weight);
 export const shadeColor = (color: HexColor, weight: number) =>
   mixColor("#000000", color, weight);
+export const sizes: Size[] = ["xs", "sm", "md", "lg", "xl"];

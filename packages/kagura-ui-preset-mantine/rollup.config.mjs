@@ -1,14 +1,15 @@
-const dts = require("rollup-plugin-dts")
-const esbuild = require("rollup-plugin-esbuild")
+import dts from "rollup-plugin-dts"
+import esbuild from "rollup-plugin-esbuild"
 
 const bundle = (name) => ([
   {
     input: `src/${name}.ts`,
-    plugins: [esbuild.default()],
+    plugins: [esbuild()],
     output: [
       {
         file: `dist/${name}.cjs`,
         format: 'cjs',
+        exports: "default"
       },
       {
         file: `dist/${name}.mjs`,
@@ -18,14 +19,14 @@ const bundle = (name) => ([
   },
   {
     input: `src/${name}.ts`,
-    plugins: [dts.default()],
+    plugins: [dts()],
     output: {
       file: `dist/${name}.d.ts`,
-      format: 'es',
+      // format: 'es',
     },
   },
 ])
 
-module.exports = [
+export default [
   ...bundle("index"),
 ]

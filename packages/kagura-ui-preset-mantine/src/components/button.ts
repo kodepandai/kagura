@@ -1,6 +1,11 @@
-import { HexColor, Preset, PresetContext } from "kagura-ui/contracts/tailwind";
+import {
+  HexColor,
+  Preset,
+  PresetContext,
+  Size,
+} from "kagura-ui/contracts/tailwind";
 import { ButtonColor } from "kagura-ui/contracts/button";
-import { shadeColor, tintColor } from "kagura-ui/utils";
+import { shadeColor, tintColor, sizes } from "kagura-ui/utils";
 const createColor = (colors: Preset["colors"], color: ButtonColor) => {
   return {
     [`&-${color}`]: {
@@ -9,44 +14,95 @@ const createColor = (colors: Preset["colors"], color: ButtonColor) => {
       "--tw-kagura-button-bg-color": `var(--tw-kagura-bg-${color})`,
       "--tw-kagura-button-border-color": "transparent",
       "&:hover": {
-        [`--tw-kagura-button-bg-color`]: shadeColor(colors?.background?.[color] as HexColor, 15),
-        [`--tw-kagura-button-border-color`]: shadeColor(colors?.border?.[color] as HexColor, 20),
-        [`--tw-kagura-button-bg-outline-color`]: tintColor(colors?.background?.[color] as HexColor, 90)
+        [`--tw-kagura-button-bg-color`]: shadeColor(
+          colors?.background?.[color] as HexColor,
+          15
+        ),
+        [`--tw-kagura-button-border-color`]: shadeColor(
+          colors?.border?.[color] as HexColor,
+          20
+        ),
+        [`--tw-kagura-button-bg-outline-color`]: tintColor(
+          colors?.background?.[color] as HexColor,
+          90
+        ),
       },
-    }
-  }
-}
+    },
+  };
+};
+
+const createSize = (size: Size) => {
+  const paddingX = {
+    xs: 14,
+    sm: 18,
+    md: 22,
+    lg: 26,
+    xl: 32,
+  };
+  const fontSizes = {
+    xs: 12,
+    sm: 14,
+    md: 16,
+    lg: 18,
+    xl: 20,
+  };
+  const heights = {
+    xs: 30,
+    sm: 36,
+    md: 42,
+    lg: 50,
+    xl: 60,
+  };
+  return {
+    [`&-${size}`]: {
+      [`@apply px-[${paddingX[size]}px] text-[${fontSizes[size]}px] h-[${heights[size]}px]`]:
+        {},
+    },
+  };
+};
 
 export const button = ({ preset }: PresetContext) => {
-  const colors = preset.colors
-  const buttonColors = Object.keys(colors?.base || {})
-    .reduce((collect, key) => ({ ...collect, ...createColor(colors, key) }), {})
+  const colors = preset.colors;
+  const buttonColors = Object.keys(colors?.base || {}).reduce(
+    (collect, key) => ({ ...collect, ...createColor(colors, key) }),
+    {}
+  );
+  const buttonSizes = sizes.reduce(
+    (collect, size) => ({ ...collect, ...createSize(size) }),
+    {}
+  );
   return {
     root: {
-      "@apply px-[18px] text-left h-9 rounded font-semibold w-auto relative text-sm border inline-block": {},
-      fontFamily: '-apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji"',
-      transition: "color .15s ease-in-out,background-color .15s ease-in-out,border-color .15s ease-in-out,box-shadow .15s ease-in-out",
+      "@apply px-[18px] text-left h-9 rounded font-semibold w-auto relative text-sm border inline-block":
+        {},
+      fontFamily:
+        '-apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji"',
+      transition:
+        "color .15s ease-in-out,background-color .15s ease-in-out,border-color .15s ease-in-out,box-shadow .15s ease-in-out",
       color: "var(--tw-kagura-button-text-color)",
       backgroundColor: "var(--tw-kagura-button-bg-color)",
       borderColor: "var(--tw-kagura-button-border-color)",
       "&:active": {
-        transform: "translateY(1px)"
+        transform: "translateY(1px)",
       },
       ...buttonColors,
+      ...buttonSizes,
       "&-outline": {
         "--tw-kagura-button-text-color": "var(--tw-kagura-button-base-color)",
         "--tw-kagura-button-border-color": "var(--tw-kagura-button-base-color)",
         "--tw-kagura-button-bg-color": "transparent",
         "&:hover": {
-          "--tw-kagura-button-bg-color": "var(--tw-kagura-button-bg-outline-color)"
-        }
-      }
+          "--tw-kagura-button-bg-color":
+            "var(--tw-kagura-button-bg-outline-color)",
+        },
+      },
     },
     inner: {
-      "@apply text-left flex items-center justify-center h-full overflow-visible": {}
+      "@apply text-left flex items-center justify-center h-full overflow-visible":
+        {},
     },
     label: {
-      "@apply whitespace-nowrap h-full flex items-center overflow-hidden": {}
-    }
-  }
-}
+      "@apply whitespace-nowrap h-full flex items-center overflow-hidden": {},
+    },
+  };
+};

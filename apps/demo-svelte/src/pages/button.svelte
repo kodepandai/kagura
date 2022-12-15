@@ -1,13 +1,31 @@
 <script lang="ts">
   import { Button } from "@kagura-ui/svelte";
   import type { ButtonVariant } from "kagura-ui/contracts/button";
-  let preset = "bootstrap";
+  import type { RequiredColors, Size } from "kagura-ui/contracts/tailwind";
+  import { sizes } from "kagura-ui/utils";
+  let preset = "mantine";
   let variant: ButtonVariant = "filled";
+  let size: Size = "sm";
+  type Color = keyof RequiredColors | "custom";
+  let color: Color = "primary";
+  const colors: Color[] = [
+    "primary",
+    "secondary",
+    "success",
+    "danger",
+    "warning",
+    "info",
+    "dark",
+    "custom",
+  ];
 </script>
 
-<div class="container mx-auto p-4 flex flex-col {preset}">
+<div class="container mx-auto p-4 flex flex-col md:flex-row {preset}">
+  <div class="flex justify-center items-center min-h">
+    <Button {variant} {color} {size} class="capitalize">{color}</Button>
+  </div>
   <div class="mb-4">
-    <label for="theme">Choose preset:</label>
+    <label for="theme">Preset</label>
 
     <select bind:value={preset}>
       <option value="bootstrap">Bootstrap</option>
@@ -15,27 +33,29 @@
     </select>
   </div>
   <div class="mb-4">
-    <label for="theme">Choose variant:</label>
+    <label for="theme">Color</label>
+
+    <select bind:value={color}>
+      {#each colors as color}
+        <option value={color}>{color}</option>
+      {/each}
+    </select>
+  </div>
+  <div class="mb-4">
+    <label for="theme">Variant</label>
 
     <select bind:value={variant}>
       <option value="filled">Filled</option>
       <option value="outline">Outline</option>
     </select>
   </div>
-  <div class="demo">
-    <Button {variant} color="primary">Primary</Button>
-    <Button {variant} color="secondary">Secondary</Button>
-    <Button {variant} color="success">Success</Button>
-    <Button {variant} color="danger">Danger</Button>
-    <Button {variant} color="warning">Warning</Button>
-    <Button {variant} color="info">Info</Button>
-    <Button {variant} color="dark">Dark</Button>
-    <Button {variant} color="custom">Custom</Button>
+  <div class="mb-4">
+    <label for="theme">Size</label>
+
+    <select bind:value={size}>
+      {#each sizes as size}
+        <option value={size}>{size}</option>
+      {/each}
+    </select>
   </div>
 </div>
-
-<style>
-  :global(.demo > *) {
-    margin-bottom: 0.2rem;
-  }
-</style>
