@@ -22,7 +22,9 @@
 </script>
 
 <div class="container mx-auto p-4 flex flex-col md:flex-row {preset}">
-  <div class="flex justify-center items-center w-2/3 border rounded">
+  <div
+    class="flex justify-center items-center md:w-2/3 border rounded min-h-[10rem]"
+  >
     <Button {variant} {color} {size} class="capitalize">{color}</Button>
   </div>
   <div class="flex flex-col border rounded flex-grow p-4">

@@ -18,11 +18,17 @@ export interface PresetContext {
   theme: Theme;
   preset: Preset;
 }
-type Callable<T> = T | ((context: PresetContext) => T);
+export type Callable<T> = T | ((context: PresetContext) => T);
 export interface PresetButton {
   root: CSSRuleObject;
   inner: CSSRuleObject;
   label: CSSRuleObject;
+}
+export interface PresetInput {
+  root: CSSRuleObject;
+  icon: CSSRuleObject;
+  input: CSSRuleObject;
+  rightSection: CSSRuleObject;
 }
 export type Preset = Partial<{
   colors: Partial<{
@@ -33,6 +39,7 @@ export type Preset = Partial<{
   }>;
   components: Partial<{
     button: Callable<Partial<PresetButton>>;
+    input: Callable<Partial<PresetInput>>;
   }>;
 }>;
 

@@ -3,6 +3,7 @@ import {
   HexColor,
   PresetButton,
   PresetCreator,
+  PresetInput,
   Size,
 } from "../contracts/tailwind";
 import merge from "lodash.merge";
@@ -43,6 +44,21 @@ export const createPreset: PresetCreator =
             defaultPresetButton,
             customPresetButton
           ) as Partial<PresetButton>;
+        },
+        input: ({ theme, preset }) => {
+          let defaultPresetInput = defaultPreset.components?.input;
+          if (typeof defaultPresetInput == "function") {
+            defaultPresetInput = defaultPresetInput({ theme, preset });
+          }
+          let customPresetInput = customPreset.components?.input;
+          if (typeof customPresetInput == "function") {
+            customPresetInput = customPresetInput({ theme, preset });
+          }
+
+          return merge(
+            defaultPresetInput,
+            customPresetInput
+          ) as Partial<PresetInput>;
         },
       },
     };

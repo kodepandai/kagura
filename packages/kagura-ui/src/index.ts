@@ -3,6 +3,7 @@ import root from "./base/root.js"
 import { Config, Preset } from "../contracts/tailwind";
 import { createColors } from "./utils.js"
 import button from "./components/button.js";
+import input from "./components/input.js";
 const kagura = plugin.withOptions(
   () =>
     ({ addComponents, theme, addBase }) => {
@@ -10,6 +11,7 @@ const kagura = plugin.withOptions(
       addBase(root(theme))
       //
       addComponents(button(theme));
+      addComponents(input(theme))
     },
   (config: Config | Config[]) => {
     let kaguraTheme: Record<string, Preset> = {}
