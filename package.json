@@ -3,7 +3,10 @@
   "private": true,
   "description": "Kagura UI Mono Repo",
   "main": "index.js",
-  "scripts": {},
+  "scripts": {
+    "dev:svelte": "pnpm dev:package & pnpm --filter 'demo-svelte' dev",
+    "dev:package": "pnpm --filter '@kagura-ui/*' dev"
+  },
   "keywords": [],
   "author": "",
   "license": "MIT"

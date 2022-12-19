@@ -6,12 +6,7 @@
 	export let size: Size = 'sm';
 </script>
 
-<button
-	class="button button-{color} button-{size} button-{variant}{$$props.class
-		? ' ' + $$props.class
-		: ''}"
-	on:click
->
+<button class="button button-{color} button-{size} button-{variant} {$$props.class || ''}" on:click>
 	<div class="button-inner">
 		<span class="button-label"><slot /></span>
 	</div>

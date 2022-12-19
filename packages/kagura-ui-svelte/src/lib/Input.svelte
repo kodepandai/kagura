@@ -4,5 +4,5 @@
 </script>
 
 <div class="input">
-	<input class="input-input" {placeholder} bind:value />
+	<input class="input-input {$$props.class}" {placeholder} bind:value />
 </div>
