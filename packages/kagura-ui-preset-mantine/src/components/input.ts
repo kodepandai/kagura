@@ -44,15 +44,18 @@ export const input: Callable<Partial<PresetInput>> = (context) => {
   return {
     root: {
       "@apply relative": {},
+      "&-filled .input-input": {
+        "@apply border-transparent": {},
+        backgroundColor: "rgb(241, 243, 245)"
+      },
       "&-disabled .input-input": {
         backgroundColor: "rgb(241, 243, 245)",
         color: "rgb(144, 146, 150)",
         opacity: "0.6",
         cursor: "not-allowed",
       },
-      "&-filled .input-input": {
-        "@apply border-transparent": {},
-        backgroundColor: "rgb(241, 243, 245)"
+      "&-invalid .input-input": {
+        "@apply border-danger text-danger placeholder-danger": {}
       },
       ...inputSizes
     },
