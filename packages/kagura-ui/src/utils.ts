@@ -1,13 +1,32 @@
 import {
+  Callable,
   Colors,
+  Components,
   HexColor,
+  Preset,
   PresetButton,
+  PresetContext,
   PresetCreator,
   PresetInput,
   Size,
 } from "../contracts/tailwind";
 import merge from "lodash.merge";
 
+const createComponent = <T>(defaultPreset: Preset, customPreset: Preset, component: keyof Components) => ({ theme, preset }: PresetContext) => {
+  let defaultPresetComponent = defaultPreset.components?.[component] as unknown as Callable<Partial<T>>
+  if (typeof defaultPresetComponent == "function") {
+    defaultPresetComponent = defaultPresetComponent({ theme, preset });
+  }
+  let customPresetComponent = customPreset.components?.[component] as unknown as Callable<Partial<T>>
+  if (typeof customPresetComponent == "function") {
+    customPresetComponent = customPresetComponent({ theme, preset });
+  }
+
+  return merge(
+    defaultPresetComponent,
+    customPresetComponent
+  ) as Partial<T>;
+}
 export const createPreset: PresetCreator =
   (defaultPreset) => (customPreset) => {
     return {
@@ -30,36 +49,8 @@ export const createPreset: PresetCreator =
         },
       },
       components: {
-        button: ({ theme, preset }) => {
-          let defaultPresetButton = defaultPreset.components?.button;
-          if (typeof defaultPresetButton == "function") {
-            defaultPresetButton = defaultPresetButton({ theme, preset });
-          }
-          let customPresetButton = customPreset.components?.button;
-          if (typeof customPresetButton == "function") {
-            customPresetButton = customPresetButton({ theme, preset });
-          }
-
-          return merge(
-            defaultPresetButton,
-            customPresetButton
-          ) as Partial<PresetButton>;
-        },
-        input: ({ theme, preset }) => {
-          let defaultPresetInput = defaultPreset.components?.input;
-          if (typeof defaultPresetInput == "function") {
-            defaultPresetInput = defaultPresetInput({ theme, preset });
-          }
-          let customPresetInput = customPreset.components?.input;
-          if (typeof customPresetInput == "function") {
-            customPresetInput = customPresetInput({ theme, preset });
-          }
-
-          return merge(
-            defaultPresetInput,
-            customPresetInput
-          ) as Partial<PresetInput>;
-        },
+        button: createComponent<PresetButton>(defaultPreset, customPreset, "button"),
+        input: createComponent<PresetInput>(defaultPreset, customPreset, "input")
       },
     };
   };
