@@ -5,8 +5,9 @@
 	export let value = '';
 	export let variant: InputVariant = 'default';
 	export let size: Size = 'sm';
+	export let disabled = false;
 </script>
 
-<div class="input input-{variant} input-{size} {$$props.class}">
-	<input class="input-input" {placeholder} bind:value />
+<div class="input input-{variant} input-{size} {$$props.class}" class:input-disabled={disabled}>
+	<input class="input-input" {placeholder} bind:value {disabled} />
 </div>

@@ -6,12 +6,13 @@
   let placeholder = "Please input your name";
   let variant: InputVariant = "default";
   let sizeRange: number = 2;
+  let disabled = false;
   $: size = sizes[sizeRange - 1];
 </script>
 
 <div class="container mx-auto p-4 flex flex-col md:flex-row {preset}">
   <div class="flex justify-center items-center border rounded p-4 flex-grow">
-    <Input {placeholder} class="w-full max-w-md" {variant} {size} />
+    <Input {placeholder} class="w-full max-w-md" {variant} {size} {disabled} />
   </div>
 
   <div class="flex flex-col border rounded md:w-[250px] p-4">
@@ -43,6 +44,11 @@
       <label for="theme">Size</label>
       <input type="range" min="1" max="5" bind:value={sizeRange} />
       <span>{size}</span>
+    </div>
+
+    <div class="mb-4">
+      <label for="theme">Disabled</label>
+      <input type="checkbox" bind:checked={disabled} />
     </div>
   </div>
 </div>
