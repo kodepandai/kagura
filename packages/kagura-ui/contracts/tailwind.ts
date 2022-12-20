@@ -30,9 +30,17 @@ export interface PresetInput {
   input: CSSRuleObject;
   rightSection: CSSRuleObject;
 }
+export interface PresetInputWrapper {
+  root: CSSRuleObject;
+  label: CSSRuleObject;
+  description: CSSRuleObject;
+  error: CSSRuleObject;
+  required: CSSRuleObject;
+}
 export interface Components {
   button: Callable<Partial<PresetButton>>;
   input: Callable<Partial<PresetInput>>;
+  inputWrapper: Callable<Partial<PresetInputWrapper>>;
 }
 export type Preset = Partial<{
   colors: Partial<{

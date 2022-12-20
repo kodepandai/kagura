@@ -8,6 +8,7 @@ import {
   PresetContext,
   PresetCreator,
   PresetInput,
+  PresetInputWrapper,
   Size,
 } from "../contracts/tailwind";
 import merge from "lodash.merge";
@@ -50,7 +51,8 @@ export const createPreset: PresetCreator =
       },
       components: {
         button: createComponent<PresetButton>(defaultPreset, customPreset, "button"),
-        input: createComponent<PresetInput>(defaultPreset, customPreset, "input")
+        input: createComponent<PresetInput>(defaultPreset, customPreset, "input"),
+        inputWrapper: createComponent<PresetInputWrapper>(defaultPreset, customPreset, "inputWrapper")
       },
     };
   };
