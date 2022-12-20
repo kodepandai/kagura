@@ -6,5 +6,8 @@
     <li>
       <a href="/input">Input</a>
     </li>
+    <li>
+      <a href="/input-wrapper">Input Wrapper</a>
+    </li>
   </ul>
 </div>

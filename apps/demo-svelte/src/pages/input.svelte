@@ -43,9 +43,9 @@
     </div>
 
     <div class="mb-4">
-      <label for="theme">Placeholder</label>
-
-      <Input bind:value={placeholder} />
+      <Input.Wrapper label="Placeholder">
+        <Input bind:value={placeholder} />
+      </Input.Wrapper>
     </div>
 
     <div class="mb-4">

@@ -1,16 +1,19 @@
 <script lang="ts">
 	import type { InputVariant } from 'kagura-ui/contracts/input';
 	import type { Size } from 'kagura-ui/contracts/tailwind';
+	import { getContext } from 'svelte';
+	import type { Writable } from 'svelte/store';
 	export let placeholder = '';
 	export let value = '';
 	export let variant: InputVariant = 'default';
+	const { size: sharedSize } = getContext<{ size: Writable<Size> }>('input-context') || {};
 	export let size: Size = 'sm';
 	export let disabled = false;
 	export let invalid = false;
 </script>
 
 <div
-	class="input input-{variant} input-{size} {$$props.class}"
+	class="input input-{variant} input-{$sharedSize || size} {$$props.class || ''}"
 	class:input-disabled={disabled}
 	class:input-invalid={invalid}
 >
