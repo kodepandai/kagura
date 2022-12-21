@@ -9,7 +9,7 @@ module.exports = {
     button: {
       root: {
         "&-custom": {
-          "@apply border-black rounded-none": {},
+          "@apply border-black !rounded-none": {},
         },
       },
     },
