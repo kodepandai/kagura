@@ -2,12 +2,12 @@
 	import type { InputVariant } from 'kagura-ui/contracts/input';
 	import type { Size } from 'kagura-ui/contracts/tailwind';
 	import { getContext } from 'svelte';
-	import type { Writable } from 'svelte/store';
+	import { writable, type Writable } from 'svelte/store';
 	export let placeholder = '';
 	export let value = '';
 	export let variant: InputVariant = 'default';
 	const inputContext =
-		getContext<Writable<{ size: Size; required: boolean }>>('input-context') || {};
+		getContext<Writable<{ size: Size; required: boolean }>>('input-context') || writable({});
 	export let size: Size = 'sm';
 	export let disabled = false;
 	export let invalid = false;

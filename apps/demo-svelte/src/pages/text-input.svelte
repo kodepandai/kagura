@@ -43,21 +43,15 @@
     </div>
 
     <div class="mb-4">
-      <Input.Wrapper label="Placeholder">
-        <Input bind:value={placeholder} />
-      </Input.Wrapper>
+      <TextInput label="Placeholder" bind:value={placeholder} />
     </div>
 
     <div class="mb-4">
-      <Input.Wrapper label="Description">
-        <Input bind:value={description} />
-      </Input.Wrapper>
+      <TextInput label="Description" bind:value={description} />
     </div>
 
     <div class="mb-4">
-      <Input.Wrapper label="Error">
-        <Input bind:value={error} />
-      </Input.Wrapper>
+      <TextInput label="Error" bind:value={error} />
     </div>
 
     <div class="mb-4">

@@ -1,5 +1,5 @@
 <script lang="ts">
-  import { Input } from "@kagura-ui/svelte";
+  import { Input, TextInput } from "@kagura-ui/svelte";
   import { sizes } from "kagura-ui/utils";
   let preset = "mantine";
   let sizeRange: number = 2;
@@ -33,21 +33,15 @@
     </div>
 
     <div class="mb-4">
-      <Input.Wrapper label="Label">
-        <Input bind:value={label} />
-      </Input.Wrapper>
+      <TextInput label="Label" bind:value={label} />
     </div>
 
     <div class="mb-4">
-      <Input.Wrapper label="Description">
-        <Input bind:value={description} />
-      </Input.Wrapper>
+      <TextInput label="Description" bind:value={description} />
     </div>
 
     <div class="mb-4">
-      <Input.Wrapper label="Error">
-        <Input bind:value={error} />
-      </Input.Wrapper>
+      <TextInput label="Error" bind:value={error} />
     </div>
 
     <div class="mb-4">
