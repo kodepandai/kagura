@@ -1,13 +1,13 @@
 <script lang="ts">
 	import type { Size } from 'kagura-ui/contracts/tailwind';
 	import { setContext } from 'svelte';
-	import { each } from 'svelte/internal';
 	import { writable } from 'svelte/store';
 
 	export let size: Size = 'sm';
 	export let required = false;
-	let inputContext = writable<{size:Size,required:boolean}>({
-	size,required
+	let inputContext = writable<{ size: Size; required: boolean }>({
+		size,
+		required
 	});
 	export let label = '';
 	export let description: string | undefined = undefined;
@@ -22,7 +22,7 @@
 	$: hasAsterisk = typeof withAsterisk == 'boolean' ? withAsterisk : required;
 	$: hasError = !!error && typeof error !== 'boolean';
 	setContext('input-context', inputContext);
-	$: $inputContext = {size,required};
+	$: $inputContext = { size, required };
 </script>
 
 <div class="input-wrapper input-wrapper-{size} {$$props.class || ''}">

@@ -9,5 +9,8 @@
     <li>
       <a href="/input-wrapper">Input Wrapper</a>
     </li>
+    <li>
+      <a href="/text-input">Text Input</a>
+    </li>
   </ul>
 </div>
