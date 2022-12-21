@@ -39,9 +39,7 @@
     </div>
 
     <div class="mb-4">
-      <Input.Wrapper label="Label">
-        <Input bind:value={label} />
-      </Input.Wrapper>
+      <TextInput label="Label" bind:value={label} />
     </div>
 
     <div class="mb-4">

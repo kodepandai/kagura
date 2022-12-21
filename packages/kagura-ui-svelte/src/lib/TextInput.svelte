@@ -22,5 +22,5 @@
 </script>
 
 <Input.Wrapper {required} {size} {error} {inputWrapperOrder} {withAsterisk} {label} {description}>
-	<Input {value} {variant} {disabled} {placeholder} invalid={!!error} />
+	<Input bind:value {variant} {disabled} {placeholder} invalid={!!error} />
 </Input.Wrapper>
