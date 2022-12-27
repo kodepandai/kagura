@@ -26,9 +26,14 @@ const meta: Meta<Button> = {
 	],
 	parameters: {
 		docs: {
-			transformSource: (src, ctx) =>
-				src.replace('SlotDecorator', 'Button').replace(` slot="${ctx.initialArgs.slot}"/`, '') +
-				`${ctx.initialArgs.slot}</Button>`
+			transformSource: (_, { initialArgs: prop }) => `
+<script>
+ import {Button} from "@kagura-ui/svelte"
+</script>
+<Button${prop.color ? ` color="${prop.color}"` : ''}>
+ ${prop.slot}
+</Button>
+`
 		}
 	}
 };
