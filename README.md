@@ -26,7 +26,7 @@ pnpm --filter [nama package] [command]
 misal `pnpm --filter @kagura-ui/preset-bootstrap build`. Nama package bisa dilihat di `package.json` masing - masing package.
 
 ### Menjalankan Demo
-Untuk saat ini baru tersedia satu demo yaitu demo-svelte. Untuk menjalankannya lakukan langkah - langkah berikut:
+Untuk saat ini baru tersedia satu demo yaitu demo component svelte. Untuk menjalankannya lakukan langkah - langkah berikut:
 - pastikan `pnpm` terinstall. Jika belum maka install menggunakan perintah
 ```
 npm install -g pnpm
@@ -35,12 +35,8 @@ npm install -g pnpm
 ```
 pnpm install
 ```
-- build semua package
-```
-pnpm -r build
-```
 - jalankan demo dalam mode development
 ```
-pnpm --filter demo-svelte dev
+pnpm dev:svelte
 ```
-- server dev akan jalan, silakan buka di web browser
+- server dev storybook akan jalan, silakan buka di web browser
