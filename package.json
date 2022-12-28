@@ -4,8 +4,7 @@
   "description": "Kagura UI Mono Repo",
   "main": "index.js",
   "scripts": {
-    "dev:svelte": "pnpm dev:package & (sleep 10 && pnpm --filter 'demo-svelte' dev)",
-    "dev:package": "pnpm --filter '@kagura-ui/*' dev"
+    "dev:svelte": "pnpm -r dev & (sleep 10 && pnpm --filter '@kagura-ui/svelte' storybook)"
   },
   "keywords": [],
   "author": "",
