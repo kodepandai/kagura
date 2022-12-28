@@ -30,22 +30,21 @@ const meta: Meta<Button> = {
 				"dark",
 				"custom",
 			],
-			defaultValue: "primary",
 			description: 'buton color scheme, default is primary'
 		},
 		variant: {
 			control:
 				{ type: "select" },
 			options: ["filled", "outline"],
-			defaultValue: "filled",
 			description: "button style variant, default is filled"
 
 		},
-		class: {
+		size: {
 			control: {
-				type: "string"
+				type: "select"
 			},
-			description: "custom class name. readonly, cannot be set from this documentation"
+			options: ["xs", "sm", "md", "lg", "xl"],
+			description: "button size, default is sm"
 		},
 		slot: {
 			type: 'string',
@@ -67,7 +66,8 @@ const meta: Meta<Button> = {
 <script>
  import {Button} from "@kagura-ui/svelte"
 </script>
-<Button${prop.color ? ` color="${prop.color}"` : ''}>
+
+<Button${prop.color ? ` color="${prop.color}"` : ''}${prop.variant ? ` variant="${prop.variant}"` : ''}${prop.size ? ` size="${prop.size}"` : ''}>
  ${prop.slot}
 </Button>
 `
@@ -86,7 +86,6 @@ export const Default: Story = {
 };
 export const Primary: Story = {
 	args: {
-		color: 'primary',
 		slot: 'Button Primary'
 	}
 };
@@ -97,9 +96,16 @@ export const Secondary: Story = {
 		slot: 'Button Secondary'
 	}
 };
-export const CustomClass: Story = {
+export const Outline: Story = {
 	args: {
-		slot: 'Button Custom',
-		class: '!rounded-none !border-red-400'
+		variant: 'outline',
+		slot: 'Button Outline'
+	}
+};
+
+export const Large: Story = {
+	args: {
+		size: 'lg',
+		slot: 'Button Large'
 	}
 };
