@@ -7,8 +7,8 @@ module.exports = {
 	},
 	components: {
 		button: {
-			root: {
-				'&-custom': {
+			colors: {
+				custom: {
 					'@apply border-black !rounded-none': {}
 				}
 			}

@@ -7,11 +7,11 @@ module.exports = {
 	},
 	components: {
 		button: {
-			root: {
-				'&-custom': {
+			colors: {
+				custom: {
 					'@apply rounded-lg': {}
 				}
-			}
-		}
+			},
+		},
 	}
 };
