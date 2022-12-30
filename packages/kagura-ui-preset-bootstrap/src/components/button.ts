@@ -1,9 +1,9 @@
-import { HexColor, Preset, PresetContext, Size } from "kagura-ui/contracts/tailwind";
+import { Callable, HexColor, Preset, PresetButton, PresetContext, Size } from "kagura-ui/contracts/tailwind";
 import { ButtonColor } from "kagura-ui/contracts/button";
 import { shadeColor, tintColor, sizes } from "kagura-ui/utils"
 const TINTABLE = ["warning", "info", "dark"] as ButtonColor[]
 const createColor = (colors: Preset["colors"], color: ButtonColor) => ({
-  [`&-${color}`]: {
+  [color]: {
     "--tw-kagura-button-base-color": `var(--tw-kagura-${color})`,
     "--tw-kagura-button-text-color": TINTABLE.includes(color) && color != "dark" ? "#000" : "#fff",
     "--tw-kagura-button-bg-color": `var(--tw-kagura-bg-${color})`,
@@ -43,14 +43,14 @@ const createSize = (size: Size) => {
     xl: 0.5,
   };
   return {
-    [`&-${size}`]: {
+    [size]: {
       [`@apply px-[${paddingXY[size][0]}rem] py-[${paddingXY[size][1]}rem] text-[${fontSizes[size]}rem] rounded-[${radius[size]}rem]`]:
         {},
     },
   };
 }
 
-export const button = ({ preset }: PresetContext) => {
+export const button: Callable<Partial<PresetButton>> = ({ preset }: PresetContext) => {
   const colors = preset.colors
   const buttonColors = Object.keys(colors?.base || {})
     .reduce((collect, key) => {
@@ -64,17 +64,19 @@ export const button = ({ preset }: PresetContext) => {
     root: {
       "@apply inline-block font-normal text-center whitespace-nowrap align-middle select-none border": {},
       transition: "color .15s ease-in-out,background-color .15s ease-in-out,border-color .15s ease-in-out,box-shadow .15s ease-in-out",
-      ...buttonColors,
-      ...buttonSizes,
       backgroundColor: "var(--tw-kagura-button-bg-color)",
       borderColor: "var(--tw-kagura-button-border-color)",
       color: "var(--tw-kagura-button-text-color)",
-      "&-outline:not(:hover)": {
-        [`--tw-kagura-button-bg-color`]: "transparent",
-        color: "var(--tw-kagura-button-base-color)",
-      }
     },
-    inner: {},
-    label: {}
+    sizes: buttonSizes,
+    colors: buttonColors,
+    variants: {
+      outline: {
+        "&:not(:hover)": {
+          [`--tw-kagura-button-bg-color`]: "transparent",
+          color: "var(--tw-kagura-button-base-color)",
+        }
+      }
+    }
   }
 }

@@ -1,4 +1,5 @@
 import { CSSRuleObject, PluginAPI } from "tailwindcss/types/config";
+import { ButtonVariant } from "./button";
 
 export type HexColor = `#${string}`;
 export interface RequiredColors {
@@ -23,6 +24,11 @@ export interface PresetButton {
   root: CSSRuleObject;
   inner: CSSRuleObject;
   label: CSSRuleObject;
+  sizes: Partial<Record<Size, CSSRuleObject>>;
+  colors: Partial<Record<keyof RequiredColors, CSSRuleObject>> & {
+    [key: string]: CSSRuleObject;
+  };
+  variants: Partial<Record<ButtonVariant, CSSRuleObject>>;
 }
 export interface PresetInput {
   root: CSSRuleObject;
@@ -42,13 +48,14 @@ export interface Components {
   input: Callable<Partial<PresetInput>>;
   inputWrapper: Callable<Partial<PresetInputWrapper>>;
 }
+export interface PresetColor {
+  base: Colors;
+  text: Colors;
+  background: Colors;
+  border: Colors;
+}
 export type Preset = Partial<{
-  colors: Partial<{
-    base: Colors;
-    text: Colors;
-    background: Colors;
-    border: Colors;
-  }>;
+  colors: Partial<PresetColor>;
   components: Partial<Components>;
 }>;
 
