@@ -30,12 +30,12 @@ export default (theme: Theme) => {
     if (typeof input == "function") {
       input = input({ theme, preset: theme(`kagura.${scope}`) })
     }
-    const inputStatuses = Object.keys(statuses).reduce(
-      (collect, status) => ({ ...collect, ...createStatus((input as PresetInput).statuses, status as InputStatus) }),
+    const inputStatuses = statuses.reduce(
+      (collect, status) => ({ ...collect, ...createStatus((input as PresetInput).statuses, status) }),
       {}
     );
-    const inputSizes = Object.keys(sizes).reduce(
-      (collect, size) => ({ ...collect, ...createSize((input as PresetInput).sizes, size as Size) }),
+    const inputSizes = sizes.reduce(
+      (collect, size) => ({ ...collect, ...createSize((input as PresetInput).sizes, size) }),
       {}
     );
 

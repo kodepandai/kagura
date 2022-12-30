@@ -1,4 +1,5 @@
-import { Callable, PresetInputWrapper, Size } from "kagura-ui/contracts/tailwind";
+import { PresetInputWrapper } from "kagura-ui/contracts/input";
+import { Callable, Size } from "kagura-ui/contracts/tailwind";
 import { sizes } from "kagura-ui/utils";
 
 const createSize = (size: Size) => {
@@ -20,7 +21,7 @@ const createSize = (size: Size) => {
     },
   }
 }
-export const inputWrapper: Callable<Partial<PresetInputWrapper>> = (context) => {
+export const inputWrapper: Callable<Partial<PresetInputWrapper>> = () => {
   const inputSizes = sizes.reduce(
     (collect, size) => ({ ...collect, ...createSize(size) }),
     {}

@@ -2,11 +2,9 @@ import {
   Callable,
   HexColor,
   Preset,
-  PresetButton,
-  PresetContext,
   Size,
 } from "kagura-ui/contracts/tailwind";
-import { ButtonColor } from "kagura-ui/contracts/button";
+import { ButtonColor, PresetButton } from "kagura-ui/contracts/button";
 import { shadeColor, tintColor, sizes } from "kagura-ui/utils";
 const createColor = (colors: Preset["colors"], color: ButtonColor) => {
   return {
@@ -63,7 +61,7 @@ const createSize = (size: Size) => {
   };
 };
 
-export const button: Callable<Partial<PresetButton>> = ({ preset }: PresetContext) => {
+export const button: Callable<Partial<PresetButton>> = ({ preset }) => {
   const colors = preset.colors;
   const buttonColors = Object.keys(colors?.base || {}).reduce(
     (collect, key) => ({ ...collect, ...createColor(colors, key) }),
