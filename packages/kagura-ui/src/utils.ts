@@ -4,14 +4,13 @@ import {
   Components,
   HexColor,
   Preset,
-  PresetButton,
   PresetContext,
   PresetCreator,
-  PresetInput,
-  PresetInputWrapper,
   Size,
 } from "../contracts/tailwind";
 import merge from "lodash.merge";
+import { PresetButton } from "../contracts/button";
+import { PresetInput, PresetInputWrapper } from "../contracts/input";
 
 const createComponent = <T>(defaultPreset: Preset, customPreset: Preset, component: keyof Components) => ({ theme, preset }: PresetContext) => {
   let defaultPresetComponent = defaultPreset.components?.[component] as unknown as Callable<Partial<T>>

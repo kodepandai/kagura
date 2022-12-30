@@ -17,9 +17,11 @@
 </script>
 
 <div
-	class="input input-{variant} input-{$inputContext.size || size} {$$props.class || ''}"
-	class:input-disabled={disabled}
-	class:input-invalid={invalid}
+	class="input {$$props.class || ''}"
+	data-variant={variant}
+	data-size={$inputContext.size || size}
+	data-disabled={disabled}
+	data-invalid={invalid}
 >
 	<input class="input-input" {placeholder} bind:value {disabled} required={isRequired} />
 </div>
