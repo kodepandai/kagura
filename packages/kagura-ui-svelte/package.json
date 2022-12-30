@@ -20,11 +20,10 @@
 	"devDependencies": {
 		"@kagura-ui/preset-bootstrap": "workspace:^0.0.1",
 		"@kagura-ui/preset-mantine": "workspace:^0.0.1",
-		"@storybook/addon-docs": "^6.5.15",
+		"@storybook/addon-docs": "7.0.0-beta.15",
 		"@storybook/addon-essentials": "^7.0.0-beta.15",
 		"@storybook/addon-interactions": "^7.0.0-beta.15",
 		"@storybook/addon-links": "^7.0.0-beta.15",
-		"@storybook/addon-svelte-csf": "^2.0.10",
 		"@storybook/blocks": "^7.0.0-beta.15",
 		"@storybook/svelte": "^7.0.0-beta.15",
 		"@storybook/sveltekit": "^7.0.0-beta.15",

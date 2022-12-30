@@ -2,7 +2,8 @@ import type { Meta, StoryObj } from '@storybook/svelte';
 
 import type Button from '../lib/Button.svelte';
 import ButtonView from './Button.svelte';
-import Preset from "./Preset.svelte"
+import controlSize from './controls/size';
+import Preset from './Preset.svelte';
 
 // More on how to set up stories at: https://storybook.js.org/docs/7.0/svelte/writing-stories/introduction
 const meta: Meta<Button> = {
@@ -12,40 +13,23 @@ const meta: Meta<Button> = {
 	argTypes: {
 		preset: {
 			control: {
-				type: "select",
+				type: 'select'
 			},
-			options: ["mantine", "bootstrap"],
-			description: "choose kagura preset, this is for demo only",
-			defaultValue: "mantine"
+			options: ['mantine', 'bootstrap'],
+			description: 'choose kagura preset, this is for demo only',
+			defaultValue: 'mantine'
 		},
 		color: {
 			control: { type: 'select' },
-			options: [
-				"primary",
-				"secondary",
-				"success",
-				"danger",
-				"warning",
-				"info",
-				"dark",
-				"custom",
-			],
+			options: ['primary', 'secondary', 'success', 'danger', 'warning', 'info', 'dark', 'custom'],
 			description: 'buton color scheme, default is primary'
 		},
 		variant: {
-			control:
-				{ type: "select" },
-			options: ["filled", "outline"],
-			description: "button style variant, default is filled"
-
+			control: { type: 'select' },
+			options: ['filled', 'outline'],
+			description: 'button style variant, default is filled'
 		},
-		size: {
-			control: {
-				type: "select"
-			},
-			options: ["xs", "sm", "md", "lg", "xl"],
-			description: "button size, default is sm"
-		},
+		size: controlSize('button'),
 		slot: {
 			type: 'string',
 			defaultValue: 'Button',
@@ -62,12 +46,16 @@ const meta: Meta<Button> = {
 	],
 	parameters: {
 		docs: {
-			transformSource: (_, { initialArgs: prop }) => `
+			transformSource: (code, { initialArgs: prop }) => `
 <script>
  import {Button} from "@kagura-ui/svelte"
 </script>
 
-<Button${prop.color ? ` color="${prop.color}"` : ''}${prop.variant ? ` variant="${prop.variant}"` : ''}${prop.size ? ` size="${prop.size}"` : ''}>
+${code
+	.replace('SlotDecorator', 'Button')
+	.replace(/ slot="[a-zA-Z]+"/, '')
+	.replace(/ preset="[a-zA-Z]+"/, '')
+	.replace('/>', '>')}
  ${prop.slot}
 </Button>
 `
