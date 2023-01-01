@@ -18,4 +18,5 @@ export interface PresetInputWrapper {
   description: CSSRuleObject;
   error: CSSRuleObject;
   required: CSSRuleObject;
+  sizes: Partial<Record<Size, CSSRuleObject>>;
 }

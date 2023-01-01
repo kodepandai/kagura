@@ -6,7 +6,7 @@ import controlSize from './controls/size';
 
 // More on how to set up stories at: https://storybook.js.org/docs/7.0/svelte/writing-stories/introduction
 const meta: Meta<Input> = {
-	title: 'component/Input',
+	title: 'component/Input/Input Base',
 	component: Input,
 	tags: ['autodocs'],
 	argTypes: {
@@ -88,6 +88,11 @@ export const Invalid: Story = {
 		invalid: true
 	}
 };
+export const Disabled: Story = {
+	args: {
+		disabled: true
+	}
+};
 
 export const Large: Story = {
 	args: {
@@ -97,10 +102,5 @@ export const Large: Story = {
 export const ExtraSmall: Story = {
 	args: {
 		size: 'xs'
-	}
-};
-export const Disabled: Story = {
-	args: {
-		disabled: true
 	}
 };

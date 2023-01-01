@@ -11,7 +11,7 @@ module.exports = {
 				custom: {
 					'@apply rounded-lg': {}
 				}
-			},
-		},
+			}
+		}
 	}
 };

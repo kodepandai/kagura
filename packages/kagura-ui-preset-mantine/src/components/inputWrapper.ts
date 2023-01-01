@@ -11,7 +11,7 @@ const createSize = (size: Size) => {
     xl: 20
   }
   return {
-    [`&-${size}`]: {
+    [size]: {
       ".input-wrapper-label": {
         [`@apply text-[${fontSize[size]}px]`]: {}
       },
@@ -30,7 +30,6 @@ export const inputWrapper: Callable<Partial<PresetInputWrapper>> = () => {
     root: {
       fontFamily: "-apple-system,BlinkMacSystemFont,Segoe UI,Roboto,Helvetica,Arial,sans-serif,Apple Color Emoji,Segoe UI Emoji",
       lineHeight: "1.55",
-      ...inputSizes,
       "& .input-wrapper-description+.input, & .input-wrapper-error+.input": {
         "@apply mt-[5px]": {}
       },
@@ -51,5 +50,6 @@ export const inputWrapper: Callable<Partial<PresetInputWrapper>> = () => {
     error: {
       "@apply text-danger leading-[1.2] block break-words": {}
     },
+    sizes: inputSizes
   }
 }

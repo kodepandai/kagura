@@ -25,7 +25,7 @@
 	$: $inputContext = { size, required };
 </script>
 
-<div class="input-wrapper input-wrapper-{size} {$$props.class || ''}">
+<div class="input-wrapper {$$props.class || ''}" data-size={size}>
 	{#each inputWrapperOrder as part}
 		{#if part == 'label'}
 			{#if label}
