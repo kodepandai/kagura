@@ -28,8 +28,7 @@ const meta: Meta<InputWrapper> = {
 			description: 'add asterisk symbol'
 		},
 		label: {
-			type: 'string',
-			defaultValue: 'Email'
+			type: 'string'
 		},
 		description: {
 			type: 'string'
@@ -76,7 +75,9 @@ type Story = StoryObj<InputWrapper>;
 
 // More on writing stories with args: https://storybook.js.org/docs/7.0/svelte/writing-stories/args
 export const Default: Story = {
-	args: {}
+	args: {
+		label: 'Email'
+	}
 };
 
 export const Large: Story = {
@@ -91,7 +92,8 @@ export const ExtraSmall: Story = {
 };
 export const Required: Story = {
 	args: {
-		required: true
+		required: true,
+		label: 'Email'
 	}
 };
 

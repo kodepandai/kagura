@@ -6,9 +6,9 @@
 	export let required = false;
 	export let size: Size = 'sm';
 	export let label = '';
-	export let description: string | undefined = undefined;
+	export let description = '';
 	export let withAsterisk: boolean | undefined = undefined;
-	export let error: boolean | string = false;
+	export let error = '';
 	export let inputWrapperOrder: ('input' | 'description' | 'label' | 'error')[] = [
 		'label',
 		'description',
