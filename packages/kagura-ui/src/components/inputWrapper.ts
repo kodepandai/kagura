@@ -34,7 +34,9 @@ export default (theme: Theme) => {
         .push(inputWrapperStyle)
     } else {
       inputWrapperStyles
-        .push(inputWrapperStyle)
+        .push({
+          ["." + scope]: inputWrapperStyle
+        })
     }
   })
 

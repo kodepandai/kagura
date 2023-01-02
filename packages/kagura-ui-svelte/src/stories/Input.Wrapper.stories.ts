@@ -85,9 +85,9 @@ export const Large: Story = {
 		size: 'lg'
 	}
 };
-export const ExtraSmall: Story = {
+export const Small: Story = {
 	args: {
-		size: 'xs'
+		size: 'sm'
 	}
 };
 export const Required: Story = {

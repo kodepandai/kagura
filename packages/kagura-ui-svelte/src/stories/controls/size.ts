@@ -1,4 +1,4 @@
-const controlSize = (component: string, defaultValue = 'sm') => ({
+const controlSize = (component: string, defaultValue = 'md') => ({
 	control: {
 		type: 'select'
 	},

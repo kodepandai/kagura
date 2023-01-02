@@ -97,3 +97,9 @@ export const Large: Story = {
 		slot: 'Button Large'
 	}
 };
+export const Small: Story = {
+	args: {
+		size: 'sm',
+		slot: 'Button Small'
+	}
+};

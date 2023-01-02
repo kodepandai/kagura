@@ -4,7 +4,7 @@
 	import Input from './input';
 
 	export let required = false;
-	export let size: Size = 'sm';
+	export let size: Size = 'md';
 	export let label = '';
 	export let description = '';
 	export let withAsterisk: boolean | undefined = undefined;

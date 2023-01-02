@@ -1,5 +1,5 @@
-import { Callable, HexColor, Preset, PresetButton, PresetContext, Size } from "kagura-ui/contracts/tailwind";
-import { ButtonColor } from "kagura-ui/contracts/button";
+import { Callable, HexColor, Preset, PresetContext, Size } from "kagura-ui/contracts/tailwind";
+import { ButtonColor, PresetButton } from "kagura-ui/contracts/button";
 import { shadeColor, tintColor, sizes } from "kagura-ui/utils"
 const TINTABLE = ["warning", "info", "dark"] as ButtonColor[]
 const createColor = (colors: Preset["colors"], color: ButtonColor) => ({
@@ -22,25 +22,25 @@ const createColor = (colors: Preset["colors"], color: ButtonColor) => ({
 
 const createSize = (size: Size) => {
   const paddingXY = {
-    xs: [0.5, 0.25],
-    sm: [0.625, 0.3],
+    xs: [0.375, 0.125],
+    sm: [0.5, 0.25],
     md: [0.75, 0.375],
-    lg: [0.875, 0.4],
-    xl: [1, 0.5],
+    lg: [1, 0.5],
+    xl: [1.125, 0.625],
   };
   const fontSizes = {
     xs: 0.75,
     sm: 0.875,
     md: 1,
-    lg: 1.125,
-    xl: 1.25,
+    lg: 1.25,
+    xl: 1.375
   };
   const radius = {
     xs: 0.25,
     sm: 0.3,
     md: 0.375,
-    lg: 0.4,
-    xl: 0.5,
+    lg: 0.5,
+    xl: 0.625,
   };
   return {
     [size]: {

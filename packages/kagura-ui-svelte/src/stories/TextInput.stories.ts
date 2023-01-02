@@ -121,9 +121,9 @@ export const Large: Story = {
 		placeholder: 'your email'
 	}
 };
-export const ExtraSmall: Story = {
+export const Small: Story = {
 	args: {
-		size: 'xs',
+		size: 'sm',
 		placeholder: 'your email'
 	}
 };

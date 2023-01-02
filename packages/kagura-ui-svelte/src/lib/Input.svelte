@@ -8,7 +8,7 @@
 	export let variant: InputVariant = 'default';
 	const inputContext =
 		getContext<Writable<{ size: Size; required: boolean }>>('input-context') || writable({});
-	export let size: Size = 'sm';
+	export let size: Size = 'md';
 	export let disabled = false;
 	export let invalid = false;
 	export let required = false;

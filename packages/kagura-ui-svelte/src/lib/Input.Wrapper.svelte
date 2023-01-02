@@ -3,7 +3,7 @@
 	import { setContext } from 'svelte';
 	import { writable } from 'svelte/store';
 
-	export let size: Size = 'sm';
+	export let size: Size = 'md';
 	export let required = false;
 	let inputContext = writable<{ size: Size; required: boolean }>({
 		size,

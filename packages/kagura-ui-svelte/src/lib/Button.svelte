@@ -3,7 +3,7 @@
 	import type { Size } from 'kagura-ui/contracts/tailwind';
 	export let color: ButtonColor = 'primary';
 	export let variant: ButtonVariant = 'filled';
-	export let size: Size = 'sm';
+	export let size: Size = 'md';
 </script>
 
 <button
