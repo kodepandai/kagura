@@ -2,6 +2,7 @@ import type { Meta, StoryObj } from '@storybook/svelte';
 
 import type Button from '../lib/Button.svelte';
 import ButtonView from './Button.svelte';
+import controlClasses from './controls/classes';
 import controlSize from './controls/size';
 import Preset from './Preset.svelte';
 
@@ -30,6 +31,7 @@ const meta: Meta<Button> = {
 			description: 'button style variant, default is filled'
 		},
 		size: controlSize('button'),
+		classes: controlClasses('root, inner, label'),
 		slot: {
 			type: 'string',
 			defaultValue: 'Button',
@@ -101,5 +103,14 @@ export const Small: Story = {
 	args: {
 		size: 'sm',
 		slot: 'Button Small'
+	}
+};
+export const CustomStyle: Story = {
+	args: {
+		classes: {
+			root: '!rounded-lg !border-primary !bg-transparent py-2 hover:shadow-lg',
+			inner: '!rounded shadow bg-primary',
+			label: 'uppercase px-2'
+		}
 	}
 };

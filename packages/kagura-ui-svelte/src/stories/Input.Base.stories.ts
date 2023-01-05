@@ -3,6 +3,7 @@ import type { Meta, StoryObj } from '@storybook/svelte';
 import Input from '../lib/Input.svelte';
 import Preset from './Preset.svelte';
 import controlSize from './controls/size';
+import controlClasses from './controls/classes';
 
 // More on how to set up stories at: https://storybook.js.org/docs/7.0/svelte/writing-stories/introduction
 const meta: Meta<Input> = {
@@ -42,7 +43,8 @@ const meta: Meta<Input> = {
 		size: controlSize('input'),
 		disabled: {
 			type: 'boolean'
-		}
+		},
+		classes: controlClasses('root, input')
 	},
 	decorators: [
 		(_, { args }) => ({
@@ -102,5 +104,13 @@ export const Large: Story = {
 export const Small: Story = {
 	args: {
 		size: 'sm'
+	}
+};
+export const CustomStyle: Story = {
+	args: {
+		classes: {
+			root: 'shadow rounded-xl overflow-hidden',
+			input: '!border-none focus:bg-primary !bg-opacity-30'
+		}
 	}
 };

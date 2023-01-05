@@ -1,3 +1,13 @@
+<script lang="ts" context="module">
+	export interface Classes {
+		wrapper: string;
+		label: string;
+		required: string;
+		description: string;
+		error: string;
+	}
+</script>
+
 <script lang="ts">
 	import type { Size } from 'kagura-ui/contracts/tailwind';
 	import { setContext } from 'svelte';
@@ -19,32 +29,40 @@
 		'input',
 		'error'
 	];
+	export let classes: Partial<Classes> = {};
 	$: hasAsterisk = typeof withAsterisk == 'boolean' ? withAsterisk : required;
 	$: hasError = !!error && typeof error !== 'boolean';
 	setContext('input-context', inputContext);
 	$: $inputContext = { size, required };
 </script>
 
-<div class="input-wrapper {$$props.class || ''}" data-size={size}>
+<div class="[ input-wrapper ] [ {classes.wrapper || ''} ]" data-size={size}>
 	{#each inputWrapperOrder as part}
 		{#if part == 'label'}
 			{#if label}
-				<label class="input-wrapper-label" for={$$props.for}
+				<label class="[ input-wrapper-label ] [ {classes.label || ''} ]" for={$$props.for}
 					>{label}
 					{#if hasAsterisk}
-						<span aria-hidden="true" class="input-wrapper-required"> *</span>
+						<span
+							aria-hidden="true"
+							class="[ input-wrapper-required ] [ {classes.required || ''} ]"
+						>
+							*</span
+						>
 					{/if}
 				</label>
 			{/if}
 		{:else if part == 'description'}
 			{#if description}
-				<div class="input-wrapper-description">{description}</div>
+				<div class="[ input-wrapper-description ] [ {classes.description || ''} ]">
+					{description}
+				</div>
 			{/if}
 		{:else if part == 'input'}
 			<slot />
 		{:else if part == 'error'}
 			{#if hasError}
-				<div class="input-wrapper-error">{error}</div>
+				<div class="[ input-wrapper-error ] [ {classes.error || ''} ]">{error}</div>
 			{/if}
 		{:else}{null}{/if}
 	{/each}

@@ -3,6 +3,7 @@ import type { Meta, StoryObj } from '@storybook/svelte';
 import InputWrapper from './Input.Wrapper.svelte';
 import Preset from './Preset.svelte';
 import controlSize from './controls/size';
+import controlClasses from './controls/classes';
 
 // More on how to set up stories at: https://storybook.js.org/docs/7.0/svelte/writing-stories/introduction
 const meta: Meta<InputWrapper> = {
@@ -39,7 +40,8 @@ const meta: Meta<InputWrapper> = {
 		inputWrapperOrder: {
 			control: 'object',
 			description: 'array with value `label | description | input | error`'
-		}
+		},
+		classes: controlClasses('wrapper, label, description, required, error')
 	},
 	decorators: [
 		(_, { args }) => ({
@@ -112,5 +114,16 @@ export const CustomOrder: Story = {
 		inputWrapperOrder: ['label', 'error', 'input', 'description'],
 		error: 'email format is not valid',
 		description: 'please enter valid email address'
+	}
+};
+
+export const CustomStyle: Story = {
+	args: {
+		classes: {
+			label: 'uppercase',
+			description: '!text-info'
+		},
+		label: 'email',
+		description: 'please input valid email address'
 	}
 };
