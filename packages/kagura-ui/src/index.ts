@@ -77,7 +77,7 @@ const kagura = plugin.withOptions(
         extend: {
           colors: createColors(colors.base || {}, ""),
           textColor: createColors(colors?.text || {}, "text"),
-          backgroundColor: createColors(colors?.background || {}, "bg"),
+          backgroundColor: createColors(colors?.background || {}, "bg", true),
           borderColor: createColors(colors?.border || {}, "border"),
         }
       },

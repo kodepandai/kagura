@@ -5,19 +5,19 @@ import {
   Size,
 } from "kagura-ui/contracts/tailwind";
 import { ButtonColor, PresetButton } from "kagura-ui/contracts/button";
-import { shadeColor, tintColor, sizes } from "kagura-ui/utils";
+import { shadeColor, tintColor, sizes, hexToRgb } from "kagura-ui/utils";
 const createColor = (colors: Preset["colors"], color: ButtonColor) => {
   return {
     [color]: {
       "--tw-kagura-button-base-color": `var(--tw-kagura-${color})`,
       "--tw-kagura-button-text-color": "#ffffff",
-      "--tw-kagura-button-bg-color": `var(--tw-kagura-bg-${color})`,
+      "--tw-kagura-button-bg-color": `var(--tw-kagura-bg-${color}-rgb)`,
       "--tw-kagura-button-border-color": "transparent",
       "&:hover": {
-        [`--tw-kagura-button-bg-color`]: shadeColor(
+        [`--tw-kagura-button-bg-color`]: hexToRgb(shadeColor(
           colors?.background?.[color] as HexColor,
           15
-        ),
+        )).join(" "),
         [`--tw-kagura-button-border-color`]: shadeColor(
           colors?.border?.[color] as HexColor,
           20
@@ -80,7 +80,7 @@ export const button: Callable<Partial<PresetButton>> = ({ preset }) => {
       transition:
         "color .15s ease-in-out,background-color .15s ease-in-out,border-color .15s ease-in-out,box-shadow .15s ease-in-out",
       color: "var(--tw-kagura-button-text-color)",
-      backgroundColor: "var(--tw-kagura-button-bg-color)",
+      backgroundColor: "rgb(var(--tw-kagura-button-bg-color) / var(--tw-bg-opacity, 1))",
       borderColor: "var(--tw-kagura-button-border-color)",
       "&:active": {
         transform: "translateY(1px)",

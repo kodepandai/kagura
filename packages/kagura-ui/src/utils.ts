@@ -56,10 +56,10 @@ export const createPreset: PresetCreator =
     };
   };
 
-export const createColors = (colors: Partial<Colors>, prefix: string) => {
+export const createColors = (colors: Partial<Colors>, prefix: string, rgb = false) => {
   const entries = Object.keys(colors).map((key) => [
     key,
-    `var(--tw-kagura${prefix ? "-" + prefix : ""}-${key})`,
+    rgb ? `rgb(var(--tw-kagura${prefix ? "-" + prefix : ""}-${key}-rgb) / var(--tw-bg-opacity, 1))` : `var(--tw-kagura${prefix ? "-" + prefix : ""}-${key})`,
   ]);
   return Object.fromEntries(entries);
 };
