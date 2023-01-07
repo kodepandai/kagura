@@ -2,8 +2,9 @@
 	import type { InputVariant } from 'kagura-ui/contracts/input';
 	import type { Size } from 'kagura-ui/contracts/tailwind';
 	import Input from './input';
-	import type { Classes as WrapperClasses } from './Input.Wrapper.svelte';
-	import type { Classes as InputClasses } from './Input.svelte';
+	import { useInputWrapperClasses, type Classes as WrapperClasses } from './Input.Wrapper.svelte';
+	import { useInputClasses, type Classes as InputClasses } from './Input.svelte';
+	import type { SvelteComponent } from 'svelte';
 
 	export let required = false;
 	export let size: Size = 'md';
@@ -21,12 +22,15 @@
 	export let variant: InputVariant = 'default';
 	export let disabled = false;
 	export let placeholder = '';
+	export let rightSection: SvelteComponent;
 	export let classes: Partial<
 		WrapperClasses &
 			Omit<InputClasses, 'root'> & {
 				inputRoot: string;
 			}
 	> = {};
+	const inputClasses = useInputClasses({ ...classes, root: classes.inputRoot });
+	const inputWrapperClasses = useInputWrapperClasses(classes);
 </script>
 
 <Input.Wrapper
@@ -37,13 +41,7 @@
 	{withAsterisk}
 	{label}
 	{description}
-	classes={{
-		wrapper: classes.wrapper,
-		label: classes.label,
-		description: classes.description,
-		required: classes.required,
-		error: classes.error
-	}}
+	classes={inputWrapperClasses}
 >
 	<Input
 		bind:value
@@ -51,9 +49,7 @@
 		{disabled}
 		{placeholder}
 		invalid={!!error}
-		classes={{
-			root: classes.inputRoot,
-			input: classes.input
-		}}
+		classes={inputClasses}
+		{rightSection}
 	/>
 </Input.Wrapper>

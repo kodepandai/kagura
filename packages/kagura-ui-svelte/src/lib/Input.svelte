@@ -2,13 +2,19 @@
 	export interface Classes {
 		root: string;
 		input: string;
+		rightSection: string;
 	}
+	export const useInputClasses = (classes: Partial<Classes>) => ({
+		root: classes.root,
+		input: classes.input,
+		rightSection: classes.rightSection
+	});
 </script>
 
 <script lang="ts">
 	import type { InputVariant } from 'kagura-ui/contracts/input';
 	import type { Size } from 'kagura-ui/contracts/tailwind';
-	import { getContext } from 'svelte';
+	import { getContext, SvelteComponent } from 'svelte';
 	import { writable, type Writable } from 'svelte/store';
 	export let placeholder = '';
 	export let value = '';
@@ -20,6 +26,7 @@
 	export let invalid = false;
 	export let required = false;
 	export let classes: Partial<Classes> = {};
+	export let rightSection: SvelteComponent;
 
 	$: isRequired = typeof $inputContext.required == 'boolean' ? $inputContext.required : required;
 </script>
@@ -38,4 +45,9 @@
 		{disabled}
 		required={isRequired}
 	/>
+	{#if rightSection}
+		<div class="[ input-rightSection ] [ {classes.rightSection || ''} ]">
+			<svelte:component this={rightSection} />
+		</div>
+	{/if}
 </div>
