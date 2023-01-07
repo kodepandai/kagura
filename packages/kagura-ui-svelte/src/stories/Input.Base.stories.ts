@@ -4,6 +4,7 @@ import Input from '../lib/Input.svelte';
 import Preset from './Preset.svelte';
 import controlSize from './controls/size';
 import controlClasses from './controls/classes';
+import Dummy from './icons/Dummy.svelte'
 
 // More on how to set up stories at: https://storybook.js.org/docs/7.0/svelte/writing-stories/introduction
 const meta: Meta<Input> = {
@@ -63,9 +64,9 @@ const meta: Meta<Input> = {
 </script>
 
 ${code
-	.replace('SlotDecorator', 'Input')
-	.replace(/ slot="[a-zA-Z]+"/, '')
-	.replace(/ preset="[a-zA-Z]+"/, '')}
+					.replace('SlotDecorator', 'Input')
+					.replace(/ slot="[a-zA-Z]+"/, '')
+					.replace(/ preset="[a-zA-Z]+"/, '')}
 `
 		}
 	}
@@ -106,6 +107,11 @@ export const Small: Story = {
 		size: 'sm'
 	}
 };
+export const RightSection: Story = {
+	args: {
+		rightSection: Dummy
+	}
+}
 export const CustomStyle: Story = {
 	args: {
 		classes: {

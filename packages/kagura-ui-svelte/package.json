@@ -56,6 +56,7 @@
 	},
 	"type": "module",
 	"dependencies": {
-		"kagura-ui": "workspace:^0.0.1"
+		"kagura-ui": "workspace:^0.0.1",
+		"svelte-floating-ui": "^1.1.6"
 	}
 }

@@ -6,6 +6,13 @@
 		description: string;
 		error: string;
 	}
+	export const useInputWrapperClasses = (classes: Partial<Classes>) => ({
+		wrapper: classes.wrapper,
+		label: classes.label,
+		required: classes.required,
+		description: classes.description,
+		error: classes.error
+	});
 </script>
 
 <script lang="ts">

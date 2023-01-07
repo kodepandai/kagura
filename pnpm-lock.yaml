@@ -119,6 +119,7 @@ importers:
       storybook: 7.0.0-beta.15
       svelte: ^3.55.0
       svelte-check: ^2.10.1
+      svelte-floating-ui: ^1.1.6
       svelte-loader: ^3.1.4
       svelte-preprocess: ^4.10.7
       tailwindcss: ^3.2.2
@@ -127,6 +128,7 @@ importers:
       vite: ^4.0.3
     dependencies:
       kagura-ui: link:../kagura-ui
+      svelte-floating-ui: 1.1.6_glsdxddlaertg66rhhvanbinpy
     devDependencies:
       '@kagura-ui/preset-bootstrap': link:../kagura-ui-preset-bootstrap
       '@kagura-ui/preset-mantine': link:../kagura-ui-preset-mantine
@@ -1688,6 +1690,16 @@ packages:
     resolution: {integrity: sha512-cEee/Z+I12mZcFJshKcCqC8tuX5hG3s+d+9nZ3LabqKF1vKdF41B92pJVCBggjAGORAeOzyyDDKrZwIkLffeOQ==}
     dev: true
 
+  /@floating-ui/core/1.1.0:
+    resolution: {integrity: sha512-zbsLwtnHo84w1Kc8rScAo5GMk1GdecSlrflIbfnEBJwvTSj1SL6kkOYV+nHraMCPEy+RNZZUaZyL8JosDGCtGQ==}
+    dev: false
+
+  /@floating-ui/dom/1.1.0:
+    resolution: {integrity: sha512-TSogMPVxbRe77QCj1dt8NmRiJasPvuc+eT5jnJ6YpLqgOD2zXc5UA3S1qwybN+GVCDNdKfpKy1oj8RpzLJvh6A==}
+    dependencies:
+      '@floating-ui/core': 1.1.0
+    dev: false
+
   /@humanwhocodes/config-array/0.11.7:
     resolution: {integrity: sha512-kBbPWzN8oVMLb0hOUYXhmxggL/1cJE6ydvjDIGi9EnAGUyA7cLVKQg+d/Dsm+KZwx2czGHrCmMVLiyg8s5JPKw==}
     engines: {node: '>=10.10.0'}
@@ -2061,7 +2073,7 @@ packages:
       '@storybook/csf-plugin': 7.0.0-beta.15
       '@storybook/csf-tools': 7.0.0-beta.15
       '@storybook/global': 5.0.0
-      '@storybook/mdx2-csf': 1.0.0-next.2
+      '@storybook/mdx2-csf': 1.0.0-next.4
       '@storybook/node-logger': 7.0.0-beta.15
       '@storybook/postinstall': 7.0.0-beta.15
       '@storybook/preview-api': 7.0.0-beta.15
@@ -2390,7 +2402,7 @@ packages:
       '@storybook/client-logger': 7.0.0-beta.15
       '@storybook/core-common': 7.0.0-beta.15
       '@storybook/csf-plugin': 7.0.0-beta.15
-      '@storybook/mdx2-csf': 1.0.0-next.2
+      '@storybook/mdx2-csf': 1.0.0-next.4
       '@storybook/node-logger': 7.0.0-beta.15
       '@storybook/preview': 7.0.0-beta.15
       '@storybook/preview-api': 7.0.0-beta.15
@@ -2777,8 +2789,8 @@ packages:
     resolution: {integrity: sha512-1h6ZY+bWsyx/84OlImaz3WSlOn7Nqrb7zkdln/TyjovpRNcaWxdogOM+kgBoVWRv3vFaWLLLKER3lFzyits1QQ==}
     dev: true
 
-  /@storybook/mdx2-csf/1.0.0-next.2:
-    resolution: {integrity: sha512-Mg6pYKhuuMrzF/DcCI5dEA36jx7156bBnCk9uFInthFrr1sLYlj+HfRMibFa/VdJx8L0Wsf/15cIu3xPWriinA==}
+  /@storybook/mdx2-csf/1.0.0-next.4:
+    resolution: {integrity: sha512-nvRgYdpYvXsvSgCzKc4LQA1JxtJzmv47IsFAsh1rTz5FoHyK8watLU2WqX9T4w52fpFXBHx7RwGEsCRt0XgZlQ==}
     dev: true
 
   /@storybook/node-logger/7.0.0-beta.15:
@@ -4816,7 +4828,6 @@ packages:
 
   /dedent-js/1.0.1:
     resolution: {integrity: sha512-OUepMozQULMLUmhxS95Vudo0jb0UchLimi3+pQ2plj61Fcy8axbP9hbiD4Sz6DPqn6XG3kfmziVfQ1rSys5AJQ==}
-    dev: true
 
   /deep-equal/2.1.0:
     resolution: {integrity: sha512-2pxgvWu3Alv1PoWEyVg7HS8YhGlUFUV7N5oOvfL6d+7xAmLSemMwv/c8Zv/i9KFzxV5Kt5CAvQc70fLwVuf4UA==}
@@ -7261,7 +7272,6 @@ packages:
     resolution: {integrity: sha512-7fm3l3NAF9WfN6W3JOmf5drwpVqX78JtoGJ3A6W0a6ZnldM41w2fV5D490psKFTpMds8TJse/eHLFFsNHHjHgg==}
     dependencies:
       tslib: 2.4.1
-    dev: true
 
   /lru-cache/5.1.1:
     resolution: {integrity: sha512-KpNARQA3Iwv+jTA0utUVVbrh+Jlrr1Fv0e56GGzAFOXN7dk/FviaDW8LHmK52DlcH4WP2n6gI8vN1aesBFgo9w==}
@@ -7666,7 +7676,6 @@ packages:
     dependencies:
       lower-case: 2.0.2
       tslib: 2.4.1
-    dev: true
 
   /node-dir/0.1.17:
     resolution: {integrity: sha512-tmPX422rYgofd4epzrNoOXiE8XFZYOcCq1vD7MAXCDO+O+zndlA2ztdKKMa+EeuBG5tHETpr4ml4RGgpqDCCAg==}
@@ -7998,7 +8007,6 @@ packages:
     dependencies:
       no-case: 3.0.4
       tslib: 2.4.1
-    dev: true
 
   /pascalcase/0.1.1:
     resolution: {integrity: sha512-XHXfu/yOQRy9vYOtUDVMN60OEJjW013GoObG1o+xwQTpB9eYJX/BjXMsdW13ZDPruFhYYn0AG22w0xgQMwl3Nw==}
@@ -9373,6 +9381,16 @@ packages:
     resolution: {integrity: sha512-oU+Xv7Dl4kRU2kdFjsoPLfJfnt5hUhsFUZtuzI3Ku/f2iAFZqBoEuXOqK3N9ngD4dxQOmN4OKWPHVi3NeAeAfQ==}
     dev: true
 
+  /svelte-floating-ui/1.1.6_glsdxddlaertg66rhhvanbinpy:
+    resolution: {integrity: sha512-lJfrc34+xSxKs+5AtnYj32uRIjaxGjhT92cOiNL3zEqaJ755JxUqXCf6tk+9G1wkCuqkK9A8tscVBsyY3iLmVQ==}
+    dependencies:
+      '@floating-ui/dom': 1.1.0
+      svelte2tsx: 0.5.20_glsdxddlaertg66rhhvanbinpy
+    transitivePeerDependencies:
+      - svelte
+      - typescript
+    dev: false
+
   /svelte-hmr/0.14.12_svelte@3.55.0:
     resolution: {integrity: sha512-4QSW/VvXuqVcFZ+RhxiR8/newmwOCTlbYIezvkeN6302YFRE8cXy0naamHcjz8Y9Ce3ITTZtrHrIL0AGfyo61w==}
     engines: {node: ^12.20 || ^14.13.1 || >= 16}
@@ -9511,7 +9529,6 @@ packages:
   /svelte/3.55.0:
     resolution: {integrity: sha512-uGu2FVMlOuey4JoKHKrpZFkoYyj0VLjJdz47zX5+gVK5odxHM40RVhar9/iK2YFRVxvfg9FkhfVlR0sjeIrOiA==}
     engines: {node: '>= 8'}
-    dev: true
 
   /svelte2tsx/0.5.20_glsdxddlaertg66rhhvanbinpy:
     resolution: {integrity: sha512-yNHmN/uoAnJ7d1XqVohiNA6TMFOxibHyEddUAHVt1PiLXtbwAJF3WaGYlg8QbOdoXzOVsVNCAlqRUIdULUm+OA==}
@@ -9523,7 +9540,6 @@ packages:
       pascal-case: 3.1.2
       svelte: 3.55.0
       typescript: 4.8.4
-    dev: true
 
   /sveltedoc-parser/4.2.1:
     resolution: {integrity: sha512-sWJRa4qOfRdSORSVw9GhfDEwsbsYsegnDzBevUCF6k/Eis/QqCu9lJ6I0+d/E2wOWCjOhlcJ3+jl/Iur+5mmCw==}
@@ -9777,7 +9793,6 @@ packages:
 
   /tslib/2.4.1:
     resolution: {integrity: sha512-tGyy4dAjRIEwI7BzsB0lynWgOpfqjUdq91XXAlIWD2OwKBH7oCl/GZG/HT4BOHrTlPMOASlMQ7veyTqpmRcrNA==}
-    dev: true
 
   /tsutils/3.21.0_typescript@4.8.4:
     resolution: {integrity: sha512-mHKK3iUXL+3UF6xL5k0PEhKRUBKPBCv/+RkEOpjRWxxx27KKRBmmA60A9pgOUvMi8GKhRMPEmjBRPzs2W7O1OA==}
@@ -9841,7 +9856,6 @@ packages:
     resolution: {integrity: sha512-QCh+85mCy+h0IGff8r5XWzOVSbBO+KfeYrMQh7NJ58QujwcE22u+NUSmUxqF+un70P9GXKxa2HCNiTTMJknyjQ==}
     engines: {node: '>=4.2.0'}
     hasBin: true
-    dev: true
 
   /typescript/4.9.4:
     resolution: {integrity: sha512-Uz+dTXYzxXXbsFpM86Wh3dKCxrQqUcVMxwU54orwlJjOpO3ao8L7j5lH+dWfTwgCwIuM9GQ2kvVotzYJMXTBZg==}
