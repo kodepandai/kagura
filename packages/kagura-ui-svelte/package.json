@@ -18,6 +18,7 @@
 		"./dist/*"
 	],
 	"devDependencies": {
+		"@floating-ui/dom": "^1.1.0",
 		"@iconify/svelte": "^3.0.1",
 		"@kagura-ui/preset-bootstrap": "workspace:^0.0.1",
 		"@kagura-ui/preset-mantine": "workspace:^0.0.1",

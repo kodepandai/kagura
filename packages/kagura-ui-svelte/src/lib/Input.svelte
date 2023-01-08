@@ -28,6 +28,8 @@
 	export let invalid = false;
 	export let required = false;
 	export let classes: Partial<Classes> = {};
+	export let refInput: any;
+	export let thisInput: any;
 
 	// this is helper for parent component to avoid render unecessary slot
 	export let parentSlots: Partial<{ icon: boolean; rightSection: boolean }> = {
@@ -53,6 +55,8 @@
 		</div>
 	{/if}
 	<input
+		use:refInput
+		bind:this={thisInput}
 		class="[ input-input ] [ {classes.input || ''} ]"
 		{placeholder}
 		bind:value
