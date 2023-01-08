@@ -1,6 +1,6 @@
 import type { Meta, StoryObj } from '@storybook/svelte';
 
-import Select from '../lib/TextInput.svelte';
+import Select from '../lib/Select.svelte';
 import Preset from './Preset.svelte';
 import controlSize from './controls/size';
 import controlClasses from './controls/classes';
@@ -74,11 +74,11 @@ const meta: Meta<Select> = {
 </script>
 
 ${code
-	.replace('SlotDecorator', 'Select\n  ')
-	.replace(/ slot="[a-zA-Z]+"/, '')
-	.replace(/ preset="[a-zA-Z]+"/, '')
-	.replace(/" /g, `"\n   `)
-	.replace(/} /g, `}\n   `)}
+					.replace('SlotDecorator', 'Select\n  ')
+					.replace(/ slot="[a-zA-Z]+"/, '')
+					.replace(/ preset="[a-zA-Z]+"/, '')
+					.replace(/" /g, `"\n   `)
+					.replace(/} /g, `}\n   `)}
 `
 		}
 	}

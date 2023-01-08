@@ -5,6 +5,8 @@
 	import { useInputWrapperClasses, type Classes as WrapperClasses } from './Input.Wrapper.svelte';
 	import { useInputClasses, type Classes as InputClasses } from './Input.svelte';
 
+	export let refInput: any;
+	export let thisInput: any;
 	export let required = false;
 	export let size: Size = 'md';
 	export let label = '';
@@ -49,6 +51,8 @@
 		invalid={!!error}
 		classes={inputClasses}
 		parentSlots={$$slots}
+		{refInput}
+		bind:thisInput
 	>
 		<slot name="icon" slot="icon" />
 		<slot name="rightSection" slot="rightSection" />

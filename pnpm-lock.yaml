@@ -89,6 +89,7 @@ importers:
 
   packages/kagura-ui-svelte:
     specifiers:
+      '@floating-ui/dom': ^1.1.0
       '@iconify/svelte': ^3.0.1
       '@kagura-ui/preset-bootstrap': workspace:^0.0.1
       '@kagura-ui/preset-mantine': workspace:^0.0.1
@@ -131,6 +132,7 @@ importers:
       kagura-ui: link:../kagura-ui
       svelte-floating-ui: 1.1.6_glsdxddlaertg66rhhvanbinpy
     devDependencies:
+      '@floating-ui/dom': 1.1.0
       '@iconify/svelte': 3.0.1_svelte@3.55.0
       '@kagura-ui/preset-bootstrap': link:../kagura-ui-preset-bootstrap
       '@kagura-ui/preset-mantine': link:../kagura-ui-preset-mantine
@@ -1694,13 +1696,11 @@ packages:
 
   /@floating-ui/core/1.1.0:
     resolution: {integrity: sha512-zbsLwtnHo84w1Kc8rScAo5GMk1GdecSlrflIbfnEBJwvTSj1SL6kkOYV+nHraMCPEy+RNZZUaZyL8JosDGCtGQ==}
-    dev: false
 
   /@floating-ui/dom/1.1.0:
     resolution: {integrity: sha512-TSogMPVxbRe77QCj1dt8NmRiJasPvuc+eT5jnJ6YpLqgOD2zXc5UA3S1qwybN+GVCDNdKfpKy1oj8RpzLJvh6A==}
     dependencies:
       '@floating-ui/core': 1.1.0
-    dev: false
 
   /@humanwhocodes/config-array/0.11.7:
     resolution: {integrity: sha512-kBbPWzN8oVMLb0hOUYXhmxggL/1cJE6ydvjDIGi9EnAGUyA7cLVKQg+d/Dsm+KZwx2czGHrCmMVLiyg8s5JPKw==}
