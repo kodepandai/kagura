@@ -3,18 +3,20 @@
 		root: string;
 		input: string;
 		rightSection: string;
+		icon: string;
 	}
 	export const useInputClasses = (classes: Partial<Classes>) => ({
 		root: classes.root,
 		input: classes.input,
-		rightSection: classes.rightSection
+		rightSection: classes.rightSection,
+		icon: classes.icon
 	});
 </script>
 
 <script lang="ts">
 	import type { InputVariant } from 'kagura-ui/contracts/input';
 	import type { Size } from 'kagura-ui/contracts/tailwind';
-	import { getContext, SvelteComponent } from 'svelte';
+	import { getContext } from 'svelte';
 	import { writable, type Writable } from 'svelte/store';
 	export let placeholder = '';
 	export let value = '';
@@ -26,7 +28,12 @@
 	export let invalid = false;
 	export let required = false;
 	export let classes: Partial<Classes> = {};
-	export let rightSection: SvelteComponent;
+
+	// this is helper for parent component to avoid render unecessary slot
+	export let parentSlots: Partial<{ icon: boolean; rightSection: boolean }> = {
+		icon: true,
+		rightSection: true
+	};
 
 	$: isRequired = typeof $inputContext.required == 'boolean' ? $inputContext.required : required;
 </script>
@@ -37,7 +44,14 @@
 	data-size={$inputContext.size || size}
 	data-disabled={disabled}
 	data-invalid={invalid}
+	data-right-section={$$slots.rightSection && parentSlots.rightSection}
+	data-icon={$$slots.icon && parentSlots.icon}
 >
+	{#if $$slots.icon && parentSlots.icon}
+		<div class="[ input-icon ] [ {classes.icon || ''} ]">
+			<slot name="icon" />
+		</div>
+	{/if}
 	<input
 		class="[ input-input ] [ {classes.input || ''} ]"
 		{placeholder}
@@ -45,9 +59,9 @@
 		{disabled}
 		required={isRequired}
 	/>
-	{#if rightSection}
-		<div class="[ input-rightSection ] [ {classes.rightSection || ''} ]">
-			<svelte:component this={rightSection} />
+	{#if $$slots.rightSection && parentSlots.rightSection}
+		<div class="[ input-right-section ] [ {classes.rightSection || ''} ]">
+			<slot name="rightSection" />
 		</div>
 	{/if}
 </div>

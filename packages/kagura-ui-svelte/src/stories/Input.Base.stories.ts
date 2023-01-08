@@ -1,15 +1,15 @@
 import type { Meta, StoryObj } from '@storybook/svelte';
 
-import Input from '../lib/Input.svelte';
+import InputWithSlot from './views/InputWithSlot.svelte';
 import Preset from './Preset.svelte';
 import controlSize from './controls/size';
 import controlClasses from './controls/classes';
-import Dummy from './icons/Dummy.svelte'
+import controlSlot from './controls/slot';
 
 // More on how to set up stories at: https://storybook.js.org/docs/7.0/svelte/writing-stories/introduction
-const meta: Meta<Input> = {
+const meta: Meta<InputWithSlot> = {
 	title: 'component/Input/Input Base',
-	component: Input,
+	component: InputWithSlot,
 	tags: ['autodocs'],
 	argTypes: {
 		preset: {
@@ -35,7 +35,7 @@ const meta: Meta<Input> = {
 		placeholder: {
 			type: 'string',
 			description: 'set input placeholder',
-			defaultValue: 'your email'
+			defaultValue: 'Your email'
 		},
 		invalid: {
 			type: 'boolean',
@@ -45,7 +45,9 @@ const meta: Meta<Input> = {
 		disabled: {
 			type: 'boolean'
 		},
-		classes: controlClasses('root, input')
+		classes: controlClasses('root, input'),
+		withIcon: controlSlot('icon'),
+		withRightSection: controlSlot('rightSection')
 	},
 	decorators: [
 		(_, { args }) => ({
@@ -64,16 +66,17 @@ const meta: Meta<Input> = {
 </script>
 
 ${code
-					.replace('SlotDecorator', 'Input')
-					.replace(/ slot="[a-zA-Z]+"/, '')
-					.replace(/ preset="[a-zA-Z]+"/, '')}
+	.replace('SlotDecorator', 'Input')
+	.replace(/ slot="[a-zA-Z]+"/, '')
+	.replace(/ (withIcon|withRightSection)/g, '')
+	.replace(/ preset="[a-zA-Z]+"/, '')}
 `
 		}
 	}
 };
 
 export default meta;
-type Story = StoryObj<Input>;
+type Story = StoryObj<InputWithSlot>;
 
 // More on writing stories with args: https://storybook.js.org/docs/7.0/svelte/writing-stories/args
 export const Default: Story = {
@@ -107,11 +110,54 @@ export const Small: Story = {
 		size: 'sm'
 	}
 };
-export const RightSection: Story = {
+export const WithIcon: Story = {
 	args: {
-		rightSection: Dummy
+		withIcon: true
+	},
+	parameters: {
+		docs: {
+			transformSource: (code: string) => `
+<script>
+ import {Input} from "@kagura-ui/svelte"
+ import Icon from "@iconify/svelte"
+</script>
+
+${code
+	.replace('SlotDecorator', 'Input')
+	.replace(/ slot="[a-zA-Z]+"/, '')
+	.replace(/ (withIcon|withRightSection)/g, '')
+	.replace(/ preset="[a-zA-Z]+"/, '')
+	.replace('\\>', '>')}
+	<Icon icon="tabler:at" slot="icon"/>
+</Input>
+`
+		}
 	}
-}
+};
+export const WithRightSection: Story = {
+	args: {
+		withRightSection: true
+	},
+	parameters: {
+		docs: {
+			transformSource: (code: string) => `
+<script>
+ import {Input} from "@kagura-ui/svelte"
+ import Icon from "@iconify/svelte"
+</script>
+
+${code
+	.replace('SlotDecorator', 'Input')
+	.replace(/ slot="[a-zA-Z]+"/, '')
+	.replace(/ (withIcon|withRightSection)/g, '')
+	.replace(/ preset="[a-zA-Z]+"/, '')
+	.replace('\\>', '>')}
+	<Icon icon="tabler:alert-circle" slot="rightSection" class="opacity-40 w-1/2 h-1/2"/>
+</Input>
+`
+		}
+	}
+};
 export const CustomStyle: Story = {
 	args: {
 		classes: {
