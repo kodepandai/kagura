@@ -19,12 +19,38 @@ const createSize = (size: Size) => {
     lg: [1, 0.5],
     xl: [1.125, 0.675],
   }
+  const iconSize = {
+    xs: 14,
+    sm: 16,
+    md: 18,
+    lg: 22,
+    xl: 24
+  }
+  const height = {
+    xs: 30,
+    sm: 36,
+    md: 42,
+    lg: 50,
+    xl: 60
+  }
   return {
     [size]: {
       ".input-input": {
         [`@apply text-[${fontSize[size]}rem] px-[${paddingXY[size][0]}rem] py-[${paddingXY[size][1]}rem]`]: {},
         minHeight: `calc(1.5rem + ${paddingXY[size][0]}rem + 2px)`,
         borderRadius: `${paddingXY[size][1]}rem`
+      },
+      ".input-icon, .input-right-section": {
+        [`@apply w-[${height[size]}px]`]: {}
+      },
+      ".input-icon > *": {
+        [`@apply h-[${iconSize[size]}px] w-[${iconSize[size]}px]`]: {}
+      },
+      "&[data-icon='true'] .input-input": {
+        [`@apply pl-[${height[size]}px]`]: {}
+      },
+      "&[data-right-section='true'] .input-input": {
+        [`@apply pr-[${height[size]}px]`]: {}
       }
     }
   }
@@ -47,6 +73,12 @@ export const input: Callable<Partial<PresetInput>> = () => {
         boxShadow: "0 0 0 .25rem rgba(13,110,253,.25)"
       }
     },
+    rightSection: {
+      "@apply absolute top-0 bottom-0 right-0 justify-center items-center flex": {}
+    },
+    icon: {
+      "@apply absolute top-0 bottom-0 left-0 justify-center items-center flex text-[#adb5bd]": {}
+    },
     sizes: inputSizes,
     variants: {
       filled: {
@@ -65,6 +97,9 @@ export const input: Callable<Partial<PresetInput>> = () => {
       invalid: {
         ".input-input": {
           "@apply border-danger text-danger placeholder-danger": {}
+        },
+        ".input-icon": {
+          "@apply text-danger": {}
         }
       },
     }

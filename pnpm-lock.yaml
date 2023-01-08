@@ -89,6 +89,7 @@ importers:
 
   packages/kagura-ui-svelte:
     specifiers:
+      '@iconify/svelte': ^3.0.1
       '@kagura-ui/preset-bootstrap': workspace:^0.0.1
       '@kagura-ui/preset-mantine': workspace:^0.0.1
       '@storybook/addon-docs': 7.0.0-beta.15
@@ -130,6 +131,7 @@ importers:
       kagura-ui: link:../kagura-ui
       svelte-floating-ui: 1.1.6_glsdxddlaertg66rhhvanbinpy
     devDependencies:
+      '@iconify/svelte': 3.0.1_svelte@3.55.0
       '@kagura-ui/preset-bootstrap': link:../kagura-ui-preset-bootstrap
       '@kagura-ui/preset-mantine': link:../kagura-ui-preset-mantine
       '@storybook/addon-docs': 7.0.0-beta.15_biqbaboplfbrettd7655fr4n2y
@@ -1729,6 +1731,19 @@ packages:
 
   /@humanwhocodes/object-schema/1.2.1:
     resolution: {integrity: sha512-ZnQMnLV4e7hDlUvw8H+U8ASL02SS2Gn6+9Ac3wGGLIe7+je2AeAOxPY+izIPJDfFDb7eDjev0Us8MO1iFRN8hA==}
+    dev: true
+
+  /@iconify/svelte/3.0.1_svelte@3.55.0:
+    resolution: {integrity: sha512-onjjl496hTXUBWJxeCxo/c5zmVHS3HnKUQv5Cqf1ZsUbY4d0wVJfSDaV1hw1m6b0BNlJCOmbpc23Q6AOO5qqKg==}
+    peerDependencies:
+      svelte: '>=3'
+    dependencies:
+      '@iconify/types': 2.0.0
+      svelte: 3.55.0
+    dev: true
+
+  /@iconify/types/2.0.0:
+    resolution: {integrity: sha512-+wluvCrRhXrhyOmRDJ3q8mux9JkKy5SJ/v8ol2tu4FVjyYvtEzkc/3pK15ET6RKg4b4w4BmTk1+gsCUhf21Ykg==}
     dev: true
 
   /@istanbuljs/load-nyc-config/1.1.0:

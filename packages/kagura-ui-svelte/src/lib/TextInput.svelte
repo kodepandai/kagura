@@ -4,7 +4,6 @@
 	import Input from './input';
 	import { useInputWrapperClasses, type Classes as WrapperClasses } from './Input.Wrapper.svelte';
 	import { useInputClasses, type Classes as InputClasses } from './Input.svelte';
-	import type { SvelteComponent } from 'svelte';
 
 	export let required = false;
 	export let size: Size = 'md';
@@ -22,7 +21,6 @@
 	export let variant: InputVariant = 'default';
 	export let disabled = false;
 	export let placeholder = '';
-	export let rightSection: SvelteComponent;
 	export let classes: Partial<
 		WrapperClasses &
 			Omit<InputClasses, 'root'> & {
@@ -50,6 +48,9 @@
 		{placeholder}
 		invalid={!!error}
 		classes={inputClasses}
-		{rightSection}
-	/>
+		parentSlots={$$slots}
+	>
+		<slot name="icon" slot="icon" />
+		<slot name="rightSection" slot="rightSection" />
+	</Input>
 </Input.Wrapper>
