@@ -28,7 +28,9 @@
 	export let invalid = false;
 	export let required = false;
 	export let classes: Partial<Classes> = {};
-	export let refInput: any;
+	export let refInput: () => void = () => {
+		//pass
+	};
 	export let thisInput: any;
 
 	// this is helper for parent component to avoid render unecessary slot

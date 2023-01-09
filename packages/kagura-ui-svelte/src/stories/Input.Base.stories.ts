@@ -64,12 +64,11 @@ const meta: Meta<InputWithSlot> = {
 <script>
  import {Input} from "@kagura-ui/svelte"
 </script>
-
 ${code
-	.replace('SlotDecorator', 'Input')
-	.replace(/ slot="[a-zA-Z]+"/, '')
-	.replace(/ (withIcon|withRightSection)/g, '')
-	.replace(/ preset="[a-zA-Z]+"/, '')}
+					.replace('SlotDecorator', 'Input')
+					.replace(/ slot="[a-zA-Z]+"/, '')
+					.replace(/ (withIcon|withRightSection)/g, '')
+					.replace(/ preset="[a-zA-Z]+"/, '')}
 `
 		}
 	}
@@ -80,7 +79,9 @@ type Story = StoryObj<InputWithSlot>;
 
 // More on writing stories with args: https://storybook.js.org/docs/7.0/svelte/writing-stories/args
 export const Default: Story = {
-	args: {}
+	args: {
+		variant: 'default'
+	}
 };
 
 export const Filled: Story = {
@@ -123,11 +124,11 @@ export const WithIcon: Story = {
 </script>
 
 ${code
-	.replace('SlotDecorator', 'Input')
-	.replace(/ slot="[a-zA-Z]+"/, '')
-	.replace(/ (withIcon|withRightSection)/g, '')
-	.replace(/ preset="[a-zA-Z]+"/, '')
-	.replace('\\>', '>')}
+					.replace('SlotDecorator', 'Input')
+					.replace(/ slot="[a-zA-Z]+"/, '')
+					.replace(/ (withIcon|withRightSection)/g, '')
+					.replace(/ preset="[a-zA-Z]+"/, '')
+					.replace('\\>', '>')}
 	<Icon icon="tabler:at" slot="icon"/>
 </Input>
 `
@@ -147,11 +148,11 @@ export const WithRightSection: Story = {
 </script>
 
 ${code
-	.replace('SlotDecorator', 'Input')
-	.replace(/ slot="[a-zA-Z]+"/, '')
-	.replace(/ (withIcon|withRightSection)/g, '')
-	.replace(/ preset="[a-zA-Z]+"/, '')
-	.replace('\\>', '>')}
+					.replace('SlotDecorator', 'Input')
+					.replace(/ slot="[a-zA-Z]+"/, '')
+					.replace(/ (withIcon|withRightSection)/g, '')
+					.replace(/ preset="[a-zA-Z]+"/, '')
+					.replace('\\>', '>')}
 	<Icon icon="tabler:alert-circle" slot="rightSection" class="opacity-40 w-1/2 h-1/2"/>
 </Input>
 `
