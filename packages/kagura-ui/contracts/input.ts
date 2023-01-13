@@ -19,4 +19,9 @@ export interface PresetInputWrapper {
   error: CSSRuleObject;
   required: CSSRuleObject;
   sizes: Partial<Record<Size, CSSRuleObject>>;
+  input: Partial<PresetInput>
+}
+export interface PresetTextInput {
+  wrapper: Partial<PresetInputWrapper>
+  input: Partial<PresetInput>
 }

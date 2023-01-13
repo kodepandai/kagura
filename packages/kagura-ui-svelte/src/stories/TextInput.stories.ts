@@ -56,7 +56,9 @@ const meta: Meta<TextInputWithSlot> = {
 			control: 'object',
 			description: 'array with value `label | description | input | error`'
 		},
-		classes: controlClasses('wrapper, label, description, required, error, inputRoot, input'),
+		classes: controlClasses(
+			'inputWrapper: {root, label, description, required, error, input}, input: {root, input}'
+		),
 		withIcon: controlSlot('icon'),
 		withRightSection: controlSlot('rightSection')
 	},
@@ -209,10 +211,12 @@ export const CustomOrder: Story = {
 export const CustomStyle: Story = {
 	args: {
 		classes: {
-			label: 'font-serif',
-			description: 'italic',
-			input: '!rounded-none !border-2 border-dashed focus:border-solid !placeholder-info',
-			error: 'bg-warning bg-opacity-20 px-2 rounded'
+			inputWrapper: {
+				label: 'font-serif',
+				description: 'italic',
+				input: '!rounded-none !border-2 border-dashed focus:border-solid !placeholder-info',
+				error: 'bg-warning bg-opacity-20 px-2 rounded'
+			}
 		},
 		label: 'Email',
 		description: 'please input valid email address',

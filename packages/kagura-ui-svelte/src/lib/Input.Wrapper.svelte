@@ -1,18 +1,12 @@
 <script lang="ts" context="module">
-	export interface Classes {
+	export interface InputWrapperClasses {
 		wrapper: string;
 		label: string;
 		required: string;
 		description: string;
 		error: string;
 	}
-	export const useInputWrapperClasses = (classes: Partial<Classes>) => ({
-		wrapper: classes.wrapper,
-		label: classes.label,
-		required: classes.required,
-		description: classes.description,
-		error: classes.error
-	});
+	export type InputWrapperOrder = ('input' | 'description' | 'label' | 'error')[];
 </script>
 
 <script lang="ts">
@@ -30,20 +24,15 @@
 	export let description: string | undefined = undefined;
 	export let withAsterisk: boolean | undefined = undefined;
 	export let error: boolean | string = false;
-	export let inputWrapperOrder: ('input' | 'description' | 'label' | 'error')[] = [
-		'label',
-		'description',
-		'input',
-		'error'
-	];
-	export let classes: Partial<Classes> = {};
+	export let inputWrapperOrder: InputWrapperOrder = ['label', 'description', 'input', 'error'];
+	export let classes: Partial<InputWrapperClasses> = {};
 	$: hasAsterisk = typeof withAsterisk == 'boolean' ? withAsterisk : required;
 	$: hasError = !!error && typeof error !== 'boolean';
 	setContext('input-context', inputContext);
 	$: $inputContext = { size, required };
 </script>
 
-<div class="[ input-wrapper ] [ {classes.wrapper || ''} ]" data-size={size}>
+<div class="[ input-wrapper ] [ {classes.wrapper || ''} ]" data-size={size} {...$$restProps}>
 	{#each inputWrapperOrder as part}
 		{#if part == 'label'}
 			{#if label}

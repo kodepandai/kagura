@@ -1,16 +1,10 @@
 <script lang="ts" context="module">
-	export interface Classes {
+	export interface InputClasses {
 		root: string;
 		input: string;
 		rightSection: string;
 		icon: string;
 	}
-	export const useInputClasses = (classes: Partial<Classes>) => ({
-		root: classes.root,
-		input: classes.input,
-		rightSection: classes.rightSection,
-		icon: classes.icon
-	});
 </script>
 
 <script lang="ts">
@@ -27,11 +21,11 @@
 	export let disabled = false;
 	export let invalid = false;
 	export let required = false;
-	export let classes: Partial<Classes> = {};
-	export let refInput: () => void = () => {
+	export let classes: Partial<InputClasses> = {};
+	export let useInput: (node: HTMLInputElement) => void = () => {
 		//pass
 	};
-	export let thisInput: any;
+	export let refInput: HTMLInputElement | undefined = undefined;
 
 	// this is helper for parent component to avoid render unecessary slot
 	export let parentSlots: Partial<{ icon: boolean; rightSection: boolean }> = {
@@ -57,13 +51,19 @@
 		</div>
 	{/if}
 	<input
-		use:refInput
-		bind:this={thisInput}
+		use:useInput
+		bind:this={refInput}
 		class="[ input-input ] [ {classes.input || ''} ]"
 		{placeholder}
 		bind:value
 		{disabled}
 		required={isRequired}
+		on:focus
+		on:blur
+		on:keyup
+		on:input
+		on:change
+		{...$$restProps}
 	/>
 	{#if $$slots.rightSection && parentSlots.rightSection}
 		<div class="[ input-right-section ] [ {classes.rightSection || ''} ]">
