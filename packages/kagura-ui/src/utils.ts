@@ -11,6 +11,7 @@ import {
 import merge from "lodash.merge";
 import { PresetButton } from "../contracts/button";
 import { PresetInput, PresetInputWrapper } from "../contracts/input";
+import { PresetSelect } from "../contracts/select";
 
 const createComponent = <T>(defaultPreset: Preset, customPreset: Preset, component: keyof Components) => ({ theme, preset }: PresetContext) => {
   let defaultPresetComponent = defaultPreset.components?.[component] as unknown as Callable<Partial<T>>
@@ -51,7 +52,8 @@ export const createPreset: PresetCreator =
       components: {
         button: createComponent<PresetButton>(defaultPreset, customPreset, "button"),
         input: createComponent<PresetInput>(defaultPreset, customPreset, "input"),
-        inputWrapper: createComponent<PresetInputWrapper>(defaultPreset, customPreset, "inputWrapper")
+        inputWrapper: createComponent<PresetInputWrapper>(defaultPreset, customPreset, "inputWrapper"),
+        select: createComponent<PresetSelect>(defaultPreset, customPreset, "select")
       },
     };
   };

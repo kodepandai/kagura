@@ -3,58 +3,62 @@ import { Preset, Size, Theme } from "../../contracts/tailwind";
 import { sizes } from "../utils.js";
 
 
-const createStatus = (statuses: PresetInput["statuses"], status: InputStatus) => {
+const createStatus = (status: InputStatus, statuses?: PresetInput["statuses"]) => {
   return {
     // using :where selector here to maintain css specificity
     [`&:where([data-${status}="true"])`]: statuses?.[status] || {},
   };
 };
-const createSize = (sizes: PresetInput["sizes"], size: Size) => {
+const createSize = (size: Size, sizes?: PresetInput["sizes"]) => {
   return {
     // using :where selector here to maintain css specificity
     [`&:where([data-size="${size}"])`]: sizes?.[size] || {},
   };
 };
-const createVariant = (variants: PresetInput["variants"], variant: InputVariant) => {
+const createVariant = (variant: InputVariant, variants?: PresetInput["variants"]) => {
   return {
     // using :where selector here to maintain css specificity
     [`&:where([data-variant="${variant}"])`]: variants?.[variant] || {},
   };
 };
-export default (theme: Theme) => {
-  let inputStyles: any[] = []
+export const createInputStyle = (input?: Partial<PresetInput>) => {
+
   const statuses: InputStatus[] = ['invalid', 'disabled', 'required']
   const variants: InputVariant[] = ['default', 'filled']
+  const inputStatuses = statuses.reduce(
+    (collect, status) => ({ ...collect, ...createStatus(status, input?.statuses) }),
+    {}
+  );
+  const inputSizes = sizes.reduce(
+    (collect, size) => ({ ...collect, ...createSize(size, input?.sizes) }),
+    {}
+  );
+
+  const inputVariants = variants.reduce(
+    (collect, variant) => ({ ...collect, ...createVariant(variant, input?.variants) }),
+    {}
+  )
+
+  return {
+    ".input": {
+      ...input?.root,
+      ...inputStatuses,
+      ...inputSizes,
+      ...inputVariants,
+      "&-icon": input?.icon,
+      "&-input": input?.input,
+      "&-right-section": input?.rightSection
+    }
+  }
+}
+export default (theme: Theme) => {
+  let inputStyles: any[] = []
   Object.keys(theme("kagura")).map(scope => {
     let input = theme<Preset["components"]>(`kagura.${scope}.components`)?.input
     if (typeof input == "function") {
       input = input({ theme, preset: theme(`kagura.${scope}`) })
     }
-    const inputStatuses = statuses.reduce(
-      (collect, status) => ({ ...collect, ...createStatus((input as PresetInput).statuses, status) }),
-      {}
-    );
-    const inputSizes = sizes.reduce(
-      (collect, size) => ({ ...collect, ...createSize((input as PresetInput).sizes, size) }),
-      {}
-    );
-
-    const inputVariants = variants.reduce(
-      (collect, variant) => ({ ...collect, ...createVariant((input as PresetInput).variants, variant) }),
-      {}
-    )
-
-    const inputStyle = {
-      ".input": {
-        ...input?.root,
-        ...inputStatuses,
-        ...inputSizes,
-        ...inputVariants,
-        "&-icon": input?.icon,
-        "&-input": input?.input,
-        "&-right-section": input?.rightSection
-      }
-    }
+    const inputStyle = createInputStyle(input)
     if (scope == "DEFAULT") {
       inputStyles.push(inputStyle)
     } else {
