@@ -5,6 +5,7 @@ import { createColors } from "./utils.js"
 import button from "./components/button.js";
 import input from "./components/input.js";
 import inputWrapper from "./components/inputWrapper.js";
+import select from "./components/select.js";
 const kagura = plugin.withOptions(
   () =>
     ({ addComponents, theme, addBase }) => {
@@ -14,6 +15,7 @@ const kagura = plugin.withOptions(
       addComponents(button(theme));
       addComponents(input(theme))
       addComponents(inputWrapper(theme))
+      addComponents(select(theme))
     },
   (config: Config | Config[]) => {
     let kaguraTheme: Record<string, Preset> = {}

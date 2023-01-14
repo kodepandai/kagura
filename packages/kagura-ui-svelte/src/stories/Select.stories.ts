@@ -55,8 +55,8 @@ const meta: Meta<Select> = {
 			control: 'object',
 			description: 'array with value `label | description | input | error`'
 		},
-		classes: controlClasses(`root, itemWrapper, item,
-			inputWrapper: {label, description, required, error}, 
+		classes: controlClasses(`root, itemWrapper, item,<br>
+			inputWrapper: {label, description, required, error},<br>
 			input: { root, input}`)
 	},
 	decorators: [
@@ -92,64 +92,64 @@ type Story = StoryObj<Select>;
 // More on writing stories with args: https://storybook.js.org/docs/7.0/svelte/writing-stories/args
 export const Default: Story = {
 	args: {
-		label: 'Email',
-		description: 'please input valid email address',
-		placeholder: 'your email'
+		label: 'Framework',
+		description: 'Choose your favorite framework',
+		placeholder: 'your favorite framework'
 	}
 };
 
 export const Filled: Story = {
 	args: {
 		variant: 'filled',
-		placeholder: 'your email'
+		placeholder: 'your favorite framework'
 	}
 };
 
 export const Disabled: Story = {
 	args: {
 		disabled: true,
-		placeholder: 'your email'
+		placeholder: 'your favorite framework'
 	}
 };
 export const Required: Story = {
 	args: {
-		label: 'Email',
+		label: 'Framework',
 		required: true,
-		placeholder: 'your email'
+		placeholder: 'your favorite framework'
 	}
 };
 
 export const Large: Story = {
 	args: {
 		size: 'lg',
-		placeholder: 'your email'
+		placeholder: 'your favorite framework'
 	}
 };
 export const Small: Story = {
 	args: {
 		size: 'sm',
-		placeholder: 'your email'
+		placeholder: 'your favorite framework'
 	}
 };
 export const WithDescription: Story = {
 	args: {
-		description: 'please enter valid email',
-		placeholder: 'your email'
+		description: 'please enter valid your favorite framework',
+		placeholder: 'your favorite framework'
 	}
 };
 export const WithError: Story = {
 	args: {
-		error: 'email format is not valid',
-		placeholder: 'your email'
+		error: 'invalid value',
+		placeholder: 'your favorite framework'
 	}
 };
 export const CustomOrder: Story = {
 	args: {
-		label: 'Email',
-		placeholder: 'your email',
+		label: 'Framework',
+		placeholder: 'your favorite framework',
 		inputWrapperOrder: ['label', 'error', 'input', 'description'],
-		error: 'email format is not valid',
-		description: 'please enter valid email address'
+		error: 'invalid value',
+		description: 'Please choose your favorite framework'
 	}
 };
 
@@ -164,9 +164,9 @@ export const CustomStyle: Story = {
 				error: 'bg-warning bg-opacity-20 px-2 rounded'
 			}
 		},
-		label: 'Email',
-		description: 'please input valid email address',
+		label: 'Framework',
+		description: 'Choose your favorite framework',
 		placeholder: 'type here ...',
-		error: 'email is required'
+		error: 'your favorite framework is required'
 	}
 };

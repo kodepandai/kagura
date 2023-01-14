@@ -61,7 +61,7 @@
 		// otherwise item failed to be selected
 		setTimeout(() => {
 			dropdownVisible = false;
-		}, 100);
+		}, 300);
 	};
 
 	const selectItem = () => {
@@ -96,7 +96,7 @@
 						data-hovered={itemIndex == hoveredIndex}
 						data-selected={itemIndex == selectedIndex}
 						on:mouseenter={() => (hoveredIndex = itemIndex)}
-						on:click={() => selectItem()}
+						on:click={selectItem}
 						on:keydown={handleDropdownNavigation}
 					>
 						{item.label}
@@ -106,20 +106,3 @@
 		</div>
 	{/if}
 </div>
-
-<!--TODO: move style to preset, this is just for development-->
-<style>
-	.select-item-wrapper {
-		@apply border w-full p-1 rounded-sm shadow bg-white;
-	}
-	.select-item {
-		@apply p-2 rounded cursor-pointer;
-	}
-	.select-item:hover,
-	.select-item[data-hovered='true'] {
-		@apply bg-gray-100;
-	}
-	.select-item[data-selected='true'] {
-		@apply bg-primary text-white;
-	}
-</style>

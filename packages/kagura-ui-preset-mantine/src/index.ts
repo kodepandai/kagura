@@ -4,13 +4,15 @@ import { button } from "./components/button.js";
 import { colors } from "./components/color.js";
 import { input } from "./components/input.js";
 import { inputWrapper } from "./components/inputWrapper.js";
+import { select } from "./components/select.js";
 
 const mantinePreset: Partial<Preset> = {
   colors,
   components: {
     button,
     input,
-    inputWrapper
+    inputWrapper,
+    select
   },
 };
 
