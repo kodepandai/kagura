@@ -58,6 +58,7 @@
 		on:keyup
 		on:input
 		on:change
+		on:mousedown
 		{...$$restProps}
 	>
 		<slot name="icon" slot="icon" />

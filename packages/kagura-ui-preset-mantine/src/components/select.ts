@@ -11,7 +11,7 @@ export const select: Callable<Partial<PresetSelect>> = () => {
       "&:hover, &[data-hovered='true']": {
         "@apply bg-gray-100": {}
       },
-      "&[data-hovered='true']": {
+      "&[data-selected='true']": {
         "@apply bg-primary text-white": {}
       }
     }

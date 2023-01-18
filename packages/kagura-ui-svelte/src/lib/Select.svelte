@@ -57,17 +57,16 @@
 		dropdownVisible = true;
 	};
 	const handleBlur = () => {
-		// wait item get selected before hide dropdown
-		// otherwise item failed to be selected
-		setTimeout(() => {
-			dropdownVisible = false;
-		}, 300);
+		dropdownVisible = false;
 	};
 
-	const selectItem = () => {
+	const selectItem = (e: MouseEvent) => {
+		e.preventDefault(); // avoid focused on item element
 		selectedIndex = hoveredIndex;
 		displayValue = data[hoveredIndex].label;
 		value = data[hoveredIndex].value;
+		dropdownVisible = false;
+		inputElement.focus(); // refocus select input
 	};
 </script>
 
@@ -83,6 +82,7 @@
 		on:keyup={handleDropdownNavigation}
 		bind:value={displayValue}
 		classes={{ input: classes.input, inputWrapper: classes.inputWrapper }}
+		on:mousedown={() => (dropdownVisible = !dropdownVisible)}
 	/>
 
 	<!--  wrap with fixed position to avoid dropdown getting cropped when parent element has overflow-hidden -->
@@ -96,8 +96,8 @@
 						data-hovered={itemIndex == hoveredIndex}
 						data-selected={itemIndex == selectedIndex}
 						on:mouseenter={() => (hoveredIndex = itemIndex)}
-						on:click={selectItem}
 						on:keydown={handleDropdownNavigation}
+						on:mousedown={selectItem}
 					>
 						{item.label}
 					</div>

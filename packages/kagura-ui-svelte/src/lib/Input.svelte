@@ -62,6 +62,7 @@
 		on:blur
 		on:keyup
 		on:input
+		on:mousedown
 		on:change
 		{...$$restProps}
 	/>
