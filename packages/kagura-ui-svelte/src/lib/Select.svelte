@@ -2,6 +2,7 @@
 	import TextInput, { type TextInputClasses } from './TextInput.svelte';
 	import { offset, flip } from '@floating-ui/dom';
 	import { createFloatingActions } from 'svelte-floating-ui';
+	import type { Size } from 'kagura-ui/contracts/tailwind';
 	export let classes: Partial<
 		{
 			root: string;
@@ -15,6 +16,7 @@
 		{ value: 'svelte', label: 'Svelte' },
 		{ value: 'vue', label: 'Vue' }
 	];
+	export let size: Size = 'md';
 
 	let floatingWidth = 0;
 	const [floatingRef, floatingContent] = createFloatingActions({
@@ -45,7 +47,6 @@
 				break;
 			case 'Enter':
 				selectItem();
-				inputElement.blur();
 				break;
 
 			default:
@@ -60,8 +61,8 @@
 		dropdownVisible = false;
 	};
 
-	const selectItem = (e: MouseEvent) => {
-		e.preventDefault(); // avoid focused on item element
+	const selectItem = (e?: MouseEvent) => {
+		e?.preventDefault(); // avoid focused on item element
 		selectedIndex = hoveredIndex;
 		displayValue = data[hoveredIndex].label;
 		value = data[hoveredIndex].value;
@@ -70,10 +71,11 @@
 	};
 </script>
 
-<div class="[ select ] [ {classes.root || ''} ]">
+<div class="[ select ] [ {classes.root || ''} ]" data-size={size}>
 	<input type="hidden" {value} />
 	<TextInput
 		type="select"
+		{size}
 		{...$$restProps}
 		useInput={floatingRef}
 		bind:refInput={inputElement}

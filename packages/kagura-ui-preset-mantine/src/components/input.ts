@@ -52,11 +52,13 @@ const createSize = (size: Size) => {
     }
   }
 }
+
+const inputSizes = sizes.reduce(
+  (collect, size) => ({ ...collect, ...createSize(size) }),
+  {}
+);
+
 export const input: Callable<Partial<PresetInput>> = () => {
-  const inputSizes = sizes.reduce(
-    (collect, size) => ({ ...collect, ...createSize(size) }),
-    {}
-  );
   return {
     root: {
       "@apply relative": {},
