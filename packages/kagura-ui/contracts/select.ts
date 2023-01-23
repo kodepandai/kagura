@@ -4,6 +4,7 @@ import { Size } from "./tailwind";
 
 export interface PresetSelect extends PresetTextInput {
   root: CSSRuleObject
+  rightSection: CSSRuleObject;
   itemWrapper: CSSRuleObject;
   item: CSSRuleObject
   sizes: Partial<Record<Size, CSSRuleObject>>;

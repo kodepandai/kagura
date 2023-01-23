@@ -7,7 +7,8 @@ let baseColors: Colors = {
   danger: "#dc3545",
   warning: "#ffc107",
   info: "#0dcaf0",
-  dark: "#212529"
+  dark: "#212529",
+  disabled: "#e9ecef"
 }
 
 export const colors: Preset["colors"] = {

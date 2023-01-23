@@ -12,6 +12,7 @@ export interface RequiredColors {
   warning: HexColor;
   info: HexColor;
   dark: HexColor;
+  disabled: HexColor;
 }
 export interface Colors extends Partial<RequiredColors> {
   [key: string]: HexColor | undefined;

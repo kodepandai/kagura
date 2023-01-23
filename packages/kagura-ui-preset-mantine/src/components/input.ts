@@ -86,10 +86,9 @@ export const input: Callable<Partial<PresetInput>> = () => {
     statuses: {
       disabled: {
         ".input-input": {
-          backgroundColor: "rgb(241, 243, 245)",
+          "@apply bg-disabled cursor-not-allowed": {},
           color: "rgb(144, 146, 150)",
           opacity: "0.6",
-          cursor: "not-allowed",
         }
       },
       invalid: {

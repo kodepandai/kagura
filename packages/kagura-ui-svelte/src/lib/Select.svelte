@@ -6,6 +6,7 @@
 	export let classes: Partial<
 		{
 			root: string;
+			rightSection: string;
 			itemWrapper: string;
 			item: string;
 		} & TextInputClasses
@@ -85,7 +86,11 @@
 		bind:value={displayValue}
 		classes={{ input: classes.input, inputWrapper: classes.inputWrapper }}
 		on:mousedown={() => (dropdownVisible = !dropdownVisible)}
-	/>
+	>
+		<slot name="rightSection" slot="rightSection">
+			<i class="[ select-right-section ] [ {classes.rightSection || ''} ]" />
+		</slot>
+	</TextInput>
 
 	<!--  wrap with fixed position to avoid dropdown getting cropped when parent element has overflow-hidden -->
 	<!-- but we need to calculate width of dropdown manually -->

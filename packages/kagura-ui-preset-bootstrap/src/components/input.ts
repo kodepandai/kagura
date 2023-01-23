@@ -91,7 +91,7 @@ export const input: Callable<Partial<PresetInput>> = () => {
     statuses: {
       disabled: {
         ".input-input": {
-          backgroundColor: "#e9ecef",
+          "@apply bg-disabled": {}
         }
       },
       invalid: {
