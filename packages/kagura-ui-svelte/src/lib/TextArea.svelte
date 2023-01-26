@@ -1,0 +1,92 @@
+<script lang="ts" context="module">
+	export interface TextAreaClasses {
+		inputWrapper: Partial<InputWrapperClasses>;
+		textArea: Partial<{
+			root: string;
+			input: string;
+			rightSection: string;
+			icon: string;
+		}>;
+	}
+</script>
+
+<script lang="ts">
+	import type { InputVariant } from 'kagura-ui/contracts/input';
+	import type { Size } from 'kagura-ui/contracts/tailwind';
+	import { getContext } from 'svelte';
+	import { writable, type Writable } from 'svelte/store';
+	import Input from './input';
+	import type { InputWrapperClasses, InputWrapperOrder } from './Input.Wrapper.svelte';
+
+	export let useTextArea: (node: HTMLTextAreaElement) => void = () => {
+		//pass
+	};
+	const inputContext =
+		getContext<Writable<{ size: Size; required: boolean }>>('input-context') || writable({});
+	export let refTextArea: HTMLTextAreaElement | undefined = undefined;
+	export let required = false;
+	export let size: Size = 'md';
+	export let label = '';
+	export let description = '';
+	export let withAsterisk: boolean | undefined = undefined;
+	export let error = '';
+	export let inputWrapperOrder: InputWrapperOrder = ['label', 'description', 'input', 'error'];
+	export let value = '';
+	export let variant: InputVariant = 'default';
+	export let disabled = false;
+	export let placeholder = '';
+	export let classes: Partial<TextAreaClasses> = {};
+	// this is helper for parent component to avoid render unecessary slot
+	export let parentSlots: Partial<{ icon: boolean; rightSection: boolean }> = {
+		icon: true,
+		rightSection: true
+	};
+	$: isRequired = typeof $inputContext.required == 'boolean' ? $inputContext.required : required;
+</script>
+
+<Input.Wrapper
+	{required}
+	{size}
+	{error}
+	{inputWrapperOrder}
+	{withAsterisk}
+	{label}
+	{description}
+	classes={classes?.inputWrapper}
+>
+	<div
+		class="[ textarea ] [ {classes.textArea?.root || ''} ]"
+		data-variant={variant}
+		data-size={$inputContext.size || size}
+		data-disabled={disabled}
+		data-right-section={$$slots.rightSection && parentSlots.rightSection}
+		data-icon={$$slots.icon && parentSlots.icon}
+		data-invalid={!!error}
+	>
+		{#if $$slots.icon && parentSlots.icon}
+			<div class="[ textarea-icon ] [ {classes.textArea?.icon || ''} ]">
+				<slot name="icon" />
+			</div>
+		{/if}
+		<textarea
+			class="[ textarea-input ] [ {classes.textArea?.input || ''} ]"
+			bind:value
+			{placeholder}
+			use:useTextArea
+			bind:this={refTextArea}
+			required={isRequired}
+			on:focus
+			on:blur
+			on:keyup
+			on:input
+			on:change
+			on:mousedown
+			{...$$restProps}
+		/>
+		{#if $$slots.rightSection && parentSlots.rightSection}
+			<div class="[ textarea-right-section ] [ {classes.textArea?.rightSection || ''} ]">
+				<slot name="rightSection" />
+			</div>
+		{/if}
+	</div>
+</Input.Wrapper>
