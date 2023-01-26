@@ -25,3 +25,7 @@ export interface PresetTextInput {
   inputWrapper: Partial<PresetInputWrapper>
   input: Partial<PresetInput>
 }
+export interface PresetTextArea {
+  inputWrapper: Partial<PresetInputWrapper>
+  textArea: Partial<PresetInput>
+}

@@ -6,6 +6,8 @@ import button from "./components/button.js";
 import input from "./components/input.js";
 import inputWrapper from "./components/inputWrapper.js";
 import select from "./components/select.js";
+import textArea from "./components/textArea.js";
+
 const kagura = plugin.withOptions(
   () =>
     ({ addComponents, theme, addBase }) => {
@@ -16,6 +18,7 @@ const kagura = plugin.withOptions(
       addComponents(input(theme))
       addComponents(inputWrapper(theme))
       addComponents(select(theme))
+      addComponents(textArea(theme))
     },
   (config: Config | Config[]) => {
     let kaguraTheme: Record<string, Preset> = {}

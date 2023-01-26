@@ -13,7 +13,7 @@
 	import type { InputWrapperClasses, InputWrapperOrder } from './Input.Wrapper.svelte';
 	import type { InputClasses } from './Input.svelte';
 
-	export let refInput: HTMLInputElement;
+	export let refInput: HTMLInputElement | undefined = undefined;
 	export let useInput: (node: HTMLInputElement) => void = () => {
 		//pass
 	};

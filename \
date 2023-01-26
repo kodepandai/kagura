@@ -36,7 +36,7 @@
 	export let disabled = false;
 	export let placeholder = '';
 	export let classes: Partial<TextAreaClasses> = {};
-	export let maxRows: number | undefined = undefined;
+	export let maxRows = 2;
 	export let minRows = 2;
 	export let autosize = false;
 	// this is helper for parent component to avoid render unecessary slot
@@ -49,15 +49,13 @@
 	$: {
 		if (autosize) {
 			const valueRow = value.split(`\n`).length;
-			if (maxRows && valueRow > maxRows) {
+			if (valueRow > maxRows) {
 				rows = maxRows;
 			} else if (valueRow < minRows || valueRow == 1) {
 				rows = minRows;
 			} else {
 				rows = valueRow;
 			}
-		} else {
-			rows = minRows;
 		}
 	}
 </script>
