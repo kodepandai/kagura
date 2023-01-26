@@ -9,7 +9,7 @@ let baseColors: Colors = {
   warning: rgbToHex(250, 176, 5),
   info: rgbToHex(21, 170, 191),
   dark: rgbToHex(37, 38, 43),
-  disabled: "#909296"
+  disabled: "#f1f3f5"
 }
 
 export const colors: Preset["colors"] = {

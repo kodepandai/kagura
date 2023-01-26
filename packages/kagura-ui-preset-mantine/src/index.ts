@@ -5,6 +5,7 @@ import { colors } from "./components/color.js";
 import { input } from "./components/input.js";
 import { inputWrapper } from "./components/inputWrapper.js";
 import { select } from "./components/select.js";
+import { textArea } from "./components/textArea.js";
 
 const mantinePreset: Partial<Preset> = {
   colors,
@@ -12,7 +13,8 @@ const mantinePreset: Partial<Preset> = {
     button,
     input,
     inputWrapper,
-    select
+    select,
+    textArea
   },
 };
 

@@ -30,10 +30,10 @@ export const inputWrapper: Callable<Partial<PresetInputWrapper>> = () => {
     root: {
       fontFamily: "-apple-system,BlinkMacSystemFont,Segoe UI,Roboto,Helvetica,Arial,sans-serif,Apple Color Emoji,Segoe UI Emoji",
       lineHeight: "1.55",
-      "& .input-wrapper-description+.input, & .input-wrapper-error+.input": {
+      "& .input-wrapper-description+:where(.input,.textarea), & .input-wrapper-error+:where(.input,.textarea)": {
         "@apply mt-[5px]": {}
       },
-      "& .input+.input-wrapper-description, & .input+.input-wrapper-error": {
+      "& :where(.input,.textarea)+.input-wrapper-description, & :where(.input,.textarea)+.input-wrapper-error": {
         "@apply mt-[5px]": {}
       },
     },
