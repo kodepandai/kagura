@@ -63,5 +63,6 @@
 	>
 		<slot name="icon" slot="icon" />
 		<slot name="rightSection" slot="rightSection" />
+		<slot />
 	</Input>
 </Input.Wrapper>
