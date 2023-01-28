@@ -5,6 +5,7 @@ import { colors } from "./components/color.js";
 import { input } from "./components/input.js";
 import { inputWrapper } from "./components/inputWrapper.js";
 import { select } from "./components/select.js";
+import { textArea } from "./components/textArea.js";
 
 const bootstrapPreset = {
   colors,
@@ -12,7 +13,8 @@ const bootstrapPreset = {
     button,
     input,
     inputWrapper,
-    select
+    select,
+    textArea
   },
 };
 export default createPreset(bootstrapPreset) as PresetCreator

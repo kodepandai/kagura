@@ -94,6 +94,7 @@
 			use:useTextArea
 			bind:this={refTextArea}
 			required={isRequired}
+			{disabled}
 			on:focus
 			on:blur
 			on:keyup
