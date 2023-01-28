@@ -192,18 +192,18 @@ export const WithRightSection: Story = {
 		docs: {
 			transformSource: (code: string) => `
 <script>
- import {TextInput} from "@kagura-ui/svelte"
+ import {TextArea} from "@kagura-ui/svelte"
  import Icon from "@iconify/svelte"
 </script>
 
 ${code
-	.replace('SlotDecorator', 'TextInput')
+	.replace('SlotDecorator', 'TextArea')
 	.replace(/ slot="[a-zA-Z]+"/, '')
 	.replace(/ (withIcon|withRightSection)/g, '')
 	.replace(/ preset="[a-zA-Z]+"/, '')
 	.replace('\\>', '>')}
 	<Icon icon="tabler:alert-circle" slot="rightSection" class="opacity-40 w-1/2 h-1/2"/>
-</TextInput>
+</TextArea>
 `
 		}
 	}
