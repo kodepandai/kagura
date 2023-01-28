@@ -1,5 +1,5 @@
-import { ButtonColor, ButtonVariant } from "../../contracts/button";
-import { Preset, PresetButton, Size, Theme } from "../../contracts/tailwind";
+import { ButtonColor, ButtonVariant, PresetButton } from "../../contracts/button";
+import { Preset, Size, Theme } from "../../contracts/tailwind";
 import { sizes } from "../utils.js";
 
 

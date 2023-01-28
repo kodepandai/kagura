@@ -1,5 +1,6 @@
-import { PluginAPI } from "tailwindcss/types/config";
+import { CSSRuleObject, PluginAPI } from "tailwindcss/types/config";
 import { PresetButton } from "./button";
+import { PresetGroup } from "./group";
 import { PresetInput, PresetInputWrapper, PresetTextArea } from "./input";
 import { PresetSelect } from "./select";
 
@@ -17,6 +18,7 @@ export interface RequiredColors {
 export interface Colors extends Partial<RequiredColors> {
   [key: string]: HexColor | undefined;
 }
+export type Spacing = Record<Size, string>
 
 export interface PresetContext {
   theme: Theme;
@@ -25,6 +27,7 @@ export interface PresetContext {
 export type Callable<T> = T | ((context: PresetContext) => T);
 export interface Components {
   button: Callable<Partial<PresetButton>>;
+  group: Callable<Partial<PresetGroup>>;
   input: Callable<Partial<PresetInput>>;
   inputWrapper: Callable<Partial<PresetInputWrapper>>;
   select: Callable<Partial<PresetSelect>>;
@@ -38,6 +41,7 @@ export interface PresetColor {
 }
 export type Preset = Partial<{
   colors: Partial<PresetColor>;
+  spacing: Partial<Spacing>;
   components: Partial<Components>;
 }>;
 

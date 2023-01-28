@@ -6,6 +6,7 @@ export default (theme: Theme) => {
   return Object.keys(theme("kagura")).map(scope => {
 
     const colors = theme<Preset["colors"]>(`kagura.${scope}.colors`)
+    const spacing = theme<Preset['spacing']>(`kagura.${scope}.spacing`)
     const prefix = '--tw-kagura'
     const baseColors = Object.entries(colors?.base || []).map(([key, val]) => ([
       `${prefix}-${key}`, val
@@ -25,6 +26,9 @@ export default (theme: Theme) => {
     const borderColors = Object.entries({ ...colors?.base, ...colors?.border }).map(([key, val]) => ([
       `${prefix}-border-${key}`, val
     ]))
+    const spacings = Object.entries({ ...spacing }).map(([space, val]) => ([
+      `${prefix}-spacing-${space}`, val
+    ]))
     return {
       [scope == 'DEFAULT' ? ':root' : '.' + scope]: {
         ...Object.fromEntries(baseColors),
@@ -32,7 +36,8 @@ export default (theme: Theme) => {
         ...Object.fromEntries(textColors),
         ...Object.fromEntries(bgColors),
         ...Object.fromEntries(bgRgbColors),
-        ...Object.fromEntries(borderColors)
+        ...Object.fromEntries(borderColors),
+        ...Object.fromEntries(spacings)
       }
     }
   })
