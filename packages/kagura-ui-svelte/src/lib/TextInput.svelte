@@ -1,68 +1,30 @@
 <script lang="ts" context="module">
-	export type InputType = 'text' | 'select';
-	export interface TextInputClasses {
-		inputWrapper: Partial<InputWrapperClasses>;
-		input: Partial<InputClasses>;
-	}
+	export type TextInputClasses = BaseInputClasses;
 </script>
 
 <script lang="ts">
-	import type { InputVariant } from 'kagura-ui/contracts/input';
-	import type { Size } from 'kagura-ui/contracts/tailwind';
-	import Input from './input';
-	import type { InputWrapperClasses, InputWrapperOrder } from './Input.Wrapper.svelte';
-	import type { InputClasses } from './Input.svelte';
-
-	export let refInput: HTMLInputElement | undefined = undefined;
-	export let useInput: (node: HTMLInputElement) => void = () => {
-		//pass
-	};
-	export let required = false;
-	export let size: Size = 'md';
-	export let label = '';
-	export let description = '';
-	export let withAsterisk: boolean | undefined = undefined;
-	export let error = '';
-	export let inputWrapperOrder: InputWrapperOrder = ['label', 'description', 'input', 'error'];
-	export let value = '';
-	export let variant: InputVariant = 'default';
-	export let disabled = false;
-	export let placeholder = '';
+	import type { ComponentProps } from 'svelte';
+	import BaseInput, { type BaseInputClasses } from './BaseInput.svelte';
+	import { extendClassName } from './utils/className';
 	export let classes: Partial<TextInputClasses> = {};
-	export let type: InputType = 'text';
+	type $$Props = ComponentProps<BaseInput>;
 </script>
 
-<Input.Wrapper
-	{required}
-	{size}
-	{error}
-	{inputWrapperOrder}
-	{withAsterisk}
-	{label}
-	{description}
-	classes={classes?.inputWrapper}
-	data-input-type={type}
->
-	<Input
-		bind:value
-		{variant}
-		{disabled}
-		{placeholder}
-		invalid={!!error}
-		classes={classes?.input}
-		parentSlots={$$slots}
-		{useInput}
-		bind:refInput
-		on:focus
-		on:blur
-		on:keyup
-		on:input
-		on:change
-		on:mousedown
-		{...$$restProps}
-	>
-		<slot name="icon" slot="icon" />
-		<slot name="rightSection" slot="rightSection" />
-		<slot />
-	</Input>
-</Input.Wrapper>
+<BaseInput
+	type="text"
+	classes={{
+		root: extendClassName('text-input', classes.root),
+		wrapper: extendClassName('text-input-wrapper', classes.wrapper),
+		label: extendClassName('text-input-label', classes.label),
+		description: extendClassName('text-input-description', classes.description),
+		error: extendClassName('text-input-error', classes.error),
+		required: extendClassName('text-input-required', classes.required),
+		rightSection: extendClassName('text-input-right-section', classes.rightSection),
+		icon: extendClassName('text-input-icon', classes.icon),
+		input: extendClassName('text-input-input', classes.input),
+		withIcon: classes.withIcon,
+		disabled: classes.disabled,
+		invalid: classes.invalid
+	}}
+	{...$$restProps}
+/>

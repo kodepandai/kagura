@@ -66,9 +66,9 @@ const meta: Meta<TextAreaWithSlot> = {
 			control: 'object',
 			description: 'array with value `label | description | input | error`'
 		},
-		classes: controlClasses(
-			'inputWrapper: {root, label, description, required, error, input}, input: {root, input}'
-		),
+		classes: controlClasses(`root, wrapper, label, input,<br>
+			description, required, error, invalid,<br>
+			icon, withIcon, rightSection, disabled`),
 		withIcon: controlSlot('icon'),
 		withRightSection: controlSlot('rightSection')
 	},
@@ -89,12 +89,12 @@ const meta: Meta<TextAreaWithSlot> = {
 </script>
 
 ${code
-	.replace('SlotDecorator', 'TextArea\n  ')
-	.replace(/ slot="[a-zA-Z]+"/, '')
-	.replace(/ preset="[a-zA-Z]+"/, '')
-	.replace(/ (withIcon|withRightSection)/g, '')
-	.replace(/" /g, `"\n   `)
-	.replace(/} /g, `}\n   `)}
+					.replace('SlotDecorator', 'TextArea\n  ')
+					.replace(/ slot="[a-zA-Z]+"/, '')
+					.replace(/ preset="[a-zA-Z]+"/, '')
+					.replace(/ (withIcon|withRightSection)/g, '')
+					.replace(/" /g, `"\n   `)
+					.replace(/} /g, `}\n   `)}
 `
 		}
 	}
@@ -173,11 +173,11 @@ export const WithIcon: Story = {
 </script>
 
 ${code
-	.replace('SlotDecorator', 'TextInput')
-	.replace(/ slot="[a-zA-Z]+"/, '')
-	.replace(/ (withIcon|withRightSection)/g, '')
-	.replace(/ preset="[a-zA-Z]+"/, '')
-	.replace('\\>', '>')}
+					.replace('SlotDecorator', 'TextInput')
+					.replace(/ slot="[a-zA-Z]+"/, '')
+					.replace(/ (withIcon|withRightSection)/g, '')
+					.replace(/ preset="[a-zA-Z]+"/, '')
+					.replace('\\>', '>')}
 	<Icon icon="tabler:at" slot="icon"/>
 </TextInput>
 `
@@ -197,11 +197,11 @@ export const WithRightSection: Story = {
 </script>
 
 ${code
-	.replace('SlotDecorator', 'TextArea')
-	.replace(/ slot="[a-zA-Z]+"/, '')
-	.replace(/ (withIcon|withRightSection)/g, '')
-	.replace(/ preset="[a-zA-Z]+"/, '')
-	.replace('\\>', '>')}
+					.replace('SlotDecorator', 'TextArea')
+					.replace(/ slot="[a-zA-Z]+"/, '')
+					.replace(/ (withIcon|withRightSection)/g, '')
+					.replace(/ preset="[a-zA-Z]+"/, '')
+					.replace('\\>', '>')}
 	<Icon icon="tabler:alert-circle" slot="rightSection" class="opacity-40 w-1/2 h-1/2"/>
 </TextArea>
 `

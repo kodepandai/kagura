@@ -4,6 +4,9 @@
 		input: string;
 		rightSection: string;
 		icon: string;
+		withIcon: string;
+		disabled: string;
+		invalid: string;
 	}
 </script>
 
@@ -34,6 +37,16 @@
 	};
 
 	$: isRequired = typeof $inputContext.required == 'boolean' ? $inputContext.required : required;
+	let inputClassNames = classes.input ? [classes.input] : [];
+	$: if ($$slots.icon && parentSlots.icon && classes.withIcon) {
+		inputClassNames.push(classes.withIcon);
+	}
+	$: if (disabled && classes.disabled) {
+		inputClassNames.push(classes.disabled);
+	}
+	$: if (invalid && classes.invalid) {
+		inputClassNames.push(classes.invalid);
+	}
 </script>
 
 <div
@@ -53,7 +66,7 @@
 	<input
 		use:useInput
 		bind:this={refInput}
-		class="[ input-input ] [ {classes.input || ''} ]"
+		class="[ input-input ] [ {inputClassNames.join(' ')} ]"
 		{placeholder}
 		bind:value
 		{disabled}
