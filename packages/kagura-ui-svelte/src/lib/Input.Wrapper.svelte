@@ -1,6 +1,6 @@
 <script lang="ts" context="module">
 	export interface InputWrapperClasses {
-		wrapper: string;
+		root: string;
 		label: string;
 		required: string;
 		description: string;
@@ -32,7 +32,7 @@
 	$: $inputContext = { size, required };
 </script>
 
-<div class="[ input-wrapper ] [ {classes.wrapper || ''} ]" data-size={size} {...$$restProps}>
+<div class="[ input-wrapper ] [ {classes.root || ''} ]" data-size={size} {...$$restProps}>
 	{#each inputWrapperOrder as part}
 		{#if part == 'label'}
 			{#if label}

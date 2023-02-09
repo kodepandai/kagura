@@ -45,7 +45,7 @@ const meta: Meta<InputWithSlot> = {
 		disabled: {
 			type: 'boolean'
 		},
-		classes: controlClasses('root, input'),
+		classes: controlClasses('root, input, rightSection, icon, withIcon, disabled, invalid'),
 		withIcon: controlSlot('icon'),
 		withRightSection: controlSlot('rightSection')
 	},
@@ -65,10 +65,10 @@ const meta: Meta<InputWithSlot> = {
  import {Input} from "@kagura-ui/svelte"
 </script>
 ${code
-	.replace('SlotDecorator', 'Input')
-	.replace(/ slot="[a-zA-Z]+"/, '')
-	.replace(/ (withIcon|withRightSection)/g, '')
-	.replace(/ preset="[a-zA-Z]+"/, '')}
+					.replace('SlotDecorator', 'Input')
+					.replace(/ slot="[a-zA-Z]+"/, '')
+					.replace(/ (withIcon|withRightSection)/g, '')
+					.replace(/ preset="[a-zA-Z]+"/, '')}
 `
 		}
 	}
@@ -124,11 +124,11 @@ export const WithIcon: Story = {
 </script>
 
 ${code
-	.replace('SlotDecorator', 'Input')
-	.replace(/ slot="[a-zA-Z]+"/, '')
-	.replace(/ (withIcon|withRightSection)/g, '')
-	.replace(/ preset="[a-zA-Z]+"/, '')
-	.replace('\\>', '>')}
+					.replace('SlotDecorator', 'Input')
+					.replace(/ slot="[a-zA-Z]+"/, '')
+					.replace(/ (withIcon|withRightSection)/g, '')
+					.replace(/ preset="[a-zA-Z]+"/, '')
+					.replace('\\>', '>')}
 	<Icon icon="tabler:at" slot="icon"/>
 </Input>
 `
@@ -148,11 +148,11 @@ export const WithRightSection: Story = {
 </script>
 
 ${code
-	.replace('SlotDecorator', 'Input')
-	.replace(/ slot="[a-zA-Z]+"/, '')
-	.replace(/ (withIcon|withRightSection)/g, '')
-	.replace(/ preset="[a-zA-Z]+"/, '')
-	.replace('\\>', '>')}
+					.replace('SlotDecorator', 'Input')
+					.replace(/ slot="[a-zA-Z]+"/, '')
+					.replace(/ (withIcon|withRightSection)/g, '')
+					.replace(/ preset="[a-zA-Z]+"/, '')
+					.replace('\\>', '>')}
 	<Icon icon="tabler:alert-circle" slot="rightSection" class="opacity-40 w-1/2 h-1/2"/>
 </Input>
 `

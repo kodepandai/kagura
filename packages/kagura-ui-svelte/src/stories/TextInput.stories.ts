@@ -56,9 +56,9 @@ const meta: Meta<TextInputWithSlot> = {
 			control: 'object',
 			description: 'array with value `label | description | input | error`'
 		},
-		classes: controlClasses(
-			'inputWrapper: {root, label, description, required, error, input}, input: {root, input}'
-		),
+		classes: controlClasses(`root, wrapper, label, input,<br>
+			description, required, error, invalid,<br>
+			icon, withIcon, rightSection, disabled`),
 		withIcon: controlSlot('icon'),
 		withRightSection: controlSlot('rightSection')
 	},
@@ -79,12 +79,12 @@ const meta: Meta<TextInputWithSlot> = {
 </script>
 
 ${code
-	.replace('SlotDecorator', 'TextInput\n  ')
-	.replace(/ slot="[a-zA-Z]+"/, '')
-	.replace(/ preset="[a-zA-Z]+"/, '')
-	.replace(/ (withIcon|withRightSection)/g, '')
-	.replace(/" /g, `"\n   `)
-	.replace(/} /g, `}\n   `)}
+					.replace('SlotDecorator', 'TextInput\n  ')
+					.replace(/ slot="[a-zA-Z]+"/, '')
+					.replace(/ preset="[a-zA-Z]+"/, '')
+					.replace(/ (withIcon|withRightSection)/g, '')
+					.replace(/" /g, `"\n   `)
+					.replace(/} /g, `}\n   `)}
 `
 		}
 	}
@@ -163,11 +163,11 @@ export const WithIcon: Story = {
 </script>
 
 ${code
-	.replace('SlotDecorator', 'TextInput')
-	.replace(/ slot="[a-zA-Z]+"/, '')
-	.replace(/ (withIcon|withRightSection)/g, '')
-	.replace(/ preset="[a-zA-Z]+"/, '')
-	.replace('\\>', '>')}
+					.replace('SlotDecorator', 'TextInput')
+					.replace(/ slot="[a-zA-Z]+"/, '')
+					.replace(/ (withIcon|withRightSection)/g, '')
+					.replace(/ preset="[a-zA-Z]+"/, '')
+					.replace('\\>', '>')}
 	<Icon icon="tabler:at" slot="icon"/>
 </TextInput>
 `
@@ -187,11 +187,11 @@ export const WithRightSection: Story = {
 </script>
 
 ${code
-	.replace('SlotDecorator', 'TextInput')
-	.replace(/ slot="[a-zA-Z]+"/, '')
-	.replace(/ (withIcon|withRightSection)/g, '')
-	.replace(/ preset="[a-zA-Z]+"/, '')
-	.replace('\\>', '>')}
+					.replace('SlotDecorator', 'TextInput')
+					.replace(/ slot="[a-zA-Z]+"/, '')
+					.replace(/ (withIcon|withRightSection)/g, '')
+					.replace(/ preset="[a-zA-Z]+"/, '')
+					.replace('\\>', '>')}
 	<Icon icon="tabler:alert-circle" slot="rightSection" class="opacity-40 w-1/2 h-1/2"/>
 </TextInput>
 `
@@ -211,12 +211,10 @@ export const CustomOrder: Story = {
 export const CustomStyle: Story = {
 	args: {
 		classes: {
-			inputWrapper: {
-				label: 'font-serif',
-				description: 'italic',
-				input: '!rounded-none !border-2 border-dashed focus:border-solid !placeholder-info',
-				error: 'bg-warning bg-opacity-20 px-2 rounded'
-			}
+			label: 'font-serif',
+			description: 'italic',
+			input: '!rounded-none !border-2 border-dashed focus:border-solid !placeholder-info',
+			error: 'bg-warning bg-opacity-20 px-2 rounded'
 		},
 		label: 'Email',
 		description: 'please input valid email address',

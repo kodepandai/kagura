@@ -1,16 +1,19 @@
+<script lang="ts" context="module">
+	export interface SelectClasses extends BaseInputClasses {
+		itemWrapper: string;
+		item: string;
+		itemHovered: string;
+		itemSelected: string;
+	}
+</script>
+
 <script lang="ts">
-	import TextInput, { type TextInputClasses } from './TextInput.svelte';
 	import { offset, flip } from '@floating-ui/dom';
 	import { createFloatingActions } from 'svelte-floating-ui';
 	import type { Size } from 'kagura-ui/contracts/tailwind';
-	export let classes: Partial<
-		{
-			root: string;
-			rightSection: string;
-			itemWrapper: string;
-			item: string;
-		} & TextInputClasses
-	> = {};
+	import { extendClassName } from './utils/className';
+	import BaseInput, { BaseInputClasses } from './BaseInput.svelte';
+	export let classes: Partial<SelectClasses> = {};
 	let data = [
 		{ value: 'react', label: 'React' },
 		{ value: 'ng', label: 'Angular' },
@@ -72,44 +75,45 @@
 	};
 </script>
 
-<div class="[ select ] [ {classes.root || ''} ]" data-size={size}>
+<BaseInput
+	{size}
+	type="text"
+	{...$$restProps}
+	useInput={floatingRef}
+	bind:refInput={inputElement}
+	on:focus={handleFocus}
+	on:blur={handleBlur}
+	on:keyup={handleDropdownNavigation}
+	bind:value={displayValue}
+	classes={{
+		wrapper: extendClassName('select-wrapper', classes.wrapper),
+		description: extendClassName('select-')
+	}}
+	on:mousedown={() => (dropdownVisible = !dropdownVisible)}
+>
 	<input type="hidden" {value} />
-	<TextInput
-		type="select"
-		{size}
-		{...$$restProps}
-		useInput={floatingRef}
-		bind:refInput={inputElement}
-		on:focus={handleFocus}
-		on:blur={handleBlur}
-		on:keyup={handleDropdownNavigation}
-		bind:value={displayValue}
-		classes={{ input: classes.input, inputWrapper: classes.inputWrapper }}
-		on:mousedown={() => (dropdownVisible = !dropdownVisible)}
-	>
-		<slot name="rightSection" slot="rightSection">
-			<i class="[ select-right-section ] [ {classes.rightSection || ''} ]" />
-		</slot>
-	</TextInput>
+	<slot name="rightSection" slot="rightSection">
+		<i class="[ select-right-section ] [ {classes.rightSection || ''} ]" />
+	</slot>
+</BaseInput>
 
-	<!--  wrap with fixed position to avoid dropdown getting cropped when parent element has overflow-hidden -->
-	<!-- but we need to calculate width of dropdown manually -->
-	{#if dropdownVisible}
-		<div style="position:fixed; width:{floatingWidth}px; z-index: 1000;">
-			<div class="[ select-item-wrapper ] [ {classes.itemWrapper || ''} ]" use:floatingContent>
-				{#each data as item, itemIndex}
-					<div
-						class="[ select-item ] [ {classes.item || ''} ]"
-						data-hovered={itemIndex == hoveredIndex}
-						data-selected={itemIndex == selectedIndex}
-						on:mouseenter={() => (hoveredIndex = itemIndex)}
-						on:keydown={handleDropdownNavigation}
-						on:mousedown={selectItem}
-					>
-						{item.label}
-					</div>
-				{/each}
-			</div>
+<!--  wrap with fixed position to avoid dropdown getting cropped when parent element has overflow-hidden -->
+<!-- but we need to calculate width of dropdown manually -->
+{#if dropdownVisible}
+	<div style="position:fixed; width:{floatingWidth}px; z-index: 1000;">
+		<div class="[ select-item-wrapper ] [ {classes.itemWrapper || ''} ]" use:floatingContent>
+			{#each data as item, itemIndex}
+				<div
+					class="[ select-item ] [ {classes.item || ''} ]"
+					data-hovered={itemIndex == hoveredIndex}
+					data-selected={itemIndex == selectedIndex}
+					on:mouseenter={() => (hoveredIndex = itemIndex)}
+					on:keydown={handleDropdownNavigation}
+					on:mousedown={selectItem}
+				>
+					{item.label}
+				</div>
+			{/each}
 		</div>
-	{/if}
-</div>
+	</div>
+{/if}
