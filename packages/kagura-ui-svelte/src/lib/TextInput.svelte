@@ -26,5 +26,10 @@
 		disabled: classes.disabled,
 		invalid: classes.invalid
 	}}
+	parentSlots={$$slots}
 	{...$$restProps}
-/>
+>
+	<slot name="icon" slot="icon" />
+	<slot name="rightSection" slot="rightSection" />
+	<slot />
+</BaseInput>

@@ -1,13 +1,5 @@
 <script lang="ts" context="module">
-	export interface TextAreaClasses {
-		inputWrapper: Partial<InputWrapperClasses>;
-		textArea: Partial<{
-			root: string;
-			input: string;
-			rightSection: string;
-			icon: string;
-		}>;
-	}
+	export type TextareaClasses = BaseInputClasses;
 </script>
 
 <script lang="ts">
@@ -15,8 +7,10 @@
 	import type { Size } from 'kagura-ui/contracts/tailwind';
 	import { getContext } from 'svelte';
 	import { writable, type Writable } from 'svelte/store';
+	import type { BaseInputClasses } from './BaseInput.svelte';
 	import Input from './input';
-	import type { InputWrapperClasses, InputWrapperOrder } from './Input.Wrapper.svelte';
+	import type { InputWrapperOrder } from './Input.Wrapper.svelte';
+	import { extendClassName } from './utils/className';
 
 	export let useTextArea: (node: HTMLTextAreaElement) => void = () => {
 		//pass
@@ -35,7 +29,7 @@
 	export let variant: InputVariant = 'default';
 	export let disabled = false;
 	export let placeholder = '';
-	export let classes: Partial<TextAreaClasses> = {};
+	export let classes: Partial<TextareaClasses> = {};
 	export let maxRows: number | undefined = undefined;
 	export let minRows = 2;
 	export let autosize = false;
@@ -60,6 +54,16 @@
 			rows = minRows;
 		}
 	}
+	let inputClassNames = classes.input ? [classes.input] : [];
+	$: if ($$slots.icon && parentSlots.icon && classes.withIcon) {
+		inputClassNames.push(classes.withIcon);
+	}
+	$: if (disabled && classes.disabled) {
+		inputClassNames.push(classes.disabled);
+	}
+	$: if (error && classes.invalid) {
+		inputClassNames.push(classes.invalid);
+	}
 </script>
 
 <Input.Wrapper
@@ -70,10 +74,16 @@
 	{withAsterisk}
 	{label}
 	{description}
-	classes={classes?.inputWrapper}
+	classes={{
+		root: extendClassName('textarea-wrapper', classes.wrapper),
+		description: extendClassName('textarea-description', classes.description),
+		required: extendClassName('textarea-required', classes.required),
+		label: extendClassName('textarea-label', classes.label),
+		error: extendClassName('textarea-error', classes.error)
+	}}
 >
 	<div
-		class="[ textarea ] [ {classes.textArea?.root || ''} ]"
+		class="[ input ] [ textarea ] [ {classes.root || ''} ]"
 		data-variant={variant}
 		data-size={$inputContext.size || size}
 		data-disabled={disabled}
@@ -83,12 +93,12 @@
 		data-autosize={autosize}
 	>
 		{#if $$slots.icon && parentSlots.icon}
-			<div class="[ textarea-icon ] [ {classes.textArea?.icon || ''} ]">
+			<div class="[ input-icon ] [ textarea-icon ] [ {classes.icon || ''} ]">
 				<slot name="icon" />
 			</div>
 		{/if}
 		<textarea
-			class="[ textarea-input ] [ {classes.textArea?.input || ''} ]"
+			class="[ input-input ] [ textarea-input ] [ {inputClassNames.join(' ')} ]"
 			bind:value
 			{placeholder}
 			use:useTextArea
@@ -105,7 +115,9 @@
 			{...$$restProps}
 		/>
 		{#if $$slots.rightSection && parentSlots.rightSection}
-			<div class="[ textarea-right-section ] [ {classes.textArea?.rightSection || ''} ]">
+			<div
+				class="[ input-right-section ] [ textarea-right-section ] [ {classes.rightSection || ''} ]"
+			>
 				<slot name="rightSection" />
 			</div>
 		{/if}

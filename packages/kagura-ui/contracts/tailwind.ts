@@ -1,7 +1,7 @@
 import { PluginAPI } from "tailwindcss/types/config";
 import { PresetButton } from "./button";
 import { PresetGroup } from "./group";
-import { PresetInput, PresetInputWrapper, PresetTextArea } from "./input";
+import { PresetInput, PresetInputWrapper, PresetTextarea } from "./input";
 import { PresetSelect } from "./select";
 
 export type HexColor = `#${string}`;
@@ -31,7 +31,7 @@ export interface Components {
   input: Callable<Partial<PresetInput>>;
   inputWrapper: Callable<Partial<PresetInputWrapper>>;
   select: Callable<Partial<PresetSelect>>;
-  textArea: Callable<Partial<PresetTextArea>>;
+  textarea: Callable<Partial<PresetTextarea>>;
 }
 export interface PresetColor {
   base: Colors;

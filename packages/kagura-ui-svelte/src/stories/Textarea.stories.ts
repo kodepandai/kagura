@@ -1,15 +1,15 @@
 import type { Meta, StoryObj } from '@storybook/svelte';
 
-import TextAreaWithSlot from './views/TextAreaWithSlot.svelte';
+import TextareaWithSlot from './views/TextareaWithSlot.svelte';
 import Preset from './Preset.svelte';
 import controlSize from './controls/size';
 import controlClasses from './controls/classes';
 import controlSlot from './controls/slot';
 
 // More on how to set up stories at: https://storybook.js.org/docs/7.0/svelte/writing-stories/introduction
-const meta: Meta<TextAreaWithSlot> = {
-	title: 'component/TextArea',
-	component: TextAreaWithSlot,
+const meta: Meta<TextareaWithSlot> = {
+	title: 'component/Textarea',
+	component: TextareaWithSlot,
 	tags: ['autodocs'],
 	argTypes: {
 		preset: {
@@ -85,14 +85,14 @@ const meta: Meta<TextAreaWithSlot> = {
 		docs: {
 			transformSource: (code: string) => `
 <script>
- import {TextArea} from "@kagura-ui/svelte"
+ import {Textarea} from "@kagura-ui/svelte"
 </script>
 
 ${code
-	.replace('SlotDecorator', 'TextArea\n  ')
+	.replace('SlotDecorator', 'Textarea\n  ')
 	.replace(/ slot="[a-zA-Z]+"/, '')
 	.replace(/ preset="[a-zA-Z]+"/, '')
-	.replace(/ (withIcon|withRightSection)/g, '')
+	.replace(/ (with I con|withRightSect i on)/g, '')
 	.replace(/" /g, `"\n   `)
 	.replace(/} /g, `}\n   `)}
 `
@@ -101,7 +101,7 @@ ${code
 };
 
 export default meta;
-type Story = StoryObj<TextAreaWithSlot>;
+type Story = StoryObj<TextareaWithSlot>;
 
 // More on writing stories with args: https://storybook.js.org/docs/7.0/svelte/writing-stories/args
 export const Default: Story = {
@@ -167,9 +167,9 @@ export const WithIcon: Story = {
 	parameters: {
 		docs: {
 			transformSource: (code: string) => `
-<script>
- import {TextInput} from "@kagura-ui/svelte"
- import Icon from "@iconify/svelte"
+	<script>
+import { TextInput } from "@kagura-ui/svelte"
+import Icon from "@iconify/svelte"
 </script>
 
 ${code
@@ -178,9 +178,9 @@ ${code
 	.replace(/ (withIcon|withRightSection)/g, '')
 	.replace(/ preset="[a-zA-Z]+"/, '')
 	.replace('\\>', '>')}
-	<Icon icon="tabler:at" slot="icon"/>
-</TextInput>
-`
+<Icon icon="tabler:at" slot = "icon" />
+	</TextInput>
+		`
 		}
 	}
 };
@@ -191,20 +191,20 @@ export const WithRightSection: Story = {
 	parameters: {
 		docs: {
 			transformSource: (code: string) => `
-<script>
- import {TextArea} from "@kagura-ui/svelte"
- import Icon from "@iconify/svelte"
+	<script>
+import { Textarea } from "@kagura-ui/svelte"
+import Icon from "@iconify/svelte"
 </script>
 
 ${code
-	.replace('SlotDecorator', 'TextArea')
+	.replace('SlotDecorator', 'Textarea')
 	.replace(/ slot="[a-zA-Z]+"/, '')
 	.replace(/ (withIcon|withRightSection)/g, '')
 	.replace(/ preset="[a-zA-Z]+"/, '')
 	.replace('\\>', '>')}
-	<Icon icon="tabler:alert-circle" slot="rightSection" class="opacity-40 w-1/2 h-1/2"/>
-</TextArea>
-`
+<Icon icon="tabler:alert-circle" slot = "rightSection" class="opacity-40 w-1/2 h-1/2" />
+	</Textarea>
+		`
 		}
 	}
 };
@@ -221,12 +221,10 @@ export const CustomOrder: Story = {
 export const CustomStyle: Story = {
 	args: {
 		classes: {
-			inputWrapper: {
-				label: 'font-serif',
-				description: 'italic',
-				input: '!rounded-none !border-2 border-dashed focus:border-solid !placeholder-info',
-				error: 'bg-warning bg-opacity-20 px-2 rounded'
-			}
+			label: 'font-serif',
+			description: 'italic',
+			input: '!rounded-none !border-2 border-dashed focus:border-solid !placeholder-info',
+			error: 'bg-warning bg-opacity-20 px-2 rounded'
 		},
 		label: 'Email',
 		description: 'please input valid email address',

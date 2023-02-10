@@ -29,6 +29,11 @@
 	export let placeholder = '';
 	export let classes: Partial<BaseInputClasses> = {};
 	export let type: InputType = 'text';
+	// this is helper for parent component to avoid render unecessary slot
+	export let parentSlots: Partial<{ icon: boolean; rightSection: boolean }> = {
+		icon: true,
+		rightSection: true
+	};
 </script>
 
 <Input.Wrapper
@@ -64,7 +69,7 @@
 			disabled: classes.disabled,
 			withIcon: classes.withIcon
 		}}
-		parentSlots={$$slots}
+		{parentSlots}
 		{useInput}
 		bind:refInput
 		on:focus

@@ -10,7 +10,7 @@ import {
 } from "../contracts/tailwind";
 import merge from "lodash.merge";
 import { PresetButton } from "../contracts/button";
-import { PresetInput, PresetInputWrapper, PresetTextArea } from "../contracts/input";
+import { PresetInput, PresetInputWrapper, PresetTextarea } from "../contracts/input";
 import { PresetSelect } from "../contracts/select";
 import { PresetGroup } from "../contracts/group";
 
@@ -63,7 +63,7 @@ export const createPreset: PresetCreator =
         input: createComponent<PresetInput>(defaultPreset, customPreset, "input"),
         inputWrapper: createComponent<PresetInputWrapper>(defaultPreset, customPreset, "inputWrapper"),
         select: createComponent<PresetSelect>(defaultPreset, customPreset, "select"),
-        textArea: createComponent<PresetTextArea>(defaultPreset, customPreset, "textArea")
+        textarea: createComponent<PresetTextarea>(defaultPreset, customPreset, "textarea")
       },
     };
   };
