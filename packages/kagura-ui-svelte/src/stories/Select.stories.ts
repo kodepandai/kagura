@@ -55,9 +55,10 @@ const meta: Meta<Select> = {
 			control: 'object',
 			description: 'array with value `label | description | input | error`'
 		},
-		classes: controlClasses(`root, itemWrapper, item,<br>
-			inputWrapper: {label, description, required, error},<br>
-			input: { root, input}`)
+		classes: controlClasses(`root, wrapper, label, input,<br>
+			description, required, error, invalid,<br>
+			icon, withIcon, rightSection, disabled,<br>
+			item, itemWraper, rightSectionIcon`),
 	},
 	decorators: [
 		(_, { args }) => ({
@@ -76,11 +77,11 @@ const meta: Meta<Select> = {
 </script>
 
 ${code
-	.replace('SlotDecorator', 'Select\n  ')
-	.replace(/ slot="[a-zA-Z]+"/, '')
-	.replace(/ preset="[a-zA-Z]+"/, '')
-	.replace(/" /g, `"\n   `)
-	.replace(/} /g, `}\n   `)}
+					.replace('SlotDecorator', 'Select\n  ')
+					.replace(/ slot="[a-zA-Z]+"/, '')
+					.replace(/ preset="[a-zA-Z]+"/, '')
+					.replace(/" /g, `"\n   `)
+					.replace(/} /g, `}\n   `)}
 `
 		}
 	}
