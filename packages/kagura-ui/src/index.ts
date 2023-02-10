@@ -9,7 +9,7 @@ import select from "./components/select.js";
 import textArea from "./components/textArea.js";
 import group from "./components/group.js";
 
-const kagura = plugin.withOptions(
+export const config = plugin.withOptions(
   () =>
     ({ addComponents, theme, addBase }) => {
 
@@ -91,5 +91,3 @@ const kagura = plugin.withOptions(
     };
   }
 );
-
-export default kagura

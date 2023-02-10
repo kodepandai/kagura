@@ -1,4 +1,3 @@
-import { PresetCreator } from "kagura-ui/contracts/tailwind";
 import { createPreset } from "kagura-ui/utils";
 import { button } from "./components/button.js";
 import { colors } from "./base/color.js";
@@ -7,8 +6,9 @@ import { input } from "./components/input.js";
 import { inputWrapper } from "./components/inputWrapper.js";
 import { select } from "./components/select.js";
 import { textArea } from "./components/textArea.js";
+import { PresetCreator } from "kagura-ui/contracts/tailwind.js";
 
-const bootstrapPreset = {
+const preset = {
   colors,
   spacing,
   components: {
@@ -19,4 +19,4 @@ const bootstrapPreset = {
     textArea
   },
 };
-export default createPreset(bootstrapPreset) as PresetCreator
+export const theme = createPreset(preset) as PresetCreator

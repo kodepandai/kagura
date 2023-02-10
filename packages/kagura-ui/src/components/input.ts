@@ -1,9 +1,10 @@
+import { CSSRuleObject } from "tailwindcss/types/config";
 import { InputStatus, InputVariant, PresetInput } from "../../contracts/input";
 import { Preset, Size, Theme } from "../../contracts/tailwind";
 import { sizes } from "../utils.js";
 
 
-const createStatus = (status: InputStatus, statuses?: PresetInput["statuses"]) => {
+const createStatus = (status: InputStatus, statuses?: { invalid?: CSSRuleObject, disabled?: CSSRuleObject }) => {
   return {
     // using :where selector here to maintain css specificity
     [`&:where([data-${status}="true"])`]: statuses?.[status] || {},
@@ -23,10 +24,10 @@ const createVariant = (variant: InputVariant, variants?: PresetInput["variants"]
 };
 export const createInputStyle = (input?: Partial<PresetInput>) => {
 
-  const statuses: InputStatus[] = ['invalid', 'disabled', 'required']
+  const statuses: InputStatus[] = ['invalid', 'disabled']
   const variants: InputVariant[] = ['default', 'filled']
   const inputStatuses = statuses.reduce(
-    (collect, status) => ({ ...collect, ...createStatus(status, input?.statuses) }),
+    (collect, status) => ({ ...collect, ...createStatus(status, { invalid: input?.invalid, disabled: input?.disabled }) }),
     {}
   );
   const inputSizes = sizes.reduce(
@@ -40,15 +41,13 @@ export const createInputStyle = (input?: Partial<PresetInput>) => {
   )
 
   return {
-    ".input": {
-      ...input?.root,
-      ...inputStatuses,
-      ...inputSizes,
-      ...inputVariants,
-      "&-icon": input?.icon,
-      "&-input": input?.input,
-      "&-right-section": input?.rightSection
-    }
+    ...input?.root,
+    ...inputStatuses,
+    ...inputSizes,
+    ...inputVariants,
+    "&-icon": input?.icon,
+    "&-input": input?.input,
+    "&-right-section": input?.rightSection
   }
 }
 export default (theme: Theme) => {
@@ -58,7 +57,7 @@ export default (theme: Theme) => {
     if (typeof input == "function") {
       input = input({ theme, preset: theme(`kagura.${scope}`) })
     }
-    const inputStyle = createInputStyle(input)
+    const inputStyle = { ".input": createInputStyle(input) }
     if (scope == "DEFAULT") {
       inputStyles.push(inputStyle)
     } else {

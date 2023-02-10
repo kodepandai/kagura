@@ -156,13 +156,11 @@ export const CustomOrder: Story = {
 export const CustomStyle: Story = {
 	args: {
 		classes: {
-			root: 'shadow border p-2 rounded',
-			inputWrapper: {
-				label: 'font-serif',
-				description: 'italic',
-				input: '!rounded-none !border-2 border-dashed focus:border-solid !placeholder-info',
-				error: 'bg-warning bg-opacity-20 px-2 rounded'
-			}
+			wrapper: 'shadow border p-2 rounded',
+			label: 'font-serif',
+			description: 'italic',
+			input: '!rounded-none !border-2 border-dashed focus:border-solid !placeholder-info',
+			error: 'bg-warning bg-opacity-20 px-2 rounded'
 		},
 		label: 'Framework',
 		description: 'Choose your favorite framework',

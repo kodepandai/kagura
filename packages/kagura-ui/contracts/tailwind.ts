@@ -1,4 +1,4 @@
-import { CSSRuleObject, PluginAPI } from "tailwindcss/types/config";
+import { PluginAPI } from "tailwindcss/types/config";
 import { PresetButton } from "./button";
 import { PresetGroup } from "./group";
 import { PresetInput, PresetInputWrapper, PresetTextArea } from "./input";

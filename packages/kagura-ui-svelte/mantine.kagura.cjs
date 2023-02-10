@@ -12,6 +12,9 @@ module.exports = {
 					'@apply rounded-lg': {}
 				}
 			}
+		},
+		select: {
+			input: {}
 		}
 	}
 };

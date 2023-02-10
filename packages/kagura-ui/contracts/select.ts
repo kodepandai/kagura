@@ -1,11 +1,10 @@
 import { CSSRuleObject } from "tailwindcss/types/config";
-import { PresetTextInput } from "./input";
-import { Size } from "./tailwind";
+import { PresetBaseInput } from "./input";
 
-export interface PresetSelect extends PresetTextInput {
-  root: CSSRuleObject
-  rightSection: CSSRuleObject;
+export interface PresetSelect extends PresetBaseInput {
   itemWrapper: CSSRuleObject;
-  item: CSSRuleObject
-  sizes: Partial<Record<Size, CSSRuleObject>>;
+  item: CSSRuleObject;
+  itemHovered: CSSRuleObject;
+  itemSelected: CSSRuleObject;
+  rightSectionIcon: CSSRuleObject;
 }

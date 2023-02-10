@@ -4,6 +4,7 @@
 		item: string;
 		itemHovered: string;
 		itemSelected: string;
+		rightSectionIcon: string;
 	}
 </script>
 
@@ -12,7 +13,7 @@
 	import { createFloatingActions } from 'svelte-floating-ui';
 	import type { Size } from 'kagura-ui/contracts/tailwind';
 	import { extendClassName } from './utils/className';
-	import BaseInput, { BaseInputClasses } from './BaseInput.svelte';
+	import BaseInput, { type BaseInputClasses } from './BaseInput.svelte';
 	export let classes: Partial<SelectClasses> = {};
 	let data = [
 		{ value: 'react', label: 'React' },
@@ -86,34 +87,44 @@
 	on:keyup={handleDropdownNavigation}
 	bind:value={displayValue}
 	classes={{
+		root: extendClassName('select', classes.root),
 		wrapper: extendClassName('select-wrapper', classes.wrapper),
-		description: extendClassName('select-')
+		label: extendClassName('select-label', classes.label),
+		description: extendClassName('select-description', classes.description),
+		error: extendClassName('select-error', classes.error),
+		required: extendClassName('select-required', classes.required),
+		rightSection: extendClassName('select-right-section', classes.rightSection),
+		icon: extendClassName('select-icon', classes.icon),
+		input: extendClassName('select-input', classes.input),
+		withIcon: classes.withIcon,
+		disabled: classes.disabled,
+		invalid: classes.invalid
 	}}
 	on:mousedown={() => (dropdownVisible = !dropdownVisible)}
 >
 	<input type="hidden" {value} />
 	<slot name="rightSection" slot="rightSection">
-		<i class="[ select-right-section ] [ {classes.rightSection || ''} ]" />
+		<i class="[ select-right-section-icon ] [ {classes.rightSectionIcon || ''} ]" />
 	</slot>
-</BaseInput>
 
-<!--  wrap with fixed position to avoid dropdown getting cropped when parent element has overflow-hidden -->
-<!-- but we need to calculate width of dropdown manually -->
-{#if dropdownVisible}
-	<div style="position:fixed; width:{floatingWidth}px; z-index: 1000;">
-		<div class="[ select-item-wrapper ] [ {classes.itemWrapper || ''} ]" use:floatingContent>
-			{#each data as item, itemIndex}
-				<div
-					class="[ select-item ] [ {classes.item || ''} ]"
-					data-hovered={itemIndex == hoveredIndex}
-					data-selected={itemIndex == selectedIndex}
-					on:mouseenter={() => (hoveredIndex = itemIndex)}
-					on:keydown={handleDropdownNavigation}
-					on:mousedown={selectItem}
-				>
-					{item.label}
-				</div>
-			{/each}
+	<!--  wrap with fixed position to avoid dropdown getting cropped when parent element has overflow-hidden -->
+	<!-- but we need to calculate width of dropdown manually -->
+	{#if dropdownVisible}
+		<div style="position:fixed; width:{floatingWidth}px; z-index: 1000;">
+			<div class="[ select-item-wrapper ] [ {classes.itemWrapper || ''} ]" use:floatingContent>
+				{#each data as item, itemIndex}
+					<div
+						class="[ select-item ] [ {classes.item || ''} ]"
+						data-hovered={itemIndex == hoveredIndex}
+						data-selected={itemIndex == selectedIndex}
+						on:mouseenter={() => (hoveredIndex = itemIndex)}
+						on:keydown={handleDropdownNavigation}
+						on:mousedown={selectItem}
+					>
+						{item.label}
+					</div>
+				{/each}
+			</div>
 		</div>
-	</div>
-{/if}
+	{/if}
+</BaseInput>

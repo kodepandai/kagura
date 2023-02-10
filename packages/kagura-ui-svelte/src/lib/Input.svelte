@@ -84,4 +84,5 @@
 			<slot name="rightSection" />
 		</div>
 	{/if}
+	<slot />
 </div>

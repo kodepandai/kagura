@@ -9,7 +9,6 @@ const bundle = (name) => ([
       {
         file: `dist/${name}.cjs`,
         format: 'cjs',
-        exports: "default"
       },
       {
         file: `dist/${name}.mjs`,

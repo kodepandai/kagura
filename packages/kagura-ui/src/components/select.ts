@@ -23,19 +23,33 @@ export default (theme: Theme) => {
       {}
     );
 
-    const inputWrapperStyle = createInputWrapperStyle(select?.inputWrapper)
-    const inputStyle = createInputStyle(select?.input)
+    const selectWrapperStyle = createInputWrapperStyle(select?.wrapper, {
+      description: select?.description,
+      error: select?.error,
+      label: select?.label,
+      required: select?.required,
+    })
+    const inputStyle = createInputStyle({
+      input: select?.input,
+      disabled: select?.disabled,
+      icon: select?.icon,
+      invalid: select?.invalid,
+      sizes: select?.sizes,
+      rightSection: select?.rightSection,
+      root: select?.root,
+      variants: select?.variants,
+      withIcon: select?.withIcon,
+    })
 
     const selectStyle = {
       ".select": {
-        ...select?.root,
         "&-item-wrapper": select?.itemWrapper,
         "&-item": select?.item,
-        "&-right-section": select?.rightSection,
-        ...inputWrapperStyle,
+        "&-right-section-icon": select?.rightSectionIcon,
+        ...selectWrapperStyle,
         ...inputStyle,
-        ...selectSizes
-      }
+        ...selectSizes,
+      },
     }
 
     if (scope == "DEFAULT") {
