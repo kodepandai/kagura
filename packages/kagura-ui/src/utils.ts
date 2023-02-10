@@ -39,14 +39,17 @@ export const createPreset: PresetCreator =
         },
         text: {
           ...defaultPreset.colors?.text,
+          ...customPreset.colors?.base,
           ...customPreset.colors?.text,
         },
         background: {
           ...defaultPreset.colors?.background,
+          ...customPreset.colors?.base,
           ...customPreset.colors?.background,
         },
         border: {
           ...defaultPreset.colors?.border,
+          ...customPreset.colors?.base,
           ...customPreset.colors?.border,
         },
       },

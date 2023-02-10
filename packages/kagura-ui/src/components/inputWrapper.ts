@@ -1,3 +1,4 @@
+import { CSSRuleObject } from "tailwindcss/types/config";
 import { PresetInputWrapper } from "../../contracts/input";
 import { Preset, Size, Theme } from "../../contracts/tailwind";
 import { sizes } from "../utils";
@@ -9,21 +10,19 @@ const createSize = (size: Size, sizes?: PresetInputWrapper["sizes"]) => {
   };
 };
 
-export const createInputWrapperStyle = (inputWrapper?: Partial<PresetInputWrapper>) => {
+export const createInputWrapperStyle = (wrapperRootClass?: CSSRuleObject, inputWrapper?: Partial<Omit<PresetInputWrapper, 'root'>>) => {
 
   const inputWrapperSizes = sizes.reduce(
     (collect, size) => ({ ...collect, ...createSize(size, inputWrapper?.sizes) }),
     {}
   );
   return {
-    ".input-wrapper": {
-      ...inputWrapper?.root,
-      ...inputWrapperSizes,
-      "&-label": inputWrapper?.label,
-      "&-required": inputWrapper?.required,
-      "&-description": inputWrapper?.description,
-      "&-error": inputWrapper?.error,
-    }
+    ...wrapperRootClass,
+    ...inputWrapperSizes,
+    "&-label": inputWrapper?.label,
+    "&-required": inputWrapper?.required,
+    "&-description": inputWrapper?.description,
+    "&-error": inputWrapper?.error,
   }
 
 }
@@ -34,7 +33,11 @@ export default (theme: Theme) => {
     if (typeof inputWrapper == "function") {
       inputWrapper = inputWrapper({ theme, preset: theme(`kagura.${scope}`) })
     }
-    const inputWrapperStyle = createInputWrapperStyle(inputWrapper)
+    const inputWrapperStyle =
+    {
+      ".input-wrapper":
+        createInputWrapperStyle(inputWrapper?.root, inputWrapper)
+    }
     if (scope == "DEFAULT") {
       inputWrapperStyles
         .push(inputWrapperStyle)

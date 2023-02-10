@@ -83,22 +83,20 @@ export const input: Callable<Partial<PresetInput>> = () => {
         }
       },
     },
-    statuses: {
-      disabled: {
-        ".input-input": {
-          "@apply bg-disabled cursor-not-allowed": {},
-          color: "rgb(144, 146, 150)",
-          opacity: "0.6",
-        }
+    disabled: {
+      ".input-input": {
+        "@apply bg-disabled cursor-not-allowed": {},
+        color: "rgb(144, 146, 150)",
+        opacity: "0.6",
+      }
+    },
+    invalid: {
+      ".input-input": {
+        "@apply border-danger text-danger placeholder-danger": {}
       },
-      invalid: {
-        ".input-input": {
-          "@apply border-danger text-danger placeholder-danger": {}
-        },
-        ".input-icon": {
-          "@apply text-danger": {}
-        }
-      },
-    }
+      ".input-icon": {
+        "@apply text-danger": {}
+      }
+    },
   }
 }

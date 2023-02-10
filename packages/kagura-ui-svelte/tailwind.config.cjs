@@ -8,14 +8,47 @@ module.exports = {
 		extend: {}
 	},
 	plugins: [
-		kagura([
+		kagura.config([
 			{
-				preset: mantine(require('./mantine.kagura.cjs')),
-				scope: 'mantine'
+				scope: 'mantine',
+				preset: mantine.theme({
+					colors: {
+						base: {
+							custom: '#ff0000'
+						}
+					},
+					components: {
+						button: {
+							colors: {
+								custom: {
+									'@apply rounded-lg': {}
+								}
+							}
+						},
+						select: {
+							input: {}
+						}
+					}
+				})
 			},
 			{
-				preset: bootstrap(require('./bootstrap.kagura.cjs')),
-				scope: 'bootstrap'
+				scope: 'bootstrap',
+				preset: bootstrap.theme({
+					colors: {
+						base: {
+							custom: '#004400'
+						}
+					},
+					components: {
+						button: {
+							colors: {
+								custom: {
+									'@apply border-black !rounded-none': {}
+								}
+							}
+						}
+					}
+				})
 			}
 		])
 	]

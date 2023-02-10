@@ -61,10 +61,10 @@ const meta: Meta<InputWrapper> = {
 </script>
 
 ${code
-					.replace('SlotDecorator', 'Input.Wrapper')
-					.replace(/ slot="[a-zA-Z]+"/, '')
-					.replace(/ preset="[a-zA-Z]+"/, '')
-					.replace('/>', '>')}
+	.replace('SlotDecorator', 'Input.Wrapper')
+	.replace(/ slot="[a-zA-Z]+"/, '')
+	.replace(/ preset="[a-zA-Z]+"/, '')
+	.replace('/>', '>')}
  	<Input placeholder="your email" bind:value />
 </Input.Wrapper>
 `

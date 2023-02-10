@@ -8,7 +8,7 @@ import { inputWrapper } from "./components/inputWrapper.js";
 import { select } from "./components/select.js";
 import { textArea } from "./components/textArea.js";
 
-const mantinePreset: Partial<Preset> = {
+const preset: Partial<Preset> = {
   colors,
   spacing,
   components: {
@@ -20,4 +20,4 @@ const mantinePreset: Partial<Preset> = {
   },
 };
 
-export default createPreset(mantinePreset) as PresetCreator
+export const theme = createPreset(preset) as PresetCreator

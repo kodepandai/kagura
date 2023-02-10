@@ -1,1 +1,2 @@
-export const extendClassName = (className: string, target?: string) => `${className} ] [ ${target || ''}`
+export const extendClassName = (className: string, target?: string) =>
+	`${className} ] [ ${target || ''}`;
