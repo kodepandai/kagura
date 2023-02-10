@@ -101,6 +101,7 @@
 		invalid: classes.invalid
 	}}
 	on:mousedown={() => (dropdownVisible = !dropdownVisible)}
+	parentSlots={{ ...$$slots, rightSection: true }}
 >
 	<input type="hidden" {value} />
 	<slot name="rightSection" slot="rightSection">

@@ -27,7 +27,4 @@ export interface PresetBaseInput extends PresetInput, PresetInputWrapper {
   wrapper: CSSRuleObject
 }
 
-export interface PresetTextArea {
-  inputWrapper: Partial<PresetInputWrapper>
-  textArea: Partial<PresetInput>
-}
+export type PresetTextarea = PresetBaseInput
