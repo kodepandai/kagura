@@ -8,6 +8,7 @@ import inputWrapper from "./components/inputWrapper.js";
 import select from "./components/select.js";
 import textarea from "./components/textarea.js";
 import group from "./components/group.js";
+import checkbox from "./components/checkbox.js";
 
 export const config = plugin.withOptions(
   () =>
@@ -16,6 +17,7 @@ export const config = plugin.withOptions(
       addBase(root(theme))
       //
       addComponents(button(theme));
+      addComponents(checkbox(theme));
       addComponents(group(theme));
       addComponents(input(theme))
       addComponents(inputWrapper(theme))

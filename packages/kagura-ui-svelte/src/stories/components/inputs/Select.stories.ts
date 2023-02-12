@@ -1,13 +1,13 @@
 import type { Meta, StoryObj } from '@storybook/svelte';
 
-import Select from '../lib/Select.svelte';
-import Preset from './Preset.svelte';
-import controlSize from './controls/size';
-import controlClasses from './controls/classes';
+import Select from '../../../lib/Select.svelte';
+import Preset from '../Preset.svelte';
+import controlSize from '../../controls/size';
+import controlClasses from '../../controls/classes';
 
 // More on how to set up stories at: https://storybook.js.org/docs/7.0/svelte/writing-stories/introduction
 const meta: Meta<Select> = {
-	title: 'component/Select',
+	title: 'component/inputs/Select',
 	component: Select,
 	tags: ['autodocs'],
 	argTypes: {
@@ -58,7 +58,7 @@ const meta: Meta<Select> = {
 		classes: controlClasses(`root, wrapper, label, input,<br>
 			description, required, error, invalid,<br>
 			icon, withIcon, rightSection, disabled,<br>
-			item, itemWraper, rightSectionIcon`),
+			item, itemWraper, rightSectionIcon`)
 	},
 	decorators: [
 		(_, { args }) => ({
@@ -77,11 +77,11 @@ const meta: Meta<Select> = {
 </script>
 
 ${code
-					.replace('SlotDecorator', 'Select\n  ')
-					.replace(/ slot="[a-zA-Z]+"/, '')
-					.replace(/ preset="[a-zA-Z]+"/, '')
-					.replace(/" /g, `"\n   `)
-					.replace(/} /g, `}\n   `)}
+	.replace('SlotDecorator', 'Select\n  ')
+	.replace(/ slot="[a-zA-Z]+"/, '')
+	.replace(/ preset="[a-zA-Z]+"/, '')
+	.replace(/" /g, `"\n   `)
+	.replace(/} /g, `}\n   `)}
 `
 		}
 	}

@@ -4,7 +4,7 @@
 		item: string;
 		itemHovered: string;
 		itemSelected: string;
-		rightSectionIcon: string;
+		defaultRightSection: string;
 	}
 </script>
 
@@ -105,7 +105,7 @@
 >
 	<input type="hidden" {value} />
 	<slot name="rightSection" slot="rightSection">
-		<i class="[ select-right-section-icon ] [ {classes.rightSectionIcon || ''} ]" />
+		<i class="[ select-default-right-section ] [ {classes.defaultRightSection || ''} ]" />
 	</slot>
 
 	<!--  wrap with fixed position to avoid dropdown getting cropped when parent element has overflow-hidden -->

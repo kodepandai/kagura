@@ -1,14 +1,14 @@
 import type { Meta, StoryObj } from '@storybook/svelte';
 
-import InputWithSlot from './views/InputWithSlot.svelte';
-import Preset from './Preset.svelte';
-import controlSize from './controls/size';
-import controlClasses from './controls/classes';
-import controlSlot from './controls/slot';
+import InputWithSlot from '../../views/InputWithSlot.svelte';
+import Preset from '../Preset.svelte';
+import controlSize from '../../controls/size';
+import controlClasses from '../../controls/classes';
+import controlSlot from '../../controls/slot';
 
 // More on how to set up stories at: https://storybook.js.org/docs/7.0/svelte/writing-stories/introduction
 const meta: Meta<InputWithSlot> = {
-	title: 'component/Input/Input Base',
+	title: 'component/inputs/Input',
 	component: InputWithSlot,
 	tags: ['autodocs'],
 	argTypes: {

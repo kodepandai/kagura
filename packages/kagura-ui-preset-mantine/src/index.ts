@@ -7,12 +7,14 @@ import { input } from "./components/input.js";
 import { inputWrapper } from "./components/inputWrapper.js";
 import { select } from "./components/select.js";
 import { textarea } from "./components/textarea.js";
+import { checkbox } from "./components/checkbox.js";
 
 const preset: Partial<Preset> = {
   colors,
   spacing,
   components: {
     button,
+    checkbox,
     input,
     inputWrapper,
     select,

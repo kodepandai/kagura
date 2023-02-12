@@ -1,14 +1,14 @@
 import type { Meta, StoryObj } from '@storybook/svelte';
 
-import TextareaWithSlot from './views/TextareaWithSlot.svelte';
-import Preset from './Preset.svelte';
-import controlSize from './controls/size';
-import controlClasses from './controls/classes';
-import controlSlot from './controls/slot';
+import TextareaWithSlot from '../../views/TextareaWithSlot.svelte';
+import Preset from '../Preset.svelte';
+import controlSize from '../../controls/size';
+import controlClasses from '../../controls/classes';
+import controlSlot from '../../controls/slot';
 
 // More on how to set up stories at: https://storybook.js.org/docs/7.0/svelte/writing-stories/introduction
 const meta: Meta<TextareaWithSlot> = {
-	title: 'component/Textarea',
+	title: 'component/inputs/Textarea',
 	component: TextareaWithSlot,
 	tags: ['autodocs'],
 	argTypes: {

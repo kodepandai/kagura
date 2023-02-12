@@ -13,6 +13,7 @@ import { PresetButton } from "../contracts/button";
 import { PresetInput, PresetInputWrapper, PresetTextarea } from "../contracts/input";
 import { PresetSelect } from "../contracts/select";
 import { PresetGroup } from "../contracts/group";
+import { PresetCheckbox } from "../contracts/checkbox";
 
 const createComponent = <T>(defaultPreset: Preset, customPreset: Preset, component: keyof Components) => ({ theme, preset }: PresetContext) => {
   let defaultPresetComponent = defaultPreset.components?.[component] as unknown as Callable<Partial<T>>
@@ -59,6 +60,7 @@ export const createPreset: PresetCreator =
       },
       components: {
         button: createComponent<PresetButton>(defaultPreset, customPreset, "button"),
+        checkbox: createComponent<PresetCheckbox>(defaultPreset, customPreset, 'checkbox'),
         group: createComponent<PresetGroup>(defaultPreset, customPreset, "group"),
         input: createComponent<PresetInput>(defaultPreset, customPreset, "input"),
         inputWrapper: createComponent<PresetInputWrapper>(defaultPreset, customPreset, "inputWrapper"),

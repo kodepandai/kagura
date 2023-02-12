@@ -1,13 +1,13 @@
 import type { Meta, StoryObj } from '@storybook/svelte';
 
 import InputWrapper from './Input.Wrapper.svelte';
-import Preset from './Preset.svelte';
-import controlSize from './controls/size';
-import controlClasses from './controls/classes';
+import Preset from '../Preset.svelte';
+import controlSize from '../../controls/size';
+import controlClasses from '../../controls/classes';
 
 // More on how to set up stories at: https://storybook.js.org/docs/7.0/svelte/writing-stories/introduction
 const meta: Meta<InputWrapper> = {
-	title: 'component/Input/Input Wrapper',
+	title: 'component/inputs/Input Wrapper',
 	component: InputWrapper,
 	tags: ['autodocs'],
 	argTypes: {
