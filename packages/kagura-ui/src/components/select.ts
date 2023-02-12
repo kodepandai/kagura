@@ -45,7 +45,7 @@ export default (theme: Theme) => {
       ".select": {
         "&-item-wrapper": select?.itemWrapper,
         "&-item": select?.item,
-        "&-right-section-icon": select?.rightSectionIcon,
+        "&-default-right-section": select?.defaultRightSection,
         ...selectWrapperStyle,
         ...inputStyle,
         ...selectSizes,

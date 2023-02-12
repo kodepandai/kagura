@@ -6,5 +6,5 @@ export interface PresetSelect extends PresetBaseInput {
   item: CSSRuleObject;
   itemHovered: CSSRuleObject;
   itemSelected: CSSRuleObject;
-  rightSectionIcon: CSSRuleObject;
+  defaultRightSection: CSSRuleObject;
 }

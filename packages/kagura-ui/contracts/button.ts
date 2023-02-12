@@ -1,7 +1,6 @@
 import { CSSRuleObject } from "tailwindcss/types/config";
-import { Colors, RequiredColors, Size } from "./tailwind"
+import { RequiredColors, Size } from "./tailwind"
 
-export type ButtonColor = keyof Colors
 export type ButtonVariant = 'filled' | 'outline'
 export interface PresetButton {
   root: CSSRuleObject;

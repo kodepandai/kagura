@@ -1,14 +1,15 @@
 import type { Meta, StoryObj } from '@storybook/svelte';
 
-import type Button from '../lib/Button.svelte';
+import type Button from '../../../lib/Button.svelte';
 import ButtonView from './Button.svelte';
-import controlClasses from './controls/classes';
-import controlSize from './controls/size';
-import Preset from './Preset.svelte';
+import controlClasses from '../../controls/classes';
+import controlSize from '../../controls/size';
+import Preset from '../Preset.svelte';
+import controlColor from '../../controls/color';
 
 // More on how to set up stories at: https://storybook.js.org/docs/7.0/svelte/writing-stories/introduction
 const meta: Meta<Button> = {
-	title: 'component/Button',
+	title: 'component/buttons/Button',
 	component: ButtonView,
 	tags: ['autodocs'],
 	argTypes: {
@@ -20,11 +21,7 @@ const meta: Meta<Button> = {
 			description: 'choose kagura preset, this is for demo only',
 			defaultValue: 'mantine'
 		},
-		color: {
-			control: { type: 'select' },
-			options: ['primary', 'secondary', 'success', 'danger', 'warning', 'info', 'dark', 'custom'],
-			description: 'buton color scheme, default is primary'
-		},
+		color: controlColor('button'),
 		variant: {
 			control: { type: 'select' },
 			options: ['filled', 'outline'],
@@ -54,10 +51,10 @@ const meta: Meta<Button> = {
 </script>
 
 ${code
-	.replace('SlotDecorator', 'Button')
-	.replace(/ slot="[a-zA-Z]+"/, '')
-	.replace(/ preset="[a-zA-Z]+"/, '')
-	.replace('/>', '>')}
+					.replace('SlotDecorator', 'Button')
+					.replace(/ slot="[a-zA-Z]+"/, '')
+					.replace(/ preset="[a-zA-Z]+"/, '')
+					.replace('/>', '>')}
  ${prop.slot}
 </Button>
 `

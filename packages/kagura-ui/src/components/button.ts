@@ -1,9 +1,9 @@
-import { ButtonColor, ButtonVariant, PresetButton } from "../../contracts/button";
-import { Preset, Size, Theme } from "../../contracts/tailwind";
+import { ButtonVariant, PresetButton } from "../../contracts/button";
+import { ColorKeys, Preset, Size, Theme } from "../../contracts/tailwind";
 import { sizes } from "../utils.js";
 
 
-const createColor = (colors: PresetButton["colors"], color: ButtonColor) => {
+const createColor = (colors: PresetButton["colors"], color: ColorKeys) => {
   return {
     // using :where selector here to maintain css specificity
     [`&:where([data-color="${color}"])`]: colors?.[color] || {},

@@ -1,12 +1,12 @@
 import type { Meta, StoryObj } from '@storybook/svelte';
 
-import GroupWithSlot from './views/GroupWithSlot.svelte';
-import Preset from './Preset.svelte';
+import GroupWithSlot from '../../views/GroupWithSlot.svelte';
+import Preset from '../Preset.svelte';
 import { sizes } from 'kagura-ui/utils';
 
 // More on how to set up stories at: https://storybook.js.org/docs/7.0/svelte/writing-stories/introduction
 const meta: Meta<GroupWithSlot> = {
-	title: 'component/Group',
+	title: 'component/layouts/Group',
 	component: GroupWithSlot,
 	tags: ['autodocs'],
 	argTypes: {
