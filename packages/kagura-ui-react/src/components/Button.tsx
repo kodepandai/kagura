@@ -1,14 +1,31 @@
-import React from "react"
-import { ButtonProps } from "./Button.types"
+import { ButtonVariant } from "kagura-ui/contracts/button"
+import { ColorKeys, Size } from "kagura-ui/contracts/tailwind"
+import { ButtonHTMLAttributes } from "react"
 
-const Button = ({ size, children, className, color, variant }: ButtonProps) => {
+export interface ButtonProps extends Omit<ButtonHTMLAttributes<HTMLButtonElement>, "color"> {
+  size?: Size
+  color?: ColorKeys
+  variant?: ButtonVariant
+  classes?: Partial<ButtonClasses>
+}
+interface ButtonClasses {
+  root: string;
+  inner: string;
+  label: string;
+}
+
+export const Button = ({ size = 'md', children, className, color = 'primary', variant = 'filled', classes = {}, ...props }: ButtonProps) => {
   return (
-    <button className={`button button-${color} button-${size} button-${variant} ${className || ''}`}>
-      <div className="button-inner">
-        <span className="button-label">{children}</span>
+    <button
+      className={`[ button ] [ ${classes.root || ''} ]`}
+      data-variant={variant}
+      data-size={size}
+      data-color={color}
+      {...props}
+    >
+      <div className={`[ button-inner ] [ ${classes.inner || ''} ]`}>
+        <span className={`[ button-label ] [ ${classes.label || ''} ]`}>{children}</span>
       </div>
     </button>
   )
 }
-
-export default Button

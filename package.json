@@ -5,6 +5,7 @@
   "main": "index.js",
   "scripts": {
     "dev:svelte": "pnpm dev:package & (sleep 15 && pnpm --filter '@kagura-ui/svelte' storybook)",
+    "dev:react": "pnpm dev:package & (sleep 15 && pnpm --filter '@kagura-ui/react' storybook)",
     "dev:package": "pnpm --filter kagura-ui dev & (sleep 5 && pnpm --filter '@kagura-ui/*' dev)"
   },
   "keywords": [],
