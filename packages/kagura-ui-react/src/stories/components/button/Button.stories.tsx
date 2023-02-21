@@ -4,10 +4,13 @@ import controlClasses from '../../controls/classes';
 import controlSize from '../../controls/size';
 import Preset from '../Preset';
 import controlColor from '../../controls/color';
-import { Button } from 'src/components/Button';
+import { Button, ButtonProps } from 'src/components/Button';
 
+interface ButtonStoryProps extends ButtonProps{
+	preset: 'mantine' | 'bootstrap';
+}
 // More on how to set up stories at: https://storybook.js.org/docs/7.0/svelte/writing-stories/introduction
-const meta: Meta<typeof Button> = {
+const meta: Meta<ButtonStoryProps> = {
 	title: 'component/buttons/Button',
 	component: Button,
 	tags: ['autodocs'],
