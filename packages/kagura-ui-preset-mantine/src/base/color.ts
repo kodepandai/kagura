@@ -1,5 +1,5 @@
-import { Colors, Preset } from "kagura-ui/contracts/tailwind";
-import { rgbToHex } from "kagura-ui/utils";
+import { Colors, Preset } from "@kagura-ui/core/contracts";
+import { rgbToHex } from "@kagura-ui/core/utils";
 
 let baseColors: Colors = {
   primary: "#228be6",

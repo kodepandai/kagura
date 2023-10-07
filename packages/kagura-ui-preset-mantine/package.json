@@ -1,12 +1,13 @@
 {
   "name": "@kagura-ui/preset-mantine",
-  "version": "0.0.1",
+  "version": "0.0.2",
   "description": "Kagura UI preset mantine",
   "main": "dist/index.mjs",
   "types": "dist/index.d.ts",
   "scripts": {
     "dev": "rm -rf dist && rollup -cw",
-    "build": "rm -rf dist && rollup -c"
+    "build": "rm -rf dist && rollup -c",
+    "lint": "tsc --noEmit"
   },
   "files": [
     "./dist/*"
