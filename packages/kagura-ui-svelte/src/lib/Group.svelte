@@ -5,7 +5,7 @@
 </script>
 
 <script lang="ts">
-	import type { Size } from '@kagura-ui/core/contracts/tailwind';
+	import type { Size } from '@kagura-ui/core/contracts';
 
 	export let direction: GroupDirection = 'row';
 	const directions = {

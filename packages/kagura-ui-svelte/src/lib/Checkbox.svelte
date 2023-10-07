@@ -11,7 +11,7 @@
 </script>
 
 <script lang="ts">
-	import type { ColorKeys, Size } from '@kagura-ui/core/contracts/tailwind';
+	import type { ColorKeys, Size } from '@kagura-ui/core/contracts';
 
 	import { randomId } from './utils/generator';
 	export let id: string = randomId();

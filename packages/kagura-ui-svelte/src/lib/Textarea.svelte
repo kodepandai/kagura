@@ -3,8 +3,7 @@
 </script>
 
 <script lang="ts">
-	import type { InputVariant } from '@kagura-ui/core/contracts/input';
-	import type { Size } from '@kagura-ui/core/contracts/tailwind';
+	import type { InputVariant, Size } from '@kagura-ui/core/contracts';
 	import { getContext } from 'svelte';
 	import { writable, type Writable } from 'svelte/store';
 	import type { BaseInputClasses } from './BaseInput.svelte';
