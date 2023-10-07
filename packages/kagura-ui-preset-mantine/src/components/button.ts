@@ -3,10 +3,10 @@ import {
   HexColor,
   Preset,
   Size,
-} from "kagura-ui/contracts/tailwind";
-import { ButtonColor, PresetButton } from "kagura-ui/contracts/button";
-import { shadeColor, tintColor, sizes, hexToRgb } from "kagura-ui/utils";
-const createColor = (colors: Preset["colors"], color: ButtonColor) => {
+  PresetButton,
+} from "@kagura-ui/core/contracts";
+import { shadeColor, tintColor, sizes, hexToRgb } from "@kagura-ui/core/utils";
+const createColor = (colors: Preset["colors"], color: string) => {
   return {
     [color]: {
       "--tw-kagura-button-base-color": `var(--tw-kagura-${color})`,
@@ -14,17 +14,16 @@ const createColor = (colors: Preset["colors"], color: ButtonColor) => {
       "--tw-kagura-button-bg-color": `var(--tw-kagura-bg-${color}-rgb)`,
       "--tw-kagura-button-border-color": "transparent",
       "&:hover": {
-        [`--tw-kagura-button-bg-color`]: hexToRgb(shadeColor(
-          colors?.background?.[color] as HexColor,
-          15
-        )).join(" "),
+        [`--tw-kagura-button-bg-color`]: hexToRgb(
+          shadeColor(colors?.background?.[color] as HexColor, 15),
+        ).join(" "),
         [`--tw-kagura-button-border-color`]: shadeColor(
           colors?.border?.[color] as HexColor,
-          20
+          20,
         ),
         [`--tw-kagura-button-bg-outline-color`]: tintColor(
           colors?.background?.[color] as HexColor,
-          90
+          90,
         ),
       },
     },
@@ -65,11 +64,11 @@ export const button: Callable<Partial<PresetButton>> = ({ preset }) => {
   const colors = preset.colors;
   const buttonColors = Object.keys(colors?.base || {}).reduce(
     (collect, key) => ({ ...collect, ...createColor(colors, key) }),
-    {}
+    {},
   );
   const buttonSizes = sizes.reduce(
     (collect, size) => ({ ...collect, ...createSize(size) }),
-    {}
+    {},
   );
   return {
     root: {
@@ -80,7 +79,8 @@ export const button: Callable<Partial<PresetButton>> = ({ preset }) => {
       transition:
         "color .15s ease-in-out,background-color .15s ease-in-out,border-color .15s ease-in-out,box-shadow .15s ease-in-out",
       color: "var(--tw-kagura-button-text-color)",
-      backgroundColor: "rgb(var(--tw-kagura-button-bg-color) / var(--tw-bg-opacity, 1))",
+      backgroundColor:
+        "rgb(var(--tw-kagura-button-bg-color) / var(--tw-bg-opacity, 1))",
       borderColor: "var(--tw-kagura-button-border-color)",
       "&:active": {
         transform: "translateY(1px)",
@@ -105,6 +105,6 @@ export const button: Callable<Partial<PresetButton>> = ({ preset }) => {
             "var(--tw-kagura-button-bg-outline-color)",
         },
       },
-    }
+    },
   };
 };

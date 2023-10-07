@@ -1,6 +1,5 @@
-import { PresetSelect } from "kagura-ui/contracts/select";
-import { Callable, Size } from "kagura-ui/contracts/tailwind";
-import { sizes } from "kagura-ui/utils";
+import { PresetSelect, Callable, Size } from "@kagura-ui/core/contracts";
+import { sizes } from "@kagura-ui/core/utils";
 
 const createSize = (size: Size) => {
   const fontSize = {
@@ -8,37 +7,38 @@ const createSize = (size: Size) => {
     sm: 14,
     md: 16,
     lg: 18,
-    xl: 20
-  }
+    xl: 20,
+  };
   const paddingXY = {
     // in px
     xs: [10, 6.6667],
     sm: [12, 8],
     md: [16, 10.6667],
     lg: [20, 13.3333],
-    xl: [24, 16]
-  }
+    xl: [24, 16],
+  };
   const rightIconSize = {
     xs: 14,
     sm: 18,
     md: 20,
     lg: 24,
-    xl: 28
-  }
+    xl: 28,
+  };
   return {
     [size]: {
       ".select-item": {
-        [`@apply text-[${fontSize[size]}px] px-[${paddingXY[size][0]}px] py-[${paddingXY[size][1]}px]`]: {},
+        [`@apply text-[${fontSize[size]}px] px-[${paddingXY[size][0]}px] py-[${paddingXY[size][1]}px]`]:
+          {},
       },
       ".select-right-section-icon": {
         backgroundSize: `${rightIconSize[size]}px`,
-      }
-    }
-  }
-}
+      },
+    },
+  };
+};
 const selectSizes = sizes.reduce(
   (collect, size) => ({ ...collect, ...createSize(size) }),
-  {}
+  {},
 );
 export const select: Callable<Partial<PresetSelect>> = () => {
   return {
@@ -47,12 +47,13 @@ export const select: Callable<Partial<PresetSelect>> = () => {
     },
     item: {
       "@apply p-2 rounded cursor-pointer": {},
-      fontSize: '-apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji"',
+      fontSize:
+        '-apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji"',
       "&:hover, &[data-hovered='true']": {
-        "@apply bg-gray-100": {}
+        "@apply bg-gray-100": {},
       },
       "&[data-selected='true']": {
-        "@apply bg-primary text-white": {}
+        "@apply bg-primary text-white": {},
       },
     },
     defaultRightSection: {
@@ -62,9 +63,9 @@ export const select: Callable<Partial<PresetSelect>> = () => {
     },
     rightSection: {
       "&:has(.select-right-section-icon)": {
-        "@apply pointer-events-none": {}
-      }
+        "@apply pointer-events-none": {},
+      },
     },
     sizes: selectSizes,
-  }
-}
+  };
+};

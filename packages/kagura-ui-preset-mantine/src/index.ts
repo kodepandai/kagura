@@ -1,4 +1,4 @@
-import { Preset, PresetCreator } from "@kagura-ui/core/contracts/tailwind";
+import { Preset, PresetCreator } from "@kagura-ui/core/contracts";
 import { createPreset } from "@kagura-ui/core/utils";
 import { colors } from "./base/color.js";
 import { spacing } from "./base/spacing.js";

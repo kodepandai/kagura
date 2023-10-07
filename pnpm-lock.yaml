@@ -67,6 +67,9 @@ importers:
         specifier: workspace:^0.0.1
         version: link:../kagura-ui-core
     devDependencies:
+      '@lunoxjs/build':
+        specifier: 2.0.0-next.24
+        version: 2.0.0-next.24(rollup@4.0.2)(typescript@5.2.2)
       esbuild:
         specifier: ^0.19.4
         version: 0.19.4

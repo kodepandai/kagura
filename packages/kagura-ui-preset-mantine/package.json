@@ -2,8 +2,7 @@
   "name": "@kagura-ui/preset-mantine",
   "version": "0.0.1",
   "description": "Kagura UI preset mantine",
-  "main": "dist/index.cjs",
-  "module": "dist/index.mjs",
+  "main": "dist/index.mjs",
   "types": "dist/index.d.ts",
   "scripts": {
     "dev": "rm -rf dist && rollup -cw",
@@ -16,13 +15,14 @@
   "author": "",
   "license": "MIT",
   "devDependencies": {
+    "@lunoxjs/build": "2.0.0-next.24",
     "esbuild": "^0.19.4",
     "rollup": "^4.0.2",
     "rollup-plugin-dts": "^6.0.2",
     "rollup-plugin-esbuild": "^6.0.2",
     "typescript": "^5.2.2"
   },
-  "dependencies": {
+  "peerDependencies": {
     "@kagura-ui/core": "workspace:^0.0.1"
   }
 }
