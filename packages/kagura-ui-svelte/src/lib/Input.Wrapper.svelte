@@ -10,7 +10,7 @@
 </script>
 
 <script lang="ts">
-	import type { Size } from 'kagura-ui/contracts/tailwind';
+	import type { Size } from '@kagura-ui/core/contracts/tailwind';
 	import { setContext } from 'svelte';
 	import { writable } from 'svelte/store';
 

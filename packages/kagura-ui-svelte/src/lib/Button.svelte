@@ -1,6 +1,6 @@
 <script lang="ts">
-	import type { ButtonVariant } from 'kagura-ui/contracts/button';
-	import type { Size, ColorKeys } from 'kagura-ui/contracts/tailwind';
+	import type { ButtonVariant } from '@kagura-ui/core/contracts/button';
+	import type { Size, ColorKeys } from '@kagura-ui/core/contracts/tailwind';
 	export let color: ColorKeys = 'primary';
 	export let variant: ButtonVariant = 'filled';
 	export let size: Size = 'md';

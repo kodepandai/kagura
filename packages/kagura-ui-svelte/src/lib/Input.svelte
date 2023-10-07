@@ -11,8 +11,8 @@
 </script>
 
 <script lang="ts">
-	import type { InputVariant } from 'kagura-ui/contracts/input';
-	import type { Size } from 'kagura-ui/contracts/tailwind';
+	import type { InputVariant } from '@kagura-ui/core/contracts/input';
+	import type { Size } from '@kagura-ui/core/contracts/tailwind';
 	import { getContext } from 'svelte';
 	import { writable, type Writable } from 'svelte/store';
 	export let placeholder = '';

@@ -11,7 +11,7 @@
 <script lang="ts">
 	import { offset, flip } from '@floating-ui/dom';
 	import { createFloatingActions } from 'svelte-floating-ui';
-	import type { Size } from 'kagura-ui/contracts/tailwind';
+	import type { Size } from '@kagura-ui/core/contracts/tailwind';
 	import { extendClassName } from './utils/className';
 	import BaseInput, { type BaseInputClasses } from './BaseInput.svelte';
 	export let classes: Partial<SelectClasses> = {};

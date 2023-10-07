@@ -51,10 +51,10 @@ const meta: Meta<Button> = {
 </script>
 
 ${code
-					.replace('SlotDecorator', 'Button')
-					.replace(/ slot="[a-zA-Z]+"/, '')
-					.replace(/ preset="[a-zA-Z]+"/, '')
-					.replace('/>', '>')}
+	.replace('SlotDecorator', 'Button')
+	.replace(/ slot="[a-zA-Z]+"/, '')
+	.replace(/ preset="[a-zA-Z]+"/, '')
+	.replace('/>', '>')}
  ${prop.slot}
 </Button>
 `

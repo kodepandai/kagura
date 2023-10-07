@@ -1,5 +1,5 @@
-import { Preset, PresetCreator } from "kagura-ui/contracts/tailwind";
-import { createPreset } from "kagura-ui/utils";
+import { Preset, PresetCreator } from "@kagura-ui/core/contracts/tailwind";
+import { createPreset } from "@kagura-ui/core/utils";
 import { colors } from "./base/color.js";
 import { spacing } from "./base/spacing.js";
 import { button } from "./components/button.js";
@@ -18,8 +18,8 @@ const preset: Partial<Preset> = {
     input,
     inputWrapper,
     select,
-    textarea
+    textarea,
   },
 };
 
-export const theme = createPreset(preset) as PresetCreator
+export const theme = createPreset(preset) as PresetCreator;

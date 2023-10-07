@@ -2,20 +2,20 @@
 	"name": "@kagura-ui/svelte",
 	"version": "0.0.1",
 	"scripts": {
-		"dev": "svelte-kit sync && svelte-package --watch",
-		"build": "svelte-kit sync && svelte-package",
+		"dev": "svelte-kit sync && svelte-package -o dist --watch",
+		"build": "svelte-kit sync && svelte-package -o dist",
 		"check": "svelte-kit sync && svelte-check --tsconfig ./tsconfig.json",
 		"check:watch": "svelte-kit sync && svelte-check --tsconfig ./tsconfig.json --watch",
-		"lint": "prettier --plugin-search-dir . --check . && eslint .",
-		"format": "prettier --plugin-search-dir . --write .",
+		"lint": "prettier . --check . && eslint .",
+		"format": "prettier . --write .",
 		"storybook": "storybook dev -p 6006",
 		"build-storybook": "storybook build"
 	},
-	"svelte": "dist/index.js",
 	"main": "dist/index.js",
 	"types": "dist/index.d.ts",
 	"files": [
-		"./dist/*"
+		"./dist/*",
+		"dist"
 	],
 	"devDependencies": {
 		"@floating-ui/dom": "^1.5.3",
@@ -32,7 +32,7 @@
 		"@storybook/testing-library": "^0.2.2",
 		"@sveltejs/adapter-auto": "^2.1.0",
 		"@sveltejs/kit": "1.25.1",
-		"@sveltejs/package": "2.2.2",
+		"@sveltejs/package": "^2.0.0",
 		"@typescript-eslint/eslint-plugin": "^6.7.4",
 		"@typescript-eslint/parser": "^6.7.4",
 		"autoprefixer": "^10.4.16",
@@ -58,7 +58,116 @@
 		"vite": "^4.4.11"
 	},
 	"type": "module",
-	"dependencies": {
-		"@kagura-ui/core": "workspace:^"
+	"peerDependencies": {
+		"@kagura-ui/core": "workspace:^",
+		"svelte": ">=3.0.0"
+	},
+	"exports": {
+		"./package.json": "./package.json",
+		"./BaseInput.svelte": {
+			"types": "./dist/BaseInput.svelte.d.ts",
+			"svelte": "./dist/BaseInput.svelte",
+			"default": "./dist/BaseInput.svelte"
+		},
+		"./Button.svelte": {
+			"types": "./dist/Button.svelte.d.ts",
+			"svelte": "./dist/Button.svelte",
+			"default": "./dist/Button.svelte"
+		},
+		"./Checkbox.svelte": {
+			"types": "./dist/Checkbox.svelte.d.ts",
+			"svelte": "./dist/Checkbox.svelte",
+			"default": "./dist/Checkbox.svelte"
+		},
+		"./Group.svelte": {
+			"types": "./dist/Group.svelte.d.ts",
+			"svelte": "./dist/Group.svelte",
+			"default": "./dist/Group.svelte"
+		},
+		"./Input.Wrapper.svelte": {
+			"types": "./dist/Input.Wrapper.svelte.d.ts",
+			"svelte": "./dist/Input.Wrapper.svelte",
+			"default": "./dist/Input.Wrapper.svelte"
+		},
+		"./Input.svelte": {
+			"types": "./dist/Input.svelte.d.ts",
+			"svelte": "./dist/Input.svelte",
+			"default": "./dist/Input.svelte"
+		},
+		"./Select.svelte": {
+			"types": "./dist/Select.svelte.d.ts",
+			"svelte": "./dist/Select.svelte",
+			"default": "./dist/Select.svelte"
+		},
+		"./TextInput.svelte": {
+			"types": "./dist/TextInput.svelte.d.ts",
+			"svelte": "./dist/TextInput.svelte",
+			"default": "./dist/TextInput.svelte"
+		},
+		"./Textarea.svelte": {
+			"types": "./dist/Textarea.svelte.d.ts",
+			"svelte": "./dist/Textarea.svelte",
+			"default": "./dist/Textarea.svelte"
+		},
+		".": {
+			"types": "./dist/index.d.ts",
+			"svelte": "./dist/index.js",
+			"default": "./dist/index.js"
+		},
+		"./input": {
+			"types": "./dist/input.d.ts",
+			"default": "./dist/input.js"
+		},
+		"./utils/className": {
+			"types": "./dist/utils/className.d.ts",
+			"default": "./dist/utils/className.js"
+		},
+		"./utils/generator": {
+			"types": "./dist/utils/generator.d.ts",
+			"default": "./dist/utils/generator.js"
+		}
+	},
+	"typesVersions": {
+		">4.0": {
+			"BaseInput.svelte": [
+				"./dist/BaseInput.svelte.d.ts"
+			],
+			"Button.svelte": [
+				"./dist/Button.svelte.d.ts"
+			],
+			"Checkbox.svelte": [
+				"./dist/Checkbox.svelte.d.ts"
+			],
+			"Group.svelte": [
+				"./dist/Group.svelte.d.ts"
+			],
+			"Input.Wrapper.svelte": [
+				"./dist/Input.Wrapper.svelte.d.ts"
+			],
+			"Input.svelte": [
+				"./dist/Input.svelte.d.ts"
+			],
+			"Select.svelte": [
+				"./dist/Select.svelte.d.ts"
+			],
+			"TextInput.svelte": [
+				"./dist/TextInput.svelte.d.ts"
+			],
+			"Textarea.svelte": [
+				"./dist/Textarea.svelte.d.ts"
+			],
+			"index.d.ts": [
+				"./dist/index.d.ts"
+			],
+			"input": [
+				"./dist/input.d.ts"
+			],
+			"utils/className": [
+				"./dist/utils/className.d.ts"
+			],
+			"utils/generator": [
+				"./dist/utils/generator.d.ts"
+			]
+		}
 	}
 }

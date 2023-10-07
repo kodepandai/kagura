@@ -43,10 +43,10 @@ const meta: Meta<Checkbox> = {
  import {Checkbox} from "@kagura-ui/svelte"
 </script>
 ${code
-					.replace('SlotDecorator', 'Checkbox')
-					.replace(/ slot="[a-zA-Z]+"/, '')
-					.replace(/ (withIcon)/g, '')
-					.replace(/ preset="[a-zA-Z]+"/, '')}
+	.replace('SlotDecorator', 'Checkbox')
+	.replace(/ slot="[a-zA-Z]+"/, '')
+	.replace(/ (withIcon)/g, '')
+	.replace(/ preset="[a-zA-Z]+"/, '')}
 `
 		}
 	}
