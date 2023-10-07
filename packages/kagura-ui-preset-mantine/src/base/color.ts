@@ -1,5 +1,5 @@
 import { Colors, Preset } from "kagura-ui/contracts/tailwind";
-import { rgbToHex } from "kagura-ui/utils"
+import { rgbToHex } from "kagura-ui/utils";
 
 let baseColors: Colors = {
   primary: "#228be6",
@@ -9,12 +9,12 @@ let baseColors: Colors = {
   warning: rgbToHex(250, 176, 5),
   info: rgbToHex(21, 170, 191),
   dark: rgbToHex(37, 38, 43),
-  disabled: "#f1f3f5"
-}
+  disabled: "#f1f3f5",
+};
 
 export const colors: Preset["colors"] = {
   base: baseColors,
   text: baseColors,
   background: baseColors,
-  border: baseColors
-}
+  border: baseColors,
+};
