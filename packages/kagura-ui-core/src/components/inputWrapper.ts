@@ -1,6 +1,5 @@
 import { CSSRuleObject } from "tailwindcss/types/config";
-import { PresetInputWrapper } from "../../contracts/input";
-import { Preset, Size, Theme } from "../../contracts/tailwind";
+import { PresetInputWrapper, Preset, Size, Theme } from "../contracts";
 import { sizes } from "../utils";
 
 const createSize = (size: Size, sizes?: PresetInputWrapper["sizes"]) => {
@@ -10,11 +9,16 @@ const createSize = (size: Size, sizes?: PresetInputWrapper["sizes"]) => {
   };
 };
 
-export const createInputWrapperStyle = (wrapperRootClass?: CSSRuleObject, inputWrapper?: Partial<Omit<PresetInputWrapper, 'root'>>) => {
-
+export const createInputWrapperStyle = (
+  wrapperRootClass?: CSSRuleObject,
+  inputWrapper?: Partial<Omit<PresetInputWrapper, "root">>,
+) => {
   const inputWrapperSizes = sizes.reduce(
-    (collect, size) => ({ ...collect, ...createSize(size, inputWrapper?.sizes) }),
-    {}
+    (collect, size) => ({
+      ...collect,
+      ...createSize(size, inputWrapper?.sizes),
+    }),
+    {},
   );
   return {
     ...wrapperRootClass,
@@ -23,31 +27,30 @@ export const createInputWrapperStyle = (wrapperRootClass?: CSSRuleObject, inputW
     "&-required": inputWrapper?.required,
     "&-description": inputWrapper?.description,
     "&-error": inputWrapper?.error,
-  }
-
-}
+  };
+};
 export default (theme: Theme) => {
-  let inputWrapperStyles: any[] = []
-  Object.keys(theme("kagura")).map(scope => {
-    let inputWrapper = theme<Preset["components"]>(`kagura.${scope}.components`)?.inputWrapper
+  let inputWrapperStyles: any[] = [];
+  Object.keys(theme("kagura")).map((scope) => {
+    let inputWrapper = theme<Preset["components"]>(`kagura.${scope}.components`)
+      ?.inputWrapper;
     if (typeof inputWrapper == "function") {
-      inputWrapper = inputWrapper({ theme, preset: theme(`kagura.${scope}`) })
+      inputWrapper = inputWrapper({ theme, preset: theme(`kagura.${scope}`) });
     }
-    const inputWrapperStyle =
-    {
-      ".input-wrapper":
-        createInputWrapperStyle(inputWrapper?.root, inputWrapper)
-    }
+    const inputWrapperStyle = {
+      ".input-wrapper": createInputWrapperStyle(
+        inputWrapper?.root,
+        inputWrapper,
+      ),
+    };
     if (scope == "DEFAULT") {
-      inputWrapperStyles
-        .push(inputWrapperStyle)
+      inputWrapperStyles.push(inputWrapperStyle);
     } else {
-      inputWrapperStyles
-        .push({
-          ["." + scope]: inputWrapperStyle
-        })
+      inputWrapperStyles.push({
+        ["." + scope]: inputWrapperStyle,
+      });
     }
-  })
+  });
 
-  return inputWrapperStyles
-}
+  return inputWrapperStyles;
+};

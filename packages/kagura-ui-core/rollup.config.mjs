@@ -1,31 +1,6 @@
-import dts from "rollup-plugin-dts"
-import esbuild from "rollup-plugin-esbuild"
-
-const bundle = (name) => ([
-  {
-    input: `src/${name}.ts`,
-    plugins: [esbuild()],
-    output: [
-      {
-        file: `dist/${name}.cjs`,
-        format: 'cjs',
-      },
-      {
-        file: `dist/${name}.mjs`,
-        format: 'es',
-      },
-    ],
-  },
-  {
-    input: `src/${name}.ts`,
-    plugins: [dts()],
-    output: {
-      file: `dist/${name}.d.ts`,
-    },
-  },
-])
-
+import { bundleTs } from "@lunoxjs/build";
 export default [
-  ...bundle("index"),
-  ...bundle("utils"),
-]
+  ...bundleTs(["src/index.ts", "src/contracts/index.ts", "src/utils.ts"], {
+    declaration: true,
+  }),
+];

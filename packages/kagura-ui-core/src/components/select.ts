@@ -1,5 +1,4 @@
-import { PresetSelect } from "../../contracts/select";
-import { Preset, Size, Theme } from "../../contracts/tailwind";
+import { PresetSelect, Preset, Size, Theme } from "../contracts";
 import { sizes } from "../utils";
 import { createInputStyle } from "./input";
 import { createInputWrapperStyle } from "./inputWrapper";
@@ -13,14 +12,18 @@ const createSize = (size: Size, sizes?: PresetSelect["sizes"]) => {
 export default (theme: Theme) => {
   let selectStyles: any[] = [];
 
-  Object.keys(theme("kagura")).map(scope => {
-    let select = theme<Preset["components"]>(`kagura.${scope}.components`)?.select
+  Object.keys(theme("kagura")).map((scope) => {
+    let select = theme<Preset["components"]>(`kagura.${scope}.components`)
+      ?.select;
     if (typeof select == "function") {
-      select = select({ theme, preset: theme(`kagura.${scope}`) })
+      select = select({ theme, preset: theme(`kagura.${scope}`) });
     }
     const selectSizes = sizes.reduce(
-      (collect, size) => ({ ...collect, ...createSize(size, (select as PresetSelect)?.sizes) }),
-      {}
+      (collect, size) => ({
+        ...collect,
+        ...createSize(size, (select as PresetSelect)?.sizes),
+      }),
+      {},
     );
 
     const selectWrapperStyle = createInputWrapperStyle(select?.wrapper, {
@@ -28,7 +31,7 @@ export default (theme: Theme) => {
       error: select?.error,
       label: select?.label,
       required: select?.required,
-    })
+    });
     const inputStyle = createInputStyle({
       input: select?.input,
       disabled: select?.disabled,
@@ -39,7 +42,7 @@ export default (theme: Theme) => {
       root: select?.root,
       variants: select?.variants,
       withIcon: select?.withIcon,
-    })
+    });
 
     const selectStyle = {
       ".select": {
@@ -50,18 +53,16 @@ export default (theme: Theme) => {
         ...inputStyle,
         ...selectSizes,
       },
-    }
+    };
 
     if (scope == "DEFAULT") {
-      selectStyles
-        .push(selectStyle)
+      selectStyles.push(selectStyle);
     } else {
-      selectStyles
-        .push({
-          ["." + scope]: selectStyle
-        })
+      selectStyles.push({
+        ["." + scope]: selectStyle,
+      });
     }
-  })
+  });
 
-  return selectStyles
-}
+  return selectStyles;
+};

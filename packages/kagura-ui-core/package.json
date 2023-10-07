@@ -2,8 +2,7 @@
   "name": "@kagura-ui/core",
   "version": "0.0.1",
   "description": "Universal tailwindcss component",
-  "main": "dist/index.cjs",
-  "module": "dist/index.mjs",
+  "main": "dist/index.mjs",
   "types": "dist/index.d.ts",
   "scripts": {
     "dev": "rm -rf dist && rollup -cw",
@@ -15,18 +14,13 @@
     "ui"
   ],
   "exports": {
-    ".": {
-      "import": "./dist/index.mjs",
-      "require": "./dist/index.cjs"
-    },
-    "./utils": {
-      "import": "./dist/utils.mjs",
-      "require": "./dist/utils.cjs"
-    }
+    ".": "./dist/index.mjs",
+    "./contracts": "./contracts.d.ts",
+    "./utils": "./contracts.d.ts"
   },
   "files": [
     "./dist/*",
-    "./contracts/*",
+    "./contracts.d.ts",
     "./utils.d.ts"
   ],
   "author": {
@@ -36,6 +30,7 @@
   },
   "license": "MIT",
   "devDependencies": {
+    "@lunoxjs/build": "2.0.0-next.24",
     "@types/lodash.merge": "^4.6.7",
     "esbuild": "^0.19.4",
     "rollup": "^4.0.2",

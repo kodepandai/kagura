@@ -7,29 +7,38 @@ import {
   PresetContext,
   PresetCreator,
   Size,
-} from "../contracts/tailwind";
+  PresetButton,
+  PresetInput,
+  PresetInputWrapper,
+  PresetTextarea,
+  PresetSelect,
+  PresetGroup,
+  PresetCheckbox,
+} from "./contracts";
 import merge from "lodash.merge";
-import { PresetButton } from "../contracts/button";
-import { PresetInput, PresetInputWrapper, PresetTextarea } from "../contracts/input";
-import { PresetSelect } from "../contracts/select";
-import { PresetGroup } from "../contracts/group";
-import { PresetCheckbox } from "../contracts/checkbox";
 
-const createComponent = <T>(defaultPreset: Preset, customPreset: Preset, component: keyof Components) => ({ theme, preset }: PresetContext) => {
-  let defaultPresetComponent = defaultPreset.components?.[component] as unknown as Callable<Partial<T>>
-  if (typeof defaultPresetComponent == "function") {
-    defaultPresetComponent = defaultPresetComponent({ theme, preset });
-  }
-  let customPresetComponent = customPreset.components?.[component] as unknown as Callable<Partial<T>>
-  if (typeof customPresetComponent == "function") {
-    customPresetComponent = customPresetComponent({ theme, preset });
-  }
+const createComponent =
+  <T>(
+    defaultPreset: Preset,
+    customPreset: Preset,
+    component: keyof Components,
+  ) =>
+    ({ theme, preset }: PresetContext) => {
+      let defaultPresetComponent = defaultPreset.components?.[
+        component
+      ] as unknown as Callable<Partial<T>>;
+      if (typeof defaultPresetComponent == "function") {
+        defaultPresetComponent = defaultPresetComponent({ theme, preset });
+      }
+      let customPresetComponent = customPreset.components?.[
+        component
+      ] as unknown as Callable<Partial<T>>;
+      if (typeof customPresetComponent == "function") {
+        customPresetComponent = customPresetComponent({ theme, preset });
+      }
 
-  return merge(
-    defaultPresetComponent,
-    customPresetComponent
-  ) as Partial<T>;
-}
+      return merge(defaultPresetComponent, customPresetComponent) as Partial<T>;
+    };
 export const createPreset: PresetCreator =
   (defaultPreset) => (customPreset) => {
     return {
@@ -56,24 +65,59 @@ export const createPreset: PresetCreator =
       },
       spacing: {
         ...defaultPreset.spacing,
-        ...customPreset.spacing
+        ...customPreset.spacing,
       },
       components: {
-        button: createComponent<PresetButton>(defaultPreset, customPreset, "button"),
-        checkbox: createComponent<PresetCheckbox>(defaultPreset, customPreset, 'checkbox'),
-        group: createComponent<PresetGroup>(defaultPreset, customPreset, "group"),
-        input: createComponent<PresetInput>(defaultPreset, customPreset, "input"),
-        inputWrapper: createComponent<PresetInputWrapper>(defaultPreset, customPreset, "inputWrapper"),
-        select: createComponent<PresetSelect>(defaultPreset, customPreset, "select"),
-        textarea: createComponent<PresetTextarea>(defaultPreset, customPreset, "textarea")
+        button: createComponent<PresetButton>(
+          defaultPreset,
+          customPreset,
+          "button",
+        ),
+        checkbox: createComponent<PresetCheckbox>(
+          defaultPreset,
+          customPreset,
+          "checkbox",
+        ),
+        group: createComponent<PresetGroup>(
+          defaultPreset,
+          customPreset,
+          "group",
+        ),
+        input: createComponent<PresetInput>(
+          defaultPreset,
+          customPreset,
+          "input",
+        ),
+        inputWrapper: createComponent<PresetInputWrapper>(
+          defaultPreset,
+          customPreset,
+          "inputWrapper",
+        ),
+        select: createComponent<PresetSelect>(
+          defaultPreset,
+          customPreset,
+          "select",
+        ),
+        textarea: createComponent<PresetTextarea>(
+          defaultPreset,
+          customPreset,
+          "textarea",
+        ),
       },
     };
   };
 
-export const createColors = (colors: Partial<Colors>, prefix: string, rgb = false) => {
+export const createColors = (
+  colors: Partial<Colors>,
+  prefix: string,
+  rgb = false,
+) => {
   const entries = Object.keys(colors).map((key) => [
     key,
-    rgb ? `rgb(var(--tw-kagura${prefix ? "-" + prefix : ""}-${key}-rgb) / var(--tw-bg-opacity, 1))` : `var(--tw-kagura${prefix ? "-" + prefix : ""}-${key})`,
+    rgb
+      ? `rgb(var(--tw-kagura${prefix ? "-" + prefix : ""
+      }-${key}-rgb) / var(--tw-bg-opacity, 1))`
+      : `var(--tw-kagura${prefix ? "-" + prefix : ""}-${key})`,
   ]);
   return Object.fromEntries(entries);
 };
@@ -102,7 +146,7 @@ export const rgbToHex = (r: number, g: number, b: number): HexColor => {
 export const mixColor = (
   color_1: HexColor,
   color_2: HexColor,
-  weight: number = 50
+  weight: number = 50,
 ) => {
   const color1Rgb = hexToRgb(color_1);
   const rgbMixed = hexToRgb(color_2).map((v2, i) => {

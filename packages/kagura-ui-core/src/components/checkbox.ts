@@ -1,5 +1,4 @@
-import { PresetCheckbox } from "../../contracts/checkbox";
-import { ColorKeys, Preset, Size, Theme } from "../../contracts/tailwind";
+import { PresetCheckbox, ColorKeys, Preset, Size, Theme } from "../contracts";
 import { sizes } from "../utils.js";
 
 const createColor = (colors: PresetCheckbox["colors"], color: ColorKeys) => {
@@ -15,15 +14,20 @@ const createSize = (size: Size, sizes?: PresetCheckbox["sizes"]) => {
     [`&:where([data-size="${size}"])`]: sizes?.[size] || {},
   };
 };
-export const createChekboxStyle = (preset: Preset, checkbox?: Partial<PresetCheckbox>) => {
-
+export const createChekboxStyle = (
+  preset: Preset,
+  checkbox?: Partial<PresetCheckbox>,
+) => {
   const checkboxSizes = sizes.reduce(
     (collect, size) => ({ ...collect, ...createSize(size, checkbox?.sizes) }),
-    {}
+    {},
   );
   const checkboxColors = Object.keys(preset?.colors?.base || {}).reduce(
-    (collect, color) => ({ ...collect, ...createColor((checkbox as PresetCheckbox).colors, color) }),
-    {}
+    (collect, color) => ({
+      ...collect,
+      ...createColor((checkbox as PresetCheckbox).colors, color),
+    }),
+    {},
   );
 
   return {
@@ -39,26 +43,26 @@ export const createChekboxStyle = (preset: Preset, checkbox?: Partial<PresetChec
     '&:where([data-disabled="true"])': checkbox?.disabled,
     '&:where([data-checked="true"])': checkbox?.checked,
     '&:where([data-indeterminate="true"])': checkbox?.indeterminate,
-  }
-}
+  };
+};
 
 export default (theme: Theme) => {
-  let checkboxStyles: any[] = []
-  Object.keys(theme("kagura")).map(scope => {
+  let checkboxStyles: any[] = [];
+  Object.keys(theme("kagura")).map((scope) => {
     const preset = theme<Preset>(`kagura.${scope}`);
-    let checkbox = preset.components?.checkbox
+    let checkbox = preset.components?.checkbox;
     if (typeof checkbox == "function") {
-      checkbox = checkbox({ theme, preset: theme(`kagura.${scope}`) })
+      checkbox = checkbox({ theme, preset: theme(`kagura.${scope}`) });
     }
-    const checkboxStyle = { ".checkbox": createChekboxStyle(preset, checkbox) }
+    const checkboxStyle = { ".checkbox": createChekboxStyle(preset, checkbox) };
     if (scope == "DEFAULT") {
-      checkboxStyles.push(checkboxStyle)
+      checkboxStyles.push(checkboxStyle);
     } else {
       checkboxStyles.push({
-        ["." + scope]: checkboxStyle
-      })
+        ["." + scope]: checkboxStyle,
+      });
     }
-  })
+  });
 
-  return checkboxStyles
-}
+  return checkboxStyles;
+};
