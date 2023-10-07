@@ -16,7 +16,7 @@
   "exports": {
     ".": "./dist/index.mjs",
     "./contracts": "./contracts.d.ts",
-    "./utils": "./contracts.d.ts"
+    "./utils": "./dist/utils.mjs"
   },
   "files": [
     "./dist/*",

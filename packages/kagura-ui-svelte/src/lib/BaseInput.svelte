@@ -7,9 +7,11 @@
 
 <script lang="ts">
 	import type { InputVariant, Size } from '@kagura-ui/core/contracts';
-	import Input from './input';
-	import type { InputWrapperClasses, InputWrapperOrder } from './Input.Wrapper.svelte';
-	import type { InputClasses } from './Input.svelte';
+	import InputWrapper, {
+		type InputWrapperClasses,
+		type InputWrapperOrder
+	} from './Input.Wrapper.svelte';
+	import Input, { type InputClasses } from './Input.svelte';
 
 	export let refInput: HTMLInputElement | undefined = undefined;
 	export let useInput: (node: HTMLInputElement) => void = () => {
@@ -35,7 +37,7 @@
 	};
 </script>
 
-<Input.Wrapper
+<InputWrapper
 	{required}
 	{size}
 	{error}
@@ -83,4 +85,4 @@
 		<slot name="rightSection" slot="rightSection" />
 		<slot />
 	</Input>
-</Input.Wrapper>
+</InputWrapper>

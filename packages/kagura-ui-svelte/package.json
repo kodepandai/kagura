@@ -1,6 +1,6 @@
 {
 	"name": "@kagura-ui/svelte",
-	"version": "0.0.1",
+	"version": "0.0.2",
 	"scripts": {
 		"dev": "svelte-kit sync && svelte-package -o dist --watch",
 		"build": "svelte-kit sync && svelte-package -o dist",
@@ -158,9 +158,6 @@
 			],
 			"index.d.ts": [
 				"./dist/index.d.ts"
-			],
-			"input": [
-				"./dist/input.d.ts"
 			],
 			"utils/className": [
 				"./dist/utils/className.d.ts"

@@ -2,7 +2,7 @@ import type { Meta, StoryObj } from '@storybook/svelte';
 
 import GroupWithSlot from '../../views/GroupWithSlot.svelte';
 import Preset from '../Preset.svelte';
-import { sizes } from 'kagura-ui/utils';
+import { sizes } from '@kagura-ui/core/utils';
 
 // More on how to set up stories at: https://storybook.js.org/docs/7.0/svelte/writing-stories/introduction
 const meta: Meta<GroupWithSlot> = {
@@ -76,10 +76,10 @@ const meta: Meta<GroupWithSlot> = {
 </script>
 
 ${code
-	.replace('SlotDecorator', 'Group')
-	.replace(/ slot="[a-zA-Z]+"/, '')
-	.replace(/ preset="[a-zA-Z]+"/, '')
-	.replace('/>', '>')}
+					.replace('SlotDecorator', 'Group')
+					.replace(/ slot="[a-zA-Z]+"/, '')
+					.replace(/ preset="[a-zA-Z]+"/, '')
+					.replace('/>', '>')}
 	<Button>1</Button>
 	<Button>2/Button>
 	<Button>3</Button>
