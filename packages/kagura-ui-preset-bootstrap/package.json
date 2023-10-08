@@ -1,6 +1,6 @@
 {
   "name": "@kagura-ui/preset-bootstrap",
-  "version": "0.0.1",
+  "version": "0.0.3",
   "description": "Kagura UI preset bootstrap",
   "main": "dist/index.cjs",
   "module": "dist/index.mjs",
@@ -23,6 +23,6 @@
     "typescript": "^5.2.2"
   },
   "dependencies": {
-    "@kagura-ui/core": "workspace:^0.0.1"
+    "@kagura-ui/core": "0.0.3"
   }
 }

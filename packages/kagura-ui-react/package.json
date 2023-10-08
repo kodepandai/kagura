@@ -1,7 +1,7 @@
 {
   "name": "@kagura-ui/react",
   "private": true,
-  "version": "0.0.0",
+  "version": "0.0.3",
   "type": "module",
   "main": "./dist/index.umd.js",
   "module": "./dist/index.es.js",
@@ -17,8 +17,8 @@
   },
   "devDependencies": {
     "@babel/core": "^7.23.0",
-    "@kagura-ui/preset-bootstrap": "workspace:^0.0.1",
-    "@kagura-ui/preset-mantine": "workspace:^0.0.1",
+    "@kagura-ui/preset-bootstrap": "0.0.3",
+    "@kagura-ui/preset-mantine": "0.0.3",
     "@storybook/addon-essentials": "^7.4.6",
     "@storybook/addon-interactions": "^7.4.6",
     "@storybook/addon-links": "^7.4.6",
@@ -47,6 +47,6 @@
     "react-dom": "^18.2.0"
   },
   "dependencies": {
-    "@kagura-ui/core": "workspace:^0.0.1"
+    "@kagura-ui/core": "0.0.3"
   }
 }

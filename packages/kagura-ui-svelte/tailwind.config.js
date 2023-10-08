@@ -1,5 +1,5 @@
-import { config } from '@kagura-ui/core';
-import { theme as mantineTheme } from '@kagura-ui/preset-mantine';
+import kagura from '@kagura-ui/core';
+import mantine from '@kagura-ui/preset-mantine';
 // import { theme as bootstrapTheme } from '@kagura-ui/preset-bootstrap';
 /** @type {import('tailwindcss').Config} */
 export default {
@@ -8,10 +8,10 @@ export default {
 		extend: {}
 	},
 	plugins: [
-		config([
+		kagura([
 			{
 				scope: 'mantine',
-				preset: mantineTheme({
+				preset: mantine({
 					colors: {
 						base: {
 							custom: '#ff0000'

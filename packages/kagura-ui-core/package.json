@@ -1,6 +1,6 @@
 {
   "name": "@kagura-ui/core",
-  "version": "0.0.1",
+  "version": "0.0.3",
   "description": "Universal tailwindcss component",
   "main": "dist/index.mjs",
   "types": "dist/index.d.ts",
@@ -40,7 +40,7 @@
     "typescript": "^5.2.2"
   },
   "peerDependencies": {
-    "tailwindcss": "^3"
+    "tailwindcss": "^3.3.3"
   },
   "dependencies": {
     "lodash.merge": "^4.6.2"

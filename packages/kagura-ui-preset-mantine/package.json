@@ -1,6 +1,6 @@
 {
   "name": "@kagura-ui/preset-mantine",
-  "version": "0.0.2",
+  "version": "0.0.3",
   "description": "Kagura UI preset mantine",
   "main": "dist/index.mjs",
   "types": "dist/index.d.ts",
@@ -24,6 +24,6 @@
     "typescript": "^5.2.2"
   },
   "peerDependencies": {
-    "@kagura-ui/core": "workspace:^0.0.1"
+    "@kagura-ui/core": "0.0.3"
   }
 }

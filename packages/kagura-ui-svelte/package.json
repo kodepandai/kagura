@@ -20,8 +20,8 @@
 	"devDependencies": {
 		"@floating-ui/dom": "^1.5.3",
 		"@iconify/svelte": "^3.1.4",
-		"@kagura-ui/preset-bootstrap": "workspace:^",
-		"@kagura-ui/preset-mantine": "workspace:^",
+		"@kagura-ui/preset-bootstrap": "0.0.3",
+		"@kagura-ui/preset-mantine": "0.0.3",
 		"@storybook/addon-docs": "7.4.6",
 		"@storybook/addon-essentials": "^7.4.6",
 		"@storybook/addon-interactions": "^7.4.6",
@@ -59,8 +59,8 @@
 	},
 	"type": "module",
 	"peerDependencies": {
-		"@kagura-ui/core": "workspace:^",
-		"svelte": ">=3.0.0"
+		"@kagura-ui/core": "0.0.3",
+		"svelte": "^4.2.1"
 	},
 	"exports": {
 		"./package.json": "./package.json",

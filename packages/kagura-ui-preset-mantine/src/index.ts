@@ -22,4 +22,4 @@ const preset: Partial<Preset> = {
   },
 };
 
-export const theme = createPreset(preset) as PresetCreator;
+export default createPreset(preset) as PresetCreator;

@@ -76,10 +76,10 @@ const meta: Meta<GroupWithSlot> = {
 </script>
 
 ${code
-					.replace('SlotDecorator', 'Group')
-					.replace(/ slot="[a-zA-Z]+"/, '')
-					.replace(/ preset="[a-zA-Z]+"/, '')
-					.replace('/>', '>')}
+	.replace('SlotDecorator', 'Group')
+	.replace(/ slot="[a-zA-Z]+"/, '')
+	.replace(/ preset="[a-zA-Z]+"/, '')
+	.replace('/>', '>')}
 	<Button>1</Button>
 	<Button>2/Button>
 	<Button>3</Button>

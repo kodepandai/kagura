@@ -10,7 +10,7 @@ import textarea from "./components/textarea.js";
 import group from "./components/group.js";
 import checkbox from "./components/checkbox.js";
 
-export const config = plugin.withOptions(
+export default plugin.withOptions(
   () =>
     ({ addComponents, theme, addBase }) => {
       addBase(root(theme));

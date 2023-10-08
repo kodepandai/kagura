@@ -115,6 +115,9 @@
 			<div class="[ select-item-wrapper ] [ {classes.itemWrapper || ''} ]" use:floatingContent>
 				{#each data as item, itemIndex}
 					<div
+						role="option"
+						aria-selected={itemIndex == selectedIndex}
+						tabindex={itemIndex == selectedIndex ? 0 : -1}
 						class="[ select-item ] [ {classes.item || ''} ]"
 						data-hovered={itemIndex == hoveredIndex}
 						data-selected={itemIndex == selectedIndex}

@@ -7,8 +7,7 @@
 	import { getContext } from 'svelte';
 	import { writable, type Writable } from 'svelte/store';
 	import type { BaseInputClasses } from './BaseInput.svelte';
-	import Input from './input';
-	import type { InputWrapperOrder } from './Input.Wrapper.svelte';
+	import InputWrapper, { type InputWrapperOrder } from './Input.Wrapper.svelte';
 	import { extendClassName } from './utils/className';
 
 	export let useTextArea: (node: HTMLTextAreaElement) => void = () => {
@@ -65,7 +64,7 @@
 	}
 </script>
 
-<Input.Wrapper
+<InputWrapper
 	{required}
 	{size}
 	{error}
@@ -121,4 +120,4 @@
 			</div>
 		{/if}
 	</div>
-</Input.Wrapper>
+</InputWrapper>
