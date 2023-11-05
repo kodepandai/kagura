@@ -66,7 +66,7 @@
 
 <InputWrapper
 	{required}
-	{size}
+	size={$inputContext.size || size}
 	{error}
 	{inputWrapperOrder}
 	{withAsterisk}

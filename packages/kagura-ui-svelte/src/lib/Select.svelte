@@ -15,6 +15,7 @@
 	import { extendClassName } from './utils/className';
 	import BaseInput, { type BaseInputClasses } from './BaseInput.svelte';
 	export let classes: Partial<SelectClasses> = {};
+	export let value = '';
 	let data = [
 		{ value: 'react', label: 'React' },
 		{ value: 'ng', label: 'Angular' },
@@ -37,7 +38,6 @@
 	let hoveredIndex = -1;
 	let selectedIndex = -1;
 	let displayValue = '';
-	let value = '';
 	const handleDropdownNavigation = (e: KeyboardEvent) => {
 		switch (e.key) {
 			case 'ArrowDown':

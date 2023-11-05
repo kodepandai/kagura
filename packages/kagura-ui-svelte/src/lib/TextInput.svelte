@@ -3,15 +3,21 @@
 </script>
 
 <script lang="ts">
-	import type { ComponentProps } from 'svelte';
+	import { getContext, type ComponentProps } from 'svelte';
 	import BaseInput, { type BaseInputClasses } from './BaseInput.svelte';
 	import { extendClassName } from './utils/className';
+	import { writable, type Writable } from 'svelte/store';
+	import type { Size } from '@kagura-ui/core/contracts';
 	export let classes: Partial<TextInputClasses> = {};
+	export let value = '';
+	const inputContext =
+		getContext<Writable<{ size: Size; required: boolean }>>('input-context') || writable({});
 	type $$Props = ComponentProps<BaseInput>;
 </script>
 
 <BaseInput
 	type="text"
+	bind:value
 	classes={{
 		root: extendClassName('text-input', classes.root),
 		wrapper: extendClassName('text-input-wrapper', classes.wrapper),
@@ -27,6 +33,7 @@
 		invalid: classes.invalid
 	}}
 	parentSlots={$$slots}
+	size={$inputContext.size || $$props.size}
 	{...$$restProps}
 >
 	<slot name="icon" slot="icon" />

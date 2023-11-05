@@ -175,7 +175,7 @@ importers:
   packages/kagura-ui-svelte:
     dependencies:
       '@kagura-ui/core':
-        specifier: workspace:^
+        specifier: 0.0.3
         version: link:../kagura-ui-core
     devDependencies:
       '@floating-ui/dom':
@@ -185,10 +185,10 @@ importers:
         specifier: ^3.1.4
         version: 3.1.4(svelte@4.2.1)
       '@kagura-ui/preset-bootstrap':
-        specifier: workspace:^
+        specifier: 0.0.3
         version: link:../kagura-ui-preset-bootstrap
       '@kagura-ui/preset-mantine':
-        specifier: workspace:^
+        specifier: 0.0.3
         version: link:../kagura-ui-preset-mantine
       '@storybook/addon-docs':
         specifier: 7.4.6
