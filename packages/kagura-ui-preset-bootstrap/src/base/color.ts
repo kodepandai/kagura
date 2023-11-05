@@ -1,4 +1,4 @@
-import { Colors, Preset } from "kagura-ui/contracts/tailwind";
+import { Colors, Preset } from "@kagura-ui/core/contracts";
 
 let baseColors: Colors = {
   primary: "#0d6efd",
@@ -8,12 +8,12 @@ let baseColors: Colors = {
   warning: "#ffc107",
   info: "#0dcaf0",
   dark: "#212529",
-  disabled: "#e9ecef"
-}
+  disabled: "#e9ecef",
+};
 
 export const colors: Preset["colors"] = {
   base: baseColors,
   text: baseColors,
   background: baseColors,
-  border: baseColors
-}
+  border: baseColors,
+};

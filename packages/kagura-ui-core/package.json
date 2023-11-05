@@ -1,6 +1,6 @@
 {
   "name": "@kagura-ui/core",
-  "version": "0.0.3",
+  "version": "0.0.4",
   "description": "Universal tailwindcss component",
   "main": "dist/index.mjs",
   "types": "dist/index.d.ts",
